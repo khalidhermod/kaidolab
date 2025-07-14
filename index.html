@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://www.kaidolab.com/"> 
     <meta name="robots" content="index, follow">
 
-    <!-- Structured Data with Placeholder Logo -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,52 +51,70 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
         }
+        /* New Color & Gradient Scheme */
         .hero-gradient {
-            background: linear-gradient(90deg, #F9FAFB 0%, #E2F5EA 100%);
+            background: linear-gradient(180deg, #ffffff, #f8fafc);
         }
-        .ai-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #F3FAF6 100%);
+        .section-gradient {
+            background: linear-gradient(180deg, #f8fafc, #ffffff);
         }
-        .brand-blue { color: #2563EB; }
-        .brand-dark-blue { color: #1E3A8A; }
-
+        .brand-heading { color: #1e293b; } /* slate-800 */
+        .brand-subheading { color: #0f172a; } /* slate-900 */
+        .brand-text { color: #475569; } /* slate-600 */
+        .brand-accent { color: #2563eb; } /* blue-600 */
+        
         /* Animation Styles */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Custom styles for the range slider thumb */
+        
+        /* Custom styles for form elements */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0; /* slate-200 */
+            border-radius: 9999px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        input[type=range]:hover {
+            opacity: 1;
+        }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
             width: 20px;
             height: 20px;
-            background: #2563EB;
+            background: #2563eb; /* blue-600 */
             cursor: pointer;
             border-radius: 50%;
-            margin-top: -6px; /* Adjust to center */
         }
-
         input[type=range]::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background: #2563EB;
+            background: #2563eb; /* blue-600 */
             cursor: pointer;
             border-radius: 50%;
         }
+
         /* Loading Spinner */
         .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #2563EB;
+            border: 4px solid #e2e8f0; /* slate-200 */
+            border-top: 4px solid #2563eb; /* blue-600 */
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
@@ -106,157 +124,162 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="text-slate-700 antialiased">
 
     <!-- Header Section -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#">
-                <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="Kaido Lab for Growth" class="h-16 md:h-20" style="height: 65px;">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200/80">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="Kaido Lab for Growth" class="h-12 md:h-14">
             </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#services" class="text-gray-600 hover:text-blue-600 transition">Services</a>
-                <a href="#partners" class="text-gray-600 hover:text-blue-600 transition">Partners</a>
-                <a href="#budget-calculator-section" class="text-gray-600 hover:text-blue-600 transition">ERP Calculator</a>
-                <a href="#casestudies" class="text-gray-600 hover:text-blue-600 transition">Case Studies</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
-                <a href="index-ar.html" class="text-gray-600 hover:text-blue-600 transition font-semibold">العربية</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">Services</a>
+                <a href="#partners" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">Partners</a>
+                <a href="#casestudies" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">Case Studies</a>
+                <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">Contact</a>
+                <a href="index-ar.html" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-semibold">العربية</a>
             </div>
-            <a href="#contact" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
-                Get Consultation
+            <a href="#budget-calculator-section" class="hidden lg:block bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-sm hover:shadow-md">
+                Get ERP Estimate
             </a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-slate-700 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <a href="#services" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100">Services</a>
-            <a href="#partners" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100">Partners</a>
-            <a href="#budget-calculator-section" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100">ERP Calculator</a>
-            <a href="#casestudies" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100">Case Studies</a>
-            <a href="#contact" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
-            <a href="index-ar.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-100 font-semibold">العربية</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <a href="#services" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50">Services</a>
+            <a href="#partners" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50">Partners</a>
+            <a href="#casestudies" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50">Case Studies</a>
+            <a href="#contact" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 border-b">Contact</a>
+            <a href="#budget-calculator-section" class="block py-3 px-6 text-sm text-blue-600 font-semibold hover:bg-slate-50">Get ERP Estimate</a>
+            <a href="index-ar.html" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 font-semibold">العربية</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient py-20 md:py-32">
+        <section class="hero-gradient py-24 md:py-40">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight animate-on-scroll">
-                    Odoo Ready in 2 Weeks
+                <h1 class="text-4xl md:text-6xl font-extrabold brand-subheading leading-tight tracking-tight animate-on-scroll">
+                    End Operational Chaos.
+                    <br class="hidden md:block" />
+                    <span class="brand-accent">Scale Fearlessly.</span>
                 </h1>
-                <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
-                    From Day 1, everything we do is about speed, clarity, and business impact. At Kaido, we believe in velocity - not just moving fast, but moving fast in the right direction.
+                <p class="mt-6 text-lg md:text-xl brand-text max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
+                    We deliver Odoo ERP systems in weeks, not quarters. At Kaido, we combine speed, clarity, and deep expertise to build the operational backbone your business needs to grow.
                 </p>
-                <div class="mt-10 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 300ms;">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition transform hover:scale-105">
-                        Talk to us
+                <div class="mt-12 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 300ms;">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Book a Free Consultation
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-20 bg-white">
+        <section id="services" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12 animate-on-scroll">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">What We Do</h2>
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-heading">A Faster Path to Growth</h2>
+                    <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">Our services are designed for one thing: results.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 animate-on-scroll">
-                        <h3 class="text-xl font-bold brand-dark-blue">Odoo Implementations</h3>
-                        <p class="mt-2 text-gray-600">Get your system live in weeks, not quarters.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">Odoo Implementations</h3>
+                        <p class="mt-2 brand-text text-sm">Go live with a complete, tailored ERP system in record time.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 animate-on-scroll" style="transition-delay: 150ms;">
-                        <h3 class="text-xl font-bold brand-dark-blue">Rescue Projects</h3>
-                        <p class="mt-2 text-gray-600">Already working with Odoo but stuck? We'll fix it.</p>
+                    <!-- Service Card 2 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 150ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">Rescue Projects</h3>
+                        <p class="mt-2 brand-text text-sm">Stuck with a failing implementation? We'll get your project back on track.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
-                        <h3 class="text-xl font-bold brand-dark-blue">Odoo Partnership Setup</h3>
-                        <p class="mt-2 text-gray-600">Want to start selling Odoo? We'll build your practice.</p>
+                    <!-- Service Card 3 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">Odoo Partnership Setup</h3>
+                        <p class="mt-2 brand-text text-sm">Want to become an Odoo partner? We'll build your entire practice.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 animate-on-scroll" style="transition-delay: 450ms;">
-                        <h3 class="text-xl font-bold brand-dark-blue">Odoo AI Agent (Coming Soon)</h3>
-                        <p class="mt-2 text-gray-600">Your first layer of automation, powered by AI.</p>
+                    <!-- Service Card 4 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 450ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">Odoo AI Agent <span class="text-xs brand-accent font-medium">SOON</span></h3>
+                        <p class="mt-2 brand-text text-sm">Automate tasks and get insights with your own AI-powered assistant.</p>
                     </div>
-                </div>
-                <div class="text-center mt-12 animate-on-scroll">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition">
-                        Talk to an Odoo Expert Now
-                    </a>
                 </div>
             </div>
         </section>
 
         <!-- Partners Section -->
-        <section id="partners" class="py-20 bg-gray-50">
+        <section id="partners" class="py-20 section-gradient">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 animate-on-scroll">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">Our Trusted Partners</h2>
+                    <h2 class="text-xl font-bold brand-heading uppercase tracking-widest">Trusted By Industry Leaders</h2>
                 </div>
                 <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="Amer Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="DIFC Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="max-height: 60px; transition-delay: 100ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="Google Cloud Partner Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="max-height: 60px; transition-delay: 200ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="Odoo Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="max-height: 60px; transition-delay: 300ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="Oracle NetSuite Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="max-height: 60px; transition-delay: 400ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="Amer Logo" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 100ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="DIFC Logo" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 200ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="Google Cloud Partner Logo" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 300ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="Odoo Logo" class="mx-auto h-10 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 400ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="Oracle NetSuite Logo" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 500ms;">
                 </div>
             </div>
         </section>
         
         <!-- Budget Calculator Section -->
-        <section id="budget-calculator-section" class="py-20 ai-gradient">
+        <section id="budget-calculator-section" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="bg-white rounded-xl shadow-lg p-8 lg:p-12 border border-gray-200 animate-on-scroll">
+                <div class="bg-slate-800 rounded-xl shadow-2xl p-8 lg:p-16 animate-on-scroll text-center">
                     <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">ERP Budget Calculator</h2>
-                        <p class="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">Get a preliminary budget estimate and a bonus operational analysis. Fill out the form below to get started.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Instant ERP Budget Estimate</h2>
+                        <p class="text-slate-300 mt-4 text-lg max-w-3xl mx-auto">Answer a few questions to get a preliminary budget and a free operational analysis from our team.</p>
                     </div>
-                    <div id="calculator-result" class="hidden text-center p-8 bg-green-50 border border-green-200 rounded-lg">
-                        <h3 class="text-2xl font-bold brand-dark-blue">Thank You!</h3>
-                        <p class="mt-2 text-gray-700">Your estimate has been sent to your email. One of our specialists will be in touch shortly.</p>
+                    <div id="calculator-result" class="hidden text-center p-8 bg-green-500/10 border border-green-500/20 rounded-lg max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white">Thank You!</h3>
+                        <p class="mt-2 text-slate-200">Your estimate has been sent to your email. One of our specialists will be in touch shortly.</p>
                     </div>
                     <div id="calculator-loader" class="hidden">
                         <div class="loader"></div>
                     </div>
-                    <form id="budget-calculator-form">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <form id="budget-calculator-form" class="max-w-4xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
                             <div>
-                                <label for="calc-full-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
-                                <input type="text" name="full-name" id="calc-full-name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="calc-full-name" class="block text-sm font-medium text-slate-300 mb-1">Full Name *</label>
+                                <input type="text" name="full-name" id="calc-full-name" required class="block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                             </div>
                             <div>
-                                <label for="calc-email" class="block text-sm font-medium text-gray-700">Email Address *</label>
-                                <input type="email" name="email" id="calc-email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="calc-email" class="block text-sm font-medium text-slate-300 mb-1">Email Address *</label>
+                                <input type="email" name="email" id="calc-email" required class="block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-                            <div>
-                                <label for="user-count" class="block font-semibold text-gray-700">Number of Users: <span id="user-count-label" class="brand-blue font-bold">50</span></label>
-                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50" class="w-full mt-2 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 text-left">
+                            <div class="space-y-2">
+                                <label for="user-count" class="block font-semibold text-slate-300">Number of Users: <span id="user-count-label" class="text-blue-400 font-bold">50</span></label>
+                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50">
                             </div>
-                            <div>
-                               <label for="industry" class="block font-semibold text-gray-700 mb-2">Your Industry</label>
-                               <select id="industry" name="industry" class="w-full p-2 border border-gray-300 rounded-lg">
-                                   <option>Manufacturing</option>
-                                   <option>Retail</option>
-                                   <option>Real Estate</option>
-                                   <option>Wholesale / Distribution</option>
-                                   <option>Services</option>
-                                   <option>eCommerce</option>
-                                   <option>Medical / Healthcare</option>
-                                   <option>Hospitality</option>
-                                   <option>Other</option>
+                            <div class="space-y-2">
+                               <label for="industry" class="block font-semibold text-slate-300">Your Industry</label>
+                               <select id="industry" name="industry" class="w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                                   <option>Manufacturing</option><option>Retail</option><option>Real Estate</option><option>Wholesale / Distribution</option><option>Services</option><option>eCommerce</option><option>Medical / Healthcare</option><option>Hospitality</option><option>Other</option>
                                </select>
                             </div>
-                            <div>
-                                <label for="integration-count" class="block font-semibold text-gray-700">3rd-Party Integrations: <span id="integration-count-label" class="brand-blue font-bold">1</span></label>
-                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1" class="w-full mt-2 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="space-y-2">
+                                <label for="integration-count" class="block font-semibold text-slate-300">3rd-Party Integrations: <span id="integration-count-label" class="text-blue-400 font-bold">1</span></label>
+                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1">
                             </div>
                         </div>
                         <div class="text-center mt-8">
-                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">Get My Estimate</button>
+                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">Get My Estimate</button>
                         </div>
                     </form>
                 </div>
@@ -264,48 +287,60 @@
         </section>
 
         <!-- Case Studies Section -->
-        <section id="casestudies" class="py-20 ai-gradient">
+        <section id="casestudies" class="py-24 section-gradient">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12 animate-on-scroll">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">Success Stories</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Real results for scaling businesses across the region. See how we turn operational chaos into competitive advantage.</p>
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-heading">Turning Chaos into Competitive Advantage</h2>
+                    <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">See the real-world impact of our rapid, results-driven approach.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8 animate-on-scroll">
-                        <p class="text-sm font-semibold brand-blue">DISTRIBUTION & TRADING</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Wholesale Distributor Inventory Automation</h3>
-                        <p class="mt-2 text-gray-600">Automated the entire inventory management and order processing workflow for a leading distributor with facilities across the UAE.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7s0 4 8 4 8-4 8-4" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">DISTRIBUTION & TRADING</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">Inventory & Order Automation</h3>
+                            <p class="mt-2 brand-text">Automated the entire inventory and order workflow for a leading UAE distributor, cutting processing time by 40%.</p>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8 animate-on-scroll" style="transition-delay: 150ms;">
-                        <p class="text-sm font-semibold brand-blue">E-COMMERCE & RETAIL</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Multi-Channel E-commerce Systems Integration</h3>
-                        <p class="mt-2 text-gray-600">Seamlessly integrated Shopify, warehousing (3PL), and payment gateways into a single ERP system for a high-growth online retailer.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300" style="transition-delay: 150ms;">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">E-COMMERCE & RETAIL</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">Multi-Channel Systems Integration</h3>
+                            <p class="mt-2 brand-text">Integrated Shopify, 3PL warehousing, and payment gateways into one ERP for a high-growth online retailer.</p>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8 animate-on-scroll">
-                        <p class="text-sm font-semibold brand-blue">MANUFACTURING</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Production Line Efficiency Boost</h3>
-                        <p class="mt-2 text-gray-600">Implemented Odoo Manufacturing to provide real-time visibility into the shop floor, reducing waste by 15% and increasing output by 22%.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">MANUFACTURING</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">Production Line Efficiency</h3>
+                            <p class="mt-2 brand-text">Gave real-time shop floor visibility via Odoo Manufacturing, reducing waste by 15% and increasing output by 22%.</p>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8 animate-on-scroll" style="transition-delay: 150ms;">
-                        <p class="text-sm font-semibold brand-blue">PROFESSIONAL SERVICES</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Streamlined Project & Billing Management</h3>
-                        <p class="mt-2 text-gray-600">Deployed Odoo Project and Accounting for a consulting firm, automating timesheet tracking and invoicing, which cut their billing cycle in half.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300" style="transition-delay: 150ms;">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">PROFESSIONAL SERVICES</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">Streamlined Project & Billing</h3>
+                            <p class="mt-2 brand-text">Automated timesheets and invoicing for a consulting firm, cutting their billing cycle in half.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-800 text-white">
+        <section id="contact" class="py-24 bg-slate-800 text-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold">Let's Build Your Future</h2>
-                    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Ready to transform your business? Get in touch with our Dubai-based team for a free consultation.</p>
+                    <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">Ready to transform your business? Get in touch with our Dubai-based team for a free, no-obligation consultation.</p>
                 </div>
-                <div class="max-w-4xl mx-auto bg-white text-gray-800 rounded-xl shadow-2xl p-8 md:p-12 animate-on-scroll">
+                <div class="max-w-3xl mx-auto bg-white text-slate-800 rounded-xl shadow-2xl p-8 md:p-12 animate-on-scroll">
                      <div id="contact-result" class="hidden text-center p-8 bg-green-50 border border-green-200 rounded-lg">
-                        <h3 class="text-2xl font-bold brand-dark-blue">Message Sent!</h3>
-                        <p class="mt-2 text-gray-700">Thank you for reaching out. We've received your message and will get back to you within one business day.</p>
+                        <h3 class="text-2xl font-bold text-slate-800">Message Sent!</h3>
+                        <p class="mt-2 text-slate-700">Thank you for reaching out. We've received your message and will get back to you within one business day.</p>
                     </div>
                     <div id="contact-loader" class="hidden">
                         <div class="loader"></div>
@@ -313,24 +348,24 @@
                      <form id="contact-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
-                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="full-name" class="block text-sm font-medium text-slate-700">Full Name *</label>
+                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
-                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="email" class="block text-sm font-medium text-slate-700">Email Address *</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div class="md:col-span-2">
-                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="phone" class="block text-sm font-medium text-slate-700">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div class="md:col-span-2">
-                                 <label for="project-details" class="block text-sm font-medium text-gray-700">Project Details *</label>
-                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Tell us about your project..."></textarea>
+                                 <label for="project-details" class="block text-sm font-medium text-slate-700">How can we help? *</label>
+                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Tell us about your project, goals, or challenges..."></textarea>
                             </div>
                         </div>
                         <div class="mt-8 text-center">
-                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">
+                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">
                                 Send Message
                             </button>
                         </div>
@@ -341,44 +376,45 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="Kaido Lab Logo" class="h-16 md:h-20 mb-2" style="height: 50px; filter: brightness(0) invert(1);">
+    <footer class="bg-slate-900 text-slate-400">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-1">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="Kaido Lab Logo" class="h-12 mb-4" style="filter: brightness(0) invert(1);">
                     <p class="text-sm">We connect businesses to technology for growth.</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">Quick Links</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                        <li><a href="#casestudies" class="hover:text-white transition">Case Studies</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="#casestudies" class="hover:text-white transition-colors duration-300">Case Studies</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                        <li><a href="#budget-calculator-section" class="hover:text-white transition-colors duration-300">ERP Calculator</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">Our Services</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">Odoo Implementations</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Rescue Projects</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Odoo Partnership Setup</a></li>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Odoo Implementations</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Rescue Projects</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Odoo Partnership Setup</a></li>
                     </ul>
                 </div>
                  <div>
                     <h4 class="text-lg font-semibold text-white">Contact Info</h4>
-                    <ul class="mt-4 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 mr-3 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                    <ul class="mt-4 space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 mr-1 mt-0.5 flex-shrink-0 text-slate-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
                             <span>Dubai Digital Park, Dubai, UAE</span>
                         </li>
-                        <li class="flex items-center">
-                             <svg class="h-5 w-5 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition">hello@kaidolab.com</a>
+                        <li class="flex items-start gap-3">
+                             <svg class="h-5 w-5 mr-1 mt-0.5 flex-shrink-0 text-slate-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition-colors duration-300">hello@kaidolab.com</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm">
+            <div class="mt-16 border-t border-slate-800 pt-8 text-center text-sm">
                 <p>&copy; 2024 Kaido Lab. All Rights Reserved.</p>
             </div>
         </div>
@@ -427,7 +463,6 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                        // Close mobile menu on link click
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
@@ -439,64 +474,42 @@
             const handleFormSubmit = async (form, loader, result, formId) => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    
-                    // Show loader, hide form
                     loader.classList.remove('hidden');
-                    form.classList.add('hidden');
+                    form.style.display = 'none'; // Use style.display to hide
 
                     const formData = new FormData(form);
                     const data = Object.fromEntries(formData.entries());
-                    
-                    // Add form identifier
                     data.formId = formId;
-
                     console.log('Form data submitted:', data);
 
-                    // --- Backend Integration Point ---
-                    // Replace this URL with your actual backend endpoint (e.g., Netlify Function, Zapier Webhook, etc.)
                     const endpoint = 'https://api.web3forms.com/submit';
-                    
-                    // IMPORTANT: You need to add your own access key for web3forms or any other service
-                    data.apikey = 'YOUR_WEB3FORMS_API_KEY'; // Replace with your actual key
+                    data.apikey = 'YOUR_WEB3FORMS_API_KEY'; // IMPORTANT: Replace with your actual key
 
                     try {
-                        // Simulate network delay
-                        await new Promise(resolve => setTimeout(resolve, 1500));
-
+                        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
                         // const response = await fetch(endpoint, {
                         //     method: 'POST',
                         //     headers: { 'Content-Type': 'application/json' },
                         //     body: JSON.stringify(data)
                         // });
-
-                        // if (!response.ok) {
-                        //     throw new Error('Network response was not ok');
-                        // }
+                        // if (!response.ok) throw new Error('Network response was not ok');
                         
-                        // const responseData = await response.json();
-                        // console.log('Success:', responseData);
-                        
-                        // On success: hide loader, show result
                         loader.classList.add('hidden');
                         result.classList.remove('hidden');
-
                     } catch (error) {
                         console.error('Error submitting form:', error);
-                        // On error: hide loader, show form again, maybe with an error message
                         loader.classList.add('hidden');
-                        form.classList.remove('hidden');
+                        form.style.display = 'block'; // Show form again on error
                         alert('There was an error submitting your form. Please try again.');
                     }
                 });
             };
 
-            // Initialize Budget Calculator Form
             const calcForm = document.getElementById('budget-calculator-form');
             const calcLoader = document.getElementById('calculator-loader');
             const calcResult = document.getElementById('calculator-result');
             if (calcForm) handleFormSubmit(calcForm, calcLoader, calcResult, 'Budget Calculator');
 
-            // Initialize Contact Form
             const contactForm = document.getElementById('contact-form');
             const contactLoader = document.getElementById('contact-loader');
             const contactResult = document.getElementById('contact-result');
