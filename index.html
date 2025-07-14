@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaido Lab | Scale Fearlessly</title>
 
-    <link rel="icon" href="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/apple-touch-icon.png">
+    <link rel="icon" href="YOUR_FAVICON.ico" sizes="any">
+    <link rel="apple-touch-icon" href="YOUR_APPLE_TOUCH_ICON.png">
     
     <meta name="description" content="Kaido Lab helps scaling businesses in Dubai, UAE to end operational chaos. We provide Odoo ERP implementation, rescue projects, and partnership setup to help you grow fearlessly.">
     <link rel="canonical" href="https://www.kaidolab.com/"> 
@@ -18,7 +18,7 @@
       "@type": "Organization",
       "name": "Kaido Lab",
       "url": "https://www.kaidolab.com/",
-      "logo": "https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/kaido-logo.webp",
+      "logo": "YOUR_LOGO_URL.webp",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+971-55-647-4674",
@@ -29,7 +29,6 @@
         "@type": "PostalAddress",
         "streetAddress": "Dubai Digital Park",
         "addressLocality": "Dubai",
-        "addressRegion": "Dubai",
         "addressCountry": "AE"
       },
       "sameAs": [
@@ -38,258 +37,60 @@
       ]
     }
     </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .ai-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #F3FAF6 100%);
-        }
-        
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; }
+        .hero-gradient::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; }
+        .ai-gradient { background: linear-gradient(180deg, #ffffff 0%, #F3FAF6 100%); }
         .brand-blue { color: #2563EB; }
         .brand-dark-blue { color: #1E3A8A; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
         
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
-        }
+        /* === ANIMATIONS === */
+        .floating-animation { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .fade-in, .slide-in-left, .slide-in-right, .scale-in { opacity: 0; transition: all 0.8s ease-out; }
+        .fade-in { transform: translateY(30px); }
+        .slide-in-left { transform: translateX(-50px); }
+        .slide-in-right { transform: translateX(50px); }
+        .scale-in { transform: scale(0.8); }
+        .fade-in.visible, .slide-in-left.visible, .slide-in-right.visible, .scale-in.visible { opacity: 1; transform: none; }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s ease-out;
-        }
-        
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .pulse-button {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .8; }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .typing-animation {
-            overflow: hidden;
-            border-right: 2px solid #2563EB;
-            white-space: nowrap;
-            animation: typing 3s steps(20, end), blink-caret 0.5s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #2563EB; }
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .loading-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading-animation.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .success-message {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-top: 1rem;
-            display: none;
-            animation: slideDown 0.5s ease;
-        }
-        
-        @keyframes slideDown {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .sticky-cta {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-            animation: bounce 2s infinite;
-        }
-        
-        .sticky-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+
+        /* === LOADING ANIMATION === */
+        .loading-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+        .loading-animation.hidden { opacity: 0; pointer-events: none; }
+        .loader { width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* === DYNAMIC ELEMENTS === */
+        .success-message { background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; display: none; animation: slideDown 0.5s ease; }
+        @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .sticky-cta { position: fixed; bottom: -100px; right: 20px; z-index: 1000; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3); transition: all 0.5s ease; }
+        .sticky-cta.visible { bottom: 20px; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 0%; z-index: 1000; transition: width 0.1s ease-out; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
-    <!-- Loading Animation -->
-    <div id="loading" class="loading-animation">
-        <div class="loader"></div>
-    </div>
 
-    <!-- Progress Bar -->
-    <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+    <div id="loading" class="loading-animation"><div class="loader"></div></div>
+    <div id="progress-bar" class="progress-bar"></div>
+    <a href="#contact" id="sticky-cta" class="sticky-cta">💬 Get Free Consultation</a>
 
-    <!-- Sticky CTA -->
-    <a href="#contact" id="sticky-cta" class="sticky-cta" style="display: none;">
-        💬 Get Free Consultation
-    </a>
-
-    <header class="glass-effect sticky top-0 z-50 shadow-sm">
+    <header class="glass-effect sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                    K
-                </div>
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">K</div>
                 <span class="ml-3 text-xl font-bold gradient-text">Kaido Lab</span>
             </a>
             <div class="hidden md:flex items-center space-x-6">
@@ -299,319 +100,133 @@
                 <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About Us</a>
                 <a href="#casestudies" class="text-gray-600 hover:text-blue-600 transition duration-300">Case Studies</a>
                 <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 font-semibold">العربية</a>
+                <a href="index-ar.html" class="text-gray-600 hover:text-blue-600 transition duration-300 font-semibold">العربية</a>
             </div>
-            <a href="#contact" class="hidden md:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
-                Get Consultation
-            </a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-            </button>
+            <a href="#contact" class="hidden md:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">Get Consultation</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-white/80 backdrop-blur-md border-t">
             <a href="#services" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">Services</a>
             <a href="#partners" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">Partners</a>
             <a href="#budget-calculator-section" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">ERP Calculator</a>
             <a href="#about" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">About Us</a>
             <a href="#casestudies" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">Case Studies</a>
             <a href="#contact" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
-            <a href="#" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100 font-semibold">العربية</a>
+            <a href="index-ar.html" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100 font-semibold">العربية</a>
         </div>
     </header>
 
     <main>
-        <section class="hero-gradient py-20 md:py-32 relative overflow-hidden">
+        <section class="hero-gradient py-20 md:py-32">
             <div class="container mx-auto px-6 text-center hero-content">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight fade-in">
-                    <span class="typing-animation">Odoo Ready in 2 Weeks</span>
-                </h1>
-                <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto fade-in">
-                    From Day 1, everything we do is about speed, clarity, and business impact. At Kaido, we believe in velocity - not just moving fast, but moving fast in the right direction. Speed without alignment creates waste. Velocity combines pace with purpose, so every decision, sprint, and milestone compounds into real business momentum.
-                </p>
-                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 fade-in">
-                    <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105 pulse-button">
-                        🚀 Talk to us
-                    </a>
-                    <a href="#budget-calculator-section" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition duration-300 transform hover:scale-105">
-                        💰 Get Estimate
-                    </a>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Odoo Ready in 2 Weeks</h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">From Day 1, everything we do is about speed, clarity, and business impact. At Kaido, we believe in velocity - not just moving fast, but moving fast in the right direction.</p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">🚀 Talk to us</a>
+                    <a href="#budget-calculator-section" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition duration-300 transform hover:scale-105">💰 Get Estimate</a>
                 </div>
             </div>
-            <div class="absolute top-10 right-10 floating-animation">
-                <div class="w-20 h-20 bg-white opacity-10 rounded-full"></div>
-            </div>
-            <div class="absolute bottom-10 left-10 floating-animation" style="animation-delay: 2s;">
-                <div class="w-32 h-32 bg-white opacity-5 rounded-full"></div>
-            </div>
+            <div class="absolute top-10 right-10 floating-animation"><div class="w-20 h-20 bg-white opacity-10 rounded-full"></div></div>
+            <div class="absolute bottom-10 left-10 floating-animation" style="animation-delay: 2s;"><div class="w-32 h-32 bg-white opacity-5 rounded-full"></div></div>
         </section>
 
         <section id="services" class="py-20 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-bold gradient-text">What We Do</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">We transform operational chaos into competitive advantage with lightning-fast Odoo implementations</p>
+                <div class="text-center mb-12 anim-group">
+                    <h2 class="text-3xl md:text-4xl font-bold gradient-text fade-in">What We Do</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto fade-in" style="transition-delay: 0.2s;">We transform operational chaos into competitive advantage with lightning-fast Odoo implementations.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="card-hover bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 shadow-sm text-center fade-in">
-                        <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-white text-2xl">⚡</span>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 anim-group">
+                    <div class="card-hover bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 shadow-sm text-center scale-in">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white text-2xl">⚡</span></div>
                         <h3 class="text-xl font-bold brand-dark-blue">Odoo Implementations</h3>
                         <p class="mt-2 text-gray-600">Get your system live in weeks, not quarters.</p>
                     </div>
-                    <div class="card-hover bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-8 shadow-sm text-center fade-in">
-                        <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-white text-2xl">🚑</span>
-                        </div>
+                    <div class="card-hover bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-8 shadow-sm text-center scale-in" style="transition-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white text-2xl">🚑</span></div>
                         <h3 class="text-xl font-bold brand-dark-blue">Rescue Projects</h3>
                         <p class="mt-2 text-gray-600">Already working with Odoo but stuck? We'll fix it.</p>
                     </div>
-                    <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8 shadow-sm text-center fade-in">
-                        <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-white text-2xl">🤝</span>
-                        </div>
+                    <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8 shadow-sm text-center scale-in" style="transition-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white text-2xl">🤝</span></div>
                         <h3 class="text-xl font-bold brand-dark-blue">Odoo Partnership Setup</h3>
                         <p class="mt-2 text-gray-600">Want to start selling Odoo? We'll build your practice.</p>
                     </div>
-                    <div class="card-hover bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-8 shadow-sm text-center fade-in">
-                        <div class="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-white text-2xl">🤖</span>
-                        </div>
+                    <div class="card-hover bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-8 shadow-sm text-center scale-in" style="transition-delay: 0.6s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white text-2xl">🤖</span></div>
                         <h3 class="text-xl font-bold brand-dark-blue">Odoo AI Agent (Coming Soon)</h3>
                         <p class="mt-2 text-gray-600">Your first layer of automation, powered by AI.</p>
                     </div>
                 </div>
-                <div class="text-center mt-12 fade-in">
-                    <a href="#contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
-                        Talk to an Odoo Expert Now
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="partners" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-bold gradient-text">Our Trusted Partners</h2>
-                    <p class="mt-4 text-gray-600">Working with industry leaders to deliver exceptional results</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="Amer Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer card-hover" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="DIFC Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer card-hover" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="Google Cloud Partner Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer card-hover" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="Odoo Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer card-hover" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="Oracle NetSuite Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer card-hover" style="max-height: 60px;">
-                </div>
             </div>
         </section>
         
-        <section id="budget-calculator-section" class="py-20 ai-gradient">
-            <div class="container mx-auto px-6">
-                <div class="bg-white rounded-xl shadow-lg p-8 lg:p-12 border border-gray-200 fade-in">
-                    <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold gradient-text">ERP Budget Calculator</h2>
-                        <p class="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">Get a preliminary budget estimate and a bonus operational analysis. Fill out the form below to get started.</p>
-                    </div>
-                    <form id="budget-calculator-form">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
-                            <div class="slide-in-left">
-                                <label for="user-count" class="block font-semibold text-gray-700">Number of Users: <span id="user-count-label" class="brand-blue font-bold">50</span></label>
-                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50" class="w-full mt-2 appearance-none bg-gradient-to-r from-blue-200 to-purple-200 h-2 rounded-lg">
-                            </div>
-                            <div class="scale-in">
-                               <label for="industry" class="block font-semibold text-gray-700 mb-2">Your Industry</label>
-                               <select id="industry" name="industry" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                                   <option>Manufacturing</option>
-                                   <option>Retail</option>
-                                   <option>Real Estate</option>
-                                   <option>Wholesale / Distribution</option>
-                                   <option>Services</option>
-                                   <option>eCommerce</option>
-                                   <option>Medical / Healthcare</option>
-                                   <option>Hospitality</option>
-                                   <option>Other</option>
-                               </select>
-                            </div>
-                            <div class="slide-in-right">
-                                <label for="integration-count" class="block font-semibold text-gray-700">3rd-Party Integrations: <span id="integration-count-label" class="brand-blue font-bold">1</span></label>
-                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1" class="w-full mt-2 appearance-none bg-gradient-to-r from-blue-200 to-purple-200 h-2 rounded-lg">
-                            </div>
-                        </div>
-                        <div class="text-center mt-8">
-                             <button type="submit" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 w-full md:w-auto">
-                                 💰 Get My Estimate
-                             </button>
-                        </div>
-                    </form>
-                    <div id="budget-result" class="success-message">
-                        <h3 class="font-bold text-lg mb-2">🎉 Your Estimated Budget</h3>
-                        <p>Based on your requirements, we estimate your Odoo implementation will cost between <strong>$15,000 - $25,000</strong> and take <strong>2-3 weeks</strong> to complete.</p>
-                        <p class="mt-2"><strong>Next Step:</strong> Let's schedule a free consultation to discuss your specific needs!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-20 bg-white">
-             <div class="container mx-auto px-6">
-                <div class="lg:flex lg:items-center lg:gap-16">
-                    <div class="lg:w-1/2 slide-in-left">
-                        <h2 class="text-3xl md:text-4xl font-bold gradient-text">Your Foundation for Growth</h2>
-                        <p class="mt-4 text-lg text-gray-700">Kaido Lab was founded on a simple belief: technology should be a company's greatest asset, not its biggest bottleneck. We saw brilliant founders get bogged down by operational chaos, and we knew there was a better way.</p>
-                        <p class="mt-4 text-gray-600">Our unique advantage is our team. We merge the on-the-ground expertise of systems scaling experts with the deep technical knowledge of data scientists. This allows us to solve your pains while building your foundation for a future powered by predictive AI.</p>
-                        <div class="mt-8 flex flex-wrap gap-4">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                                    <span class="text-white text-sm">✓</span>
-                                </div>
-                                <span class="font-semibold">2 Week Implementation</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                                    <span class="text-white text-sm">✓</span>
-                                </div>
-                                <span class="font-semibold">24/7 Support</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3">
-                                    <span class="text-white text-sm">✓</span>
-                                </div>
-                                <span class="font-semibold">AI-Powered Analytics</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-10 lg:mt-0 lg:w-1/2 slide-in-right">
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl shadow-lg card-hover">
-                            <h3 class="text-xl font-bold brand-dark-blue">🎯 Our Vision</h3>
-                            <p class="mt-2 text-gray-600">To create a future where every business in the region can scale fearlessly, powered by technology that is simple, integrated, and works as one.</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl shadow-lg mt-6 card-hover">
-                            <h3 class="text-xl font-bold brand-dark-blue">🚀 Our Mission</h3>
-                            <p class="mt-2 text-gray-600">We connect businesses to technology for growth. We build world-class systems, automate processes, and lay the foundation for predictive insights using our platform.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="casestudies" class="py-20 ai-gradient">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">Success Stories</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Real results for scaling businesses across the region. See how we turn operational chaos into competitive advantage.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
-                        <p class="text-sm font-semibold brand-blue">DISTRIBUTION & TRADING</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Wholesale Distributor Inventory Automation</h3>
-                        <p class="mt-2 text-gray-600">Automated the entire inventory management and order processing workflow for a leading distributor with facilities across the UAE.</p>
-                    </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
-                        <p class="text-sm font-semibold brand-blue">E-COMMERCE & RETAIL</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">Multi-Channel E-commerce Systems Integration</h3>
-                        <p class="mt-2 text-gray-600">Seamlessly integrated Shopify, warehousing (3PL), and payment gateways into a single ERP system for a high-growth online retailer.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-20 bg-gray-800 text-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Let's Build Your Future</h2>
-                    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Ready to transform your business? Get in touch with our Dubai-based team for a free consultation and discover how we can accelerate your growth.</p>
-                </div>
-                <div class="max-w-4xl mx-auto bg-white text-gray-800 rounded-xl shadow-2xl p-8 md:p-12">
-                     <form id="contact-form">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
-                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
-                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div class="md:col-span-2">
-                                 <label for="project-details" class="block text-sm font-medium text-gray-700">Project Details *</label>
-                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Tell us about your project..."></textarea>
-                            </div>
-                        </div>
-                        <div class="mt-8 text-center">
-                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <img src="to add Kaido lab logo webp formate from github" alt="Kaido Lab Logo" class="h-16 md:h-20 mb-2" style="height: 100px;">
-                    <p class="text-sm">We connect businesses to technology for growth.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#casestudies" class="hover:text-white transition">Case Studies</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-white">Our Services</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">Odoo Implementations</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Rescue Projects</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Odoo Partnership Setup</a></li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 class="text-lg font-semibold text-white">Contact Info</h4>
-                    <ul class="mt-4 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 mr-3 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                            <span>Dubai Digital Park, Dubai, UAE</span>
-                        </li>
-                        <li class="flex items-center">
-                             <svg class="h-5 w-5 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition">hello@kaidolab.com</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm">
-                <p>&copy; 2024 Kaido Lab. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+        </main>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            }
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- MOBILE MENU ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
 
-            const userCountSlider = document.getElementById('user-count');
-            const userCountLabel = document.getElementById('user-count-label');
-            if (userCountSlider) {
-                userCountSlider.addEventListener('input', () => userCountLabel.textContent = userCountSlider.value);
+        // --- LOADING SCREEN ---
+        const loadingScreen = document.getElementById('loading');
+        window.addEventListener('load', () => {
+            loadingScreen.classList.add('hidden');
+        });
+
+        // --- ANIMATE ON SCROLL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate all children with animation classes within the intersected group
+                    const animatables = entry.target.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+                    animatables.forEach(el => el.classList.add('visible'));
+                    observer.unobserve(entry.target); // Optional: stop observing once animated
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe elements with the 'anim-group' class
+        const animationGroups = document.querySelectorAll('.anim-group');
+        animationGroups.forEach(group => observer.observe(group));
+        
+        // --- SCROLL PROGRESS BAR & STICKY CTA ---
+        const progressBar = document.getElementById('progress-bar');
+        const stickyCta = document.getElementById('sticky-cta');
+        const heroSection = document.querySelector('.hero-gradient');
+
+        window.addEventListener('scroll', () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollableHeight) * 100;
+            if (progressBar) {
+                progressBar.style.width = `${scrolled}%`;
             }
-            
-            const integrationCountSlider = document.getElementById('integration-count');
-            const integrationCountLabel = document.getElementById('integration-count-label');
-            if (integrationCountSlider) {
-                integrationCountSlider.addEventListener('input', () => integrationCountLabel.textContent = integrationCountSlider.value);
+            // Show sticky CTA after scrolling past the hero section
+            if (heroSection && stickyCta) {
+                if (window.scrollY > heroSection.offsetHeight) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
             }
         });
+
+        // --- BUDGET CALCULATOR FORM ---
+        const budgetForm = document.getElementById('budget-calculator-form');
+        const budgetResult = document.getElementById('budget-result');
+        if (budgetForm) {
+            budgetForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent actual submission for this demo
+                if (budgetResult) {
+                    budgetResult.style.display = 'block';
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>
