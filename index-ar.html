@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كايدو لاب | توسّع بلا حدود</title>
+    <title>مختبر كايدو | توسّع بلا حدود</title>
 
-    <link rel="icon" href="to add kaido favicon" sizes="any">
-    <link rel="apple-touch-icon" href="to add kaido favicon">
+    <!-- 
+    IMPORTANT: Replace these placeholder links with your actual file URLs.
+    -->
+    <link rel="icon" href="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Favicon.png" sizes="any">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Favicon.png">
     
-    <meta name="description" content="تساعد كايدو لاب الشركات النامية في دبي على إنهاء الفوضى التشغيلية. نقدم خدمات تطبيق Odoo ERP ومشاريع الإنقاذ وإعداد الشراكات لمساعدتك على النمو بلا خوف.">
+    <meta name="description" content="يساعد مختبر كايدو الشركات النامية في دبي، الإمارات العربية المتحدة، على إنهاء الفوضى التشغيلية. نقدم خدمات تطبيق نظام Odoo ERP، وإنقاذ المشاريع المتعثرة، وإعداد شراكات Odoo لمساعدتك على النمو بلا خوف.">
     <link rel="canonical" href="https://www.kaidolab.com/index-ar.html"> 
     <meta name="robots" content="index, follow">
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Kaido Lab",
+      "url": "https://www.kaidolab.com/",
+      "logo": "https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+971-55-647-4674",
+        "contactType": "Support Service",
+        "email": "hello@kaidolab.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dubai Digital Park",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/kaidolab/",
+        "https://twitter.com/kaidolab"
+      ]
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,200 +51,322 @@
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
         }
+        /* New Color & Gradient Scheme */
         .hero-gradient {
-            background: linear-gradient(270deg, #F9FAFB 0%, #E2F5EA 100%);
+            background: linear-gradient(180deg, #ffffff, #f8fafc);
         }
-        .ai-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #F3FAF6 100%);
+        .section-gradient {
+            background: linear-gradient(180deg, #f8fafc, #ffffff);
         }
-        .brand-blue { color: #2563EB; }
-        .brand-dark-blue { color: #1E3A8A; }
+        .brand-heading { color: #1e293b; } /* slate-800 */
+        .brand-subheading { color: #0f172a; } /* slate-900 */
+        .brand-text { color: #475569; } /* slate-600 */
+        .brand-accent { color: #2563eb; } /* blue-600 */
+        
+        /* Animation Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom styles for form elements */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0; /* slate-200 */
+            border-radius: 9999px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        input[type=range]:hover {
+            opacity: 1;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #2563eb; /* blue-600 */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #2563eb; /* blue-600 */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #e2e8f0; /* slate-200 */
+            border-top: 4px solid #2563eb; /* blue-600 */
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="text-slate-700 antialiased">
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#">
-                <img src="to add Kaido logo webp link" alt="كايدو لاب للنمو" class="h-16 md:h-20" style="height: 130px;">
+    <!-- Header Section -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200/80">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="شعار مختبر كايدو" class="h-12 md:h-14">
             </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#services" class="text-gray-600 hover:text-blue-600 transition">خدماتنا</a>
-                <a href="#partners" class="text-gray-600 hover:text-blue-600 transition">شركاؤنا</a>
-                <a href="#budget-calculator-section" class="text-gray-600 hover:text-blue-600 transition">حاسبة الميزانية</a>
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition">من نحن</a>
-                <a href="#casestudies" class="text-gray-600 hover:text-blue-600 transition">دراسات حالة</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">اتصل بنا</a>
-                <a href="index.html" class="text-gray-600 hover:text-blue-600 transition font-semibold">English</a>
+            <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                <a href="#services" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">خدماتنا</a>
+                <a href="#partners" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">شركاؤنا</a>
+                <a href="#casestudies" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">دراسات حالة</a>
+                <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">اتصل بنا</a>
+                <a href="index.html" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 font-semibold">English</a>
             </div>
-            <a href="#contact" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
-                احصل على استشارة
+            <a href="#budget-calculator-section" class="hidden lg:block bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-sm hover:shadow-md">
+                احسب تكلفة نظامك
             </a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-slate-700 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#services" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">خدماتنا</a>
-            <a href="#partners" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">شركاؤنا</a>
-            <a href="#budget-calculator-section" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">حاسبة الميزانية</a>
-            <a href="#about" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">من نحن</a>
-            <a href="#casestudies" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">دراسات حالة</a>
-            <a href="#contact" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">اتصل بنا</a>
-            <a href="index.html" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100 font-semibold">English</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <a href="#services" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">خدماتنا</a>
+            <a href="#partners" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">شركاؤنا</a>
+            <a href="#casestudies" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">دراسات حالة</a>
+            <a href="#contact" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 border-b text-right">اتصل بنا</a>
+            <a href="#budget-calculator-section" class="block py-3 px-6 text-sm text-blue-600 font-semibold hover:bg-slate-50 text-right">احسب تكلفة نظامك</a>
+            <a href="index.html" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 font-semibold text-right">English</a>
         </div>
     </header>
 
     <main>
-        <section class="hero-gradient py-20 md:py-32">
+        <!-- Hero Section -->
+        <section class="hero-gradient py-24 md:py-40">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                    نظام Odoo جاهز خلال أسبوعين
+                <h1 class="text-4xl md:text-6xl font-extrabold brand-subheading leading-tight tracking-tight animate-on-scroll">
+                    تخلّص من الفوضى التشغيلية.
+                    <br class="hidden md:block" />
+                    <span class="brand-accent">وتوسّع بلا حدود.</span>
                 </h1>
-                <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    منذ اليوم الأول، كل ما نفعله يتمحور حول السرعة والوضوح والتأثير على الأعمال. في كايدو، نؤمن بالسرعة الموجهة - ليس فقط التحرك بسرعة، بل التحرك بسرعة في الاتجاه الصحيح. السرعة بدون توافق تخلق الهدر. أما السرعة الموجهة فتجمع بين الوتيرة والهدف، بحيث تترجم كل القرارات والمراحل إلى زخم حقيقي للأعمال. هكذا نطبق أنظمة تخطيط موارد المؤسسات: ليس كعملية بطيئة ومعقدة، بل كرحلة مركزة وعالية الوضوح تضمن لك الانطلاق بسرعة وتهيئك للنمو.
+                <p class="mt-6 text-lg md:text-xl brand-text max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
+                    نحن نُسلّم أنظمة Odoo ERP في أسابيع، وليس أشهراً. في كايدو، نجمع بين السرعة والوضوح والخبرة العميقة لبناء العمود الفقري التشغيلي الذي يحتاجه عملك للنمو.
                 </p>
-                <div class="mt-10 flex justify-center items-center gap-4">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition transform hover:scale-105">
-                        تحدث معنا
+                <div class="mt-12 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 300ms;">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        احجز استشارة مجانية
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="py-20 bg-white">
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">ماذا نقدم</h2>
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-heading">طريق أسرع نحو النمو</h2>
+                    <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">خدماتنا مصممة لشيء واحد: تحقيق النتائج.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                        <h3 class="text-xl font-bold brand-dark-blue">تطبيقات Odoo</h3>
-                        <p class="mt-2 text-gray-600">أطلق نظامك في أسابيع، وليس أرباع سنة.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">تطبيق أنظمة Odoo</h3>
+                        <p class="mt-2 brand-text text-sm">أطلق نظام ERP متكامل ومخصص لشركتك في وقت قياسي.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                        <h3 class="text-xl font-bold brand-dark-blue">مشاريع الإنقاذ</h3>
-                        <p class="mt-2 text-gray-600">هل تعمل بالفعل مع Odoo ولكنك عالق؟ سنصلح الأمر.</p>
+                    <!-- Service Card 2 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 150ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">إنقاذ المشاريع المتعثرة</h3>
+                        <p class="mt-2 brand-text text-sm">هل تواجه صعوبات في تطبيقك الحالي؟ سنعيد مشروعك إلى المسار الصحيح.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                        <h3 class="text-xl font-bold brand-dark-blue">إعداد شراكة Odoo</h3>
-                        <p class="mt-2 text-gray-600">هل تريد البدء في بيع Odoo؟ سنبني لك ممارستك.</p>
+                    <!-- Service Card 3 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">إعداد شراكات Odoo</h3>
+                        <p class="mt-2 brand-text text-sm">هل تريد أن تصبح شريكاً لـ Odoo؟ سنقوم ببناء ممارستك بالكامل.</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                        <h3 class="text-xl font-bold brand-dark-blue">وكيل Odoo الذكي (قريباً)</h3>
-                        <p class="mt-2 text-gray-600">طبقتك الأولى من الأتمتة، مدعومة بالذكاء الاصطناعي.</p>
+                    <!-- Service Card 4 -->
+                    <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 animate-on-scroll" style="transition-delay: 450ms;">
+                        <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold brand-subheading">وكيل Odoo الذكي <span class="text-xs brand-accent font-medium">قريباً</span></h3>
+                        <p class="mt-2 brand-text text-sm">أتمتة المهام واحصل على رؤى دقيقة مع مساعدك الذكي الخاص.</p>
                     </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition">
-                        تحدث إلى خبير Odoo الآن
-                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="partners" class="py-20 bg-gray-50">
+        <!-- Partners Section -->
+        <section id="partners" class="py-20 section-gradient">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">شركاؤنا الموثوقون</h2>
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h2 class="text-xl font-bold brand-heading uppercase tracking-widest">موثوقون من قبل رواد الصناعة</h2>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="شعار آمر" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="شعار مركز دبي المالي العالمي" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="شعار شريك جوجل السحابي" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="شعار Odoo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer" style="max-height: 60px;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="شعار Oracle NetSuite" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer" style="max-height: 60px;">
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="شعار آمر" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 100ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="شعار مركز دبي المالي العالمي" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 200ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="شعار شريك جوجل كلاود" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 300ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="شعار Odoo" class="mx-auto h-10 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 400ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="شعار Oracle NetSuite" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer animate-on-scroll" style="transition-delay: 500ms;">
                 </div>
             </div>
         </section>
         
-        <section id="budget-calculator-section" class="py-20 ai-gradient">
+        <!-- Budget Calculator Section -->
+        <section id="budget-calculator-section" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="bg-white rounded-xl shadow-lg p-8 lg:p-12 border border-gray-200">
+                <div class="bg-slate-800 rounded-xl shadow-2xl p-8 lg:p-16 animate-on-scroll text-center">
                     <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">حاسبة ميزانية ERP</h2>
-                        <p class="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">احصل على تقدير أولي للميزانية وتحليل تشغيلي إضافي. املأ النموذج أدناه للبدء.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">تقدير فوري لميزانية نظامك</h2>
+                        <p class="text-slate-300 mt-4 text-lg max-w-3xl mx-auto">أجب عن بعض الأسئلة للحصول على ميزانية أولية وتحليل تشغيلي مجاني من فريقنا.</p>
                     </div>
-                    <form id="budget-calculator-form">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+                    <div id="calculator-result" class="hidden text-center p-8 bg-green-500/10 border border-green-500/20 rounded-lg max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white">شكراً لك!</h3>
+                        <p class="mt-2 text-slate-200">تم إرسال تقدير التكلفة إلى بريدك الإلكتروني. سيتواصل معك أحد خبرائنا قريباً.</p>
+                    </div>
+                    <div id="calculator-loader" class="hidden">
+                        <div class="loader"></div>
+                    </div>
+                    <form id="budget-calculator-form" class="max-w-4xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-right">
                             <div>
-                                <label for="user-count" class="block font-semibold text-gray-700">عدد المستخدمين: <span id="user-count-label" class="brand-blue font-bold">50</span></label>
-                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50" class="w-full mt-2">
+                                <label for="calc-full-name" class="block text-sm font-medium text-slate-300 mb-1">الاسم الكامل *</label>
+                                <input type="text" name="full-name" id="calc-full-name" required class="block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
                             </div>
                             <div>
-                               <label for="industry" class="block font-semibold text-gray-700 mb-2">قطاعك</label>
-                               <select id="industry" name="industry" class="w-full p-2 border border-gray-300 rounded-lg">
-                                   <option>التصنيع</option>
-                                   <option>التجزئة</option>
-                                   <option>العقارات</option>
-                                   <option>تجارة الجملة / التوزيع</option>
-                                   <option>الخدمات</option>
-                                   <option>التجارة الإلكترونية</option>
-                                   <option>الطب / الرعاية الصحية</option>
-                                   <option>الضيافة</option>
-                                   <option>أخرى</option>
+                                <label for="calc-email" class="block text-sm font-medium text-slate-300 mb-1">البريد الإلكتروني *</label>
+                                <input type="email" name="email" id="calc-email" required class="block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 text-right">
+                            <div class="space-y-2">
+                                <label for="user-count" class="block font-semibold text-slate-300">عدد المستخدمين: <span id="user-count-label" class="text-blue-400 font-bold">50</span></label>
+                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50">
+                            </div>
+                            <div class="space-y-2">
+                               <label for="industry" class="block font-semibold text-slate-300">مجال عملك</label>
+                               <select id="industry" name="industry" class="w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white">
+                                   <option>التصنيع</option><option>التجزئة</option><option>العقارات</option><option>تجارة الجملة / التوزيع</option><option>الخدمات</option><option>التجارة الإلكترونية</option><option>الطب / الرعاية الصحية</option><option>الضيافة</option><option>أخرى</option>
                                </select>
                             </div>
-                            <div>
-                                <label for="integration-count" class="block font-semibold text-gray-700">تكاملات الطرف الثالث: <span id="integration-count-label" class="brand-blue font-bold">1</span></label>
-                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1" class="w-full mt-2">
+                            <div class="space-y-2">
+                                <label for="integration-count" class="block font-semibold text-slate-300">عمليات الربط الخارجية: <span id="integration-count-label" class="text-blue-400 font-bold">1</span></label>
+                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1">
                             </div>
                         </div>
                         <div class="text-center mt-8">
-                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">احسب تقديري</button>
+                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">احصل على تقدير التكلفة</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <section id="casestudies" class="py-20 ai-gradient">
+        <!-- Case Studies Section -->
+        <section id="casestudies" class="py-24 section-gradient">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">قصص نجاح</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">نتائج حقيقية للشركات النامية في جميع أنحاء المنطقة. شاهد كيف نحول الفوضى التشغيلية إلى ميزة تنافسية.</p>
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-heading">نحوّل الفوضى إلى ميزة تنافسية</h2>
+                    <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">شاهد التأثير الحقيقي لنهجنا السريع والموجه نحو النتائج.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
-                        <p class="text-sm font-semibold brand-blue">التوزيع والتجارة</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">أتمتة مخزون موزع بالجملة</h3>
-                        <p class="mt-2 text-gray-600">أتمتة كاملة لإدارة المخزون وتدفق أوامر المعالجة لموزع رائد له منشآت في جميع أنحاء الإمارات العربية المتحدة.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7s0 4 8 4 8-4 8-4" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">التوزيع والتجارة</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">أتمتة المخزون والطلبات</h3>
+                            <p class="mt-2 brand-text">أتمتة كاملة لسير عمل المخزون والطلبات لموزع رائد في الإمارات، مما قلل وقت المعالجة بنسبة 40%.</p>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
-                        <p class="text-sm font-semibold brand-blue">التجارة الإلكترونية والتجزئة</p>
-                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">تكامل أنظمة التجارة الإلكترونية متعددة القنوات</h3>
-                        <p class="mt-2 text-gray-600">دمج سلس لـ Shopify والمستودعات (3PL) وبوابات الدفع في نظام ERP واحد لتاجر تجزئة عبر الإنترنت عالي النمو.</p>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300" style="transition-delay: 150ms;">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">التجارة الإلكترونية والتجزئة</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">تكامل الأنظمة متعددة القنوات</h3>
+                            <p class="mt-2 brand-text">دمج Shopify، والتخزين (3PL)، وبوابات الدفع في نظام ERP واحد لمتجر إلكتروني سريع النمو.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">التصنيع</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">كفاءة خط الإنتاج</h3>
+                            <p class="mt-2 brand-text">توفير رؤية فورية لخط الإنتاج عبر Odoo Manufacturing، مما قلل الهدر بنسبة 15% وزاد الإنتاج بنسبة 22%.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll hover:shadow-xl hover:border-blue-200 transition-all duration-300" style="transition-delay: 150ms;">
+                        <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
+                        <div>
+                            <p class="text-sm font-semibold brand-accent">الخدمات المهنية</p>
+                            <h3 class="mt-1 text-xl font-bold brand-subheading">تبسيط إدارة المشاريع والفواتير</h3>
+                            <p class="mt-2 brand-text">أتمتة تتبع الجداول الزمنية والفواتير لشركة استشارية، مما قلل دورة الفوترة إلى النصف.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-20 bg-gray-800 text-white">
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-slate-800 text-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12 animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold">لنبدأ ببناء مستقبلك</h2>
-                    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">هل أنت مستعد لتحويل عملك؟ تواصل مع فريقنا في دبي للحصول على استشارة مجانية واكتشف كيف يمكننا تسريع نموك.</p>
+                    <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">هل أنت مستعد لتحويل أعمالك؟ تواصل مع فريقنا في دبي للحصول على استشارة مجانية وغير ملزمة.</p>
                 </div>
-                <div class="max-w-4xl mx-auto bg-white text-gray-800 rounded-xl shadow-2xl p-8 md:p-12">
+                <div class="max-w-3xl mx-auto bg-white text-slate-800 rounded-xl shadow-2xl p-8 md:p-12 animate-on-scroll">
+                     <div id="contact-result" class="hidden text-center p-8 bg-green-50 border border-green-200 rounded-lg">
+                        <h3 class="text-2xl font-bold text-slate-800">تم إرسال الرسالة!</h3>
+                        <p class="mt-2 text-slate-700">شكراً لتواصلك معنا. لقد استلمنا رسالتك وسنرد عليك في غضون يوم عمل واحد.</p>
+                    </div>
+                    <div id="contact-loader" class="hidden">
+                        <div class="loader"></div>
+                    </div>
                      <form id="contact-form">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="full-name" class="block text-sm font-medium text-gray-700">الاسم الكامل *</label>
-                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="full-name" class="block text-sm font-medium text-slate-700 text-right">الاسم الكامل *</label>
+                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني *</label>
-                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="email" class="block text-sm font-medium text-slate-700 text-right">البريد الإلكتروني *</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div class="md:col-span-2">
-                                 <label for="project-details" class="block text-sm font-medium text-gray-700">تفاصيل المشروع *</label>
-                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="أخبرنا عن مشروعك ..."></textarea>
+                                <label for="phone" class="block text-sm font-medium text-slate-700 text-right">رقم الهاتف</label>
+                                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="md:col-span-2">
+                                 <label for="project-details" class="block text-sm font-medium text-slate-700 text-right">كيف يمكننا المساعدة؟ *</label>
+                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="أخبرنا عن مشروعك، أهدافك، أو التحديات التي تواجهها..."></textarea>
                             </div>
                         </div>
                         <div class="mt-8 text-center">
-                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">
-                                أرسل رسالة
+                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">
+                                أرسل الرسالة
                             </button>
                         </div>
                     </form>
@@ -222,69 +375,145 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <img src="to add Kaido lab logo webp formate from github" alt="شعار كايدو لاب" class="h-16 md:h-20 mb-2" style="height: 100px;">
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-1">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/main/Kaido%20Lab%20Logo.webp" alt="شعار مختبر كايدو" class="h-12 mb-4" style="filter: brightness(0) invert(1);">
                     <p class="text-sm">نحن نربط الشركات بالتكنولوجيا من أجل النمو.</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">روابط سريعة</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">خدماتنا</a></li>
-                        <li><a href="#about" class="hover:text-white transition">من نحن</a></li>
-                        <li><a href="#casestudies" class="hover:text-white transition">دراسات حالة</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">اتصل بنا</a></li>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">خدماتنا</a></li>
+                        <li><a href="#casestudies" class="hover:text-white transition-colors duration-300">دراسات حالة</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">اتصل بنا</a></li>
+                        <li><a href="#budget-calculator-section" class="hover:text-white transition-colors duration-300">حاسبة التكلفة</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">خدماتنا</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#services" class="hover:text-white transition">تطبيقات Odoo</a></li>
-                        <li><a href="#services" class="hover:text-white transition">مشاريع الإنقاذ</a></li>
-                        <li><a href="#services" class="hover:text-white transition">إعداد شراكة Odoo</a></li>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">تطبيق أنظمة Odoo</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">إنقاذ المشاريع المتعثرة</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors duration-300">إعداد شراكات Odoo</a></li>
                     </ul>
                 </div>
                  <div>
                     <h4 class="text-lg font-semibold text-white">معلومات الاتصال</h4>
-                    <ul class="mt-4 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 ml-3 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                            <span>مجمع دبي الرقمي، دبي، الإمارات العربية المتحدة</span>
+                    <ul class="mt-4 space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 ml-1 mt-0.5 flex-shrink-0 text-slate-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                            <span>مجمع دبي الرقمي، دبي، الإمارات</span>
                         </li>
-                        <li class="flex items-center">
-                             <svg class="h-5 w-5 ml-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition">hello@kaidolab.com</a>
+                        <li class="flex items-start gap-3">
+                             <svg class="h-5 w-5 ml-1 mt-0.5 flex-shrink-0 text-slate-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition-colors duration-300">hello@kaidolab.com</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm">
-                <p>&copy; 2024 كايدو لاب. جميع الحقوق محفوظة.</p>
+            <div class="mt-16 border-t border-slate-800 pt-8 text-center text-sm">
+                <p>&copy; 2024 مختبر كايدو. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
             }
 
+            // --- Animate on Scroll ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // --- Slider Value Display ---
             const userCountSlider = document.getElementById('user-count');
             const userCountLabel = document.getElementById('user-count-label');
-            if (userCountSlider) {
+            if (userCountSlider && userCountLabel) {
                 userCountSlider.addEventListener('input', () => userCountLabel.textContent = userCountSlider.value);
             }
             
             const integrationCountSlider = document.getElementById('integration-count');
             const integrationCountLabel = document.getElementById('integration-count-label');
-            if (integrationCountSlider) {
+            if (integrationCountSlider && integrationCountLabel) {
                 integrationCountSlider.addEventListener('input', () => integrationCountLabel.textContent = integrationCountSlider.value);
             }
+
+            // --- Smooth Scroll for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // --- Form Submission Handling ---
+            const handleFormSubmit = async (form, loader, result, formId) => {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    loader.classList.remove('hidden');
+                    form.style.display = 'none'; // Use style.display to hide
+
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    data.formId = formId;
+                    console.log('Form data submitted:', data);
+
+                    const endpoint = 'https://api.web3forms.com/submit';
+                    data.apikey = 'YOUR_WEB3FORMS_API_KEY'; // IMPORTANT: Replace with your actual key
+
+                    try {
+                        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+                        // const response = await fetch(endpoint, {
+                        //     method: 'POST',
+                        //     headers: { 'Content-Type': 'application/json' },
+                        //     body: JSON.stringify(data)
+                        // });
+                        // if (!response.ok) throw new Error('Network response was not ok');
+                        
+                        loader.classList.add('hidden');
+                        result.classList.remove('hidden');
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        loader.classList.add('hidden');
+                        form.style.display = 'block'; // Show form again on error
+                        alert('حدث خطأ أثناء إرسال النموذج. يرجى المحاولة مرة أخرى.');
+                    }
+                });
+            };
+
+            const calcForm = document.getElementById('budget-calculator-form');
+            const calcLoader = document.getElementById('calculator-loader');
+            const calcResult = document.getElementById('calculator-result');
+            if (calcForm) handleFormSubmit(calcForm, calcLoader, calcResult, 'Budget Calculator');
+
+            const contactForm = document.getElementById('contact-form');
+            const contactLoader = document.getElementById('contact-loader');
+            const contactResult = document.getElementById('contact-result');
+            if (contactForm) handleFormSubmit(contactForm, contactLoader, contactResult, 'Contact Form');
         });
     </script>
 </body>
