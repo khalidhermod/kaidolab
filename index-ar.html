@@ -8,7 +8,7 @@
     <link rel="icon" href="to add kaido favicon" sizes="any">
     <link rel="apple-touch-icon" href="to add kaido favicon">
     
-    <meta name="description" content="تساعد كايدو لاب الشركات النامية في دبي، الإمارات العربية المتحدة، على إنهاء الفوضى التشغيلية. نقدم خدمات تطبيق أنظمة تخطيط موارد المؤسسات، وأتمتة العمليات، والحلول السحابية، والبيانات والذكاء الاصطناعي، والتحول الرقمي، والأمن السيبراني لمساعدتك على النمو بلا خوف.">
+    <meta name="description" content="تساعد كايدو لاب الشركات النامية في دبي على إنهاء الفوضى التشغيلية. نقدم خدمات تطبيق Odoo ERP ومشاريع الإنقاذ وإعداد الشراكات لمساعدتك على النمو بلا خوف.">
     <link rel="canonical" href="https://www.kaidolab.com/index-ar.html"> 
     <meta name="robots" content="index, follow">
 
@@ -27,9 +27,8 @@
         .ai-gradient {
             background: linear-gradient(180deg, #ffffff 0%, #F3FAF6 100%);
         }
-        .contact-gradient {
-            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-        }
+        .brand-blue { color: #2563EB; }
+        .brand-dark-blue { color: #1E3A8A; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
@@ -52,9 +51,7 @@
                 احصل على استشارة
             </a>
             <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden">
@@ -90,7 +87,7 @@
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">ماذا نقدم</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                     <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
                         <h3 class="text-xl font-bold brand-dark-blue">تطبيقات Odoo</h3>
                         <p class="mt-2 text-gray-600">أطلق نظامك في أسابيع، وليس أرباع سنة.</p>
@@ -108,7 +105,7 @@
                         <p class="mt-2 text-gray-600">طبقتك الأولى من الأتمتة، مدعومة بالذكاء الاصطناعي.</p>
                     </div>
                 </div>
-                 <div class="text-center mt-12">
+                <div class="text-center mt-12">
                     <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition">
                         تحدث إلى خبير Odoo الآن
                     </a>
@@ -136,42 +133,180 @@
                 <div class="bg-white rounded-xl shadow-lg p-8 lg:p-12 border border-gray-200">
                     <div class="text-center mb-8">
                         <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">حاسبة ميزانية ERP</h2>
-                        <p class="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">احصل على تقدير أولي للميزانية وتحليل تشغيلي إضافي. املأ النموذج أدناه وسيتصل بك فريقنا بتقدير مفصل ولتحديد موعد استشارتك.</p>
+                        <p class="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">احصل على تقدير أولي للميزانية وتحليل تشغيلي إضافي. املأ النموذج أدناه للبدء.</p>
                     </div>
-                    <form id="budget-calculator-form" name="budget-calculator-lead" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="budget-calculator-lead" />
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <form id="budget-calculator-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
                             <div>
-                                <label for="budget-email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني *</label>
-                                <input type="email" name="email" id="budget-email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <label for="user-count" class="block font-semibold text-gray-700">عدد المستخدمين: <span id="user-count-label" class="brand-blue font-bold">50</span></label>
+                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50" class="w-full mt-2">
                             </div>
                             <div>
-                                <label for="budget-phone" class="block text-sm font-medium text-gray-700">رقم الهاتف *</label>
-                                <input type="tel" name="phone-number" id="budget-phone" required pattern="[0-9]{7,15}" title="رقم الهاتف (من 7 إلى 15 رقمًا)" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                               <label for="industry" class="block font-semibold text-gray-700 mb-2">قطاعك</label>
+                               <select id="industry" name="industry" class="w-full p-2 border border-gray-300 rounded-lg">
+                                   <option>التصنيع</option>
+                                   <option>التجزئة</option>
+                                   <option>العقارات</option>
+                                   <option>تجارة الجملة / التوزيع</option>
+                                   <option>الخدمات</option>
+                                   <option>التجارة الإلكترونية</option>
+                                   <option>الطب / الرعاية الصحية</option>
+                                   <option>الضيافة</option>
+                                   <option>أخرى</option>
+                               </select>
+                            </div>
+                            <div>
+                                <label for="integration-count" class="block font-semibold text-gray-700">تكاملات الطرف الثالث: <span id="integration-count-label" class="brand-blue font-bold">1</span></label>
+                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1" class="w-full mt-2">
                             </div>
                         </div>
-
-                        <div class="mt-8 border-t border-gray-200 pt-6">
-                             <h3 class="text-lg font-semibold text-gray-800 text-center">صف أكبر تحدٍ يواجهك.</h3>
-                             <textarea id="problem-description" name="problem-description" rows="5" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: 'مخزوننا في فوضى، ودائمًا ما تنفد منا المنتجات الشائعة، وتستغرق تقاريرنا المالية أسابيع لتجميعها لأن موقع التجارة الإلكترونية وبرنامج المحاسبة لدينا غير متصلين.'"></textarea>
-                        </div>
-                        
                         <div class="text-center mt-8">
-                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto self-center">احصل على تقديري واستشارتي</button>
+                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">احسب تقديري</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <script>
+        <section id="about" class="py-20 bg-white">
+             <div class="container mx-auto px-6">
+                <div class="lg:flex lg:items-center lg:gap-16">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">أساسك للنمو</h2>
+                        <p class="mt-4 text-lg text-gray-700">تأسست كايدو لاب على إيمان بسيط: يجب أن تكون التكنولوجيا أعظم أصول الشركة، وليس أكبر عائق لها. لقد رأينا مؤسسين لامعين يتعثرون بسبب الفوضى التشغيلية، وعرفنا أن هناك طريقة أفضل.</p>
+                        <p class="mt-4 text-gray-600">ميزتنا الفريدة هي فريقنا. نحن ندمج الخبرة الميدانية لخبراء توسيع الأنظمة مع المعرفة التقنية العميقة لعلماء البيانات. هذا يتيح لنا حل مشاكلك الحالية مع بناء أساس لمستقبل مدعوم بالذكاء الاصطناعي التنبؤي.</p>
+                    </div>
+                    <div class="mt-10 lg:mt-0 lg:w-1/2">
+                        <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                            <h3 class="text-xl font-bold brand-dark-blue">رؤيتنا</h3>
+                            <p class="mt-2 text-gray-600">خلق مستقبل حيث يمكن لكل شركة في المنطقة التوسع بلا خوف، مدعومة بتقنية بسيطة ومتكاملة وتعمل ككيان واحد.</p>
+                        </div>
+                        <div class="bg-gray-50 p-8 rounded-xl shadow-lg mt-6">
+                            <h3 class="text-xl font-bold brand-dark-blue">مهمتنا</h3>
+                            <p class="mt-2 text-gray-600">نحن نربط الشركات بالتكنولوجيا من أجل النمو. نبني أنظمة عالمية المستوى، ونقوم بأتمتة العمليات، ونرسي الأساس للرؤى التنبؤية باستخدام منصتنا.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="casestudies" class="py-20 ai-gradient">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-dark-blue">قصص نجاح</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">نتائج حقيقية للشركات النامية في جميع أنحاء المنطقة. شاهد كيف نحول الفوضى التشغيلية إلى ميزة تنافسية.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
+                        <p class="text-sm font-semibold brand-blue">التوزيع والتجارة</p>
+                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">أتمتة مخزون موزع بالجملة</h3>
+                        <p class="mt-2 text-gray-600">أتمتة كاملة لإدارة المخزون وتدفق أوامر المعالجة لموزع رائد له منشآت في جميع أنحاء الإمارات العربية المتحدة.</p>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 p-8">
+                        <p class="text-sm font-semibold brand-blue">التجارة الإلكترونية والتجزئة</p>
+                        <h3 class="mt-2 text-xl font-bold brand-dark-blue">تكامل أنظمة التجارة الإلكترونية متعددة القنوات</h3>
+                        <p class="mt-2 text-gray-600">دمج سلس لـ Shopify والمستودعات (3PL) وبوابات الدفع في نظام ERP واحد لتاجر تجزئة عبر الإنترنت عالي النمو.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">لنبدأ ببناء مستقبلك</h2>
+                    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">هل أنت مستعد لتحويل عملك؟ تواصل مع فريقنا في دبي للحصول على استشارة مجانية واكتشف كيف يمكننا تسريع نموك.</p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-white text-gray-800 rounded-xl shadow-2xl p-8 md:p-12">
+                     <form id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700">الاسم الكامل *</label>
+                                <input type="text" name="full-name" id="full-name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني *</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="md:col-span-2">
+                                 <label for="project-details" class="block text-sm font-medium text-gray-700">تفاصيل المشروع *</label>
+                                 <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="أخبرنا عن مشروعك ..."></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto">
+                                أرسل رسالة
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="to add Kaido lab logo webp formate from github" alt="شعار كايدو لاب" class="h-16 md:h-20 mb-2" style="height: 100px;">
+                    <p class="text-sm">نحن نربط الشركات بالتكنولوجيا من أجل النمو.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white">روابط سريعة</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#services" class="hover:text-white transition">خدماتنا</a></li>
+                        <li><a href="#about" class="hover:text-white transition">من نحن</a></li>
+                        <li><a href="#casestudies" class="hover:text-white transition">دراسات حالة</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white">خدماتنا</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#services" class="hover:text-white transition">تطبيقات Odoo</a></li>
+                        <li><a href="#services" class="hover:text-white transition">مشاريع الإنقاذ</a></li>
+                        <li><a href="#services" class="hover:text-white transition">إعداد شراكة Odoo</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white">معلومات الاتصال</h4>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 ml-3 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                            <span>مجمع دبي الرقمي، دبي، الإمارات العربية المتحدة</span>
+                        </li>
+                        <li class="flex items-center">
+                             <svg class="h-5 w-5 ml-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition">hello@kaidolab.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm">
+                <p>&copy; 2024 كايدو لاب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
 
-            // The rest of the script for sliders and forms remains the same
+            const userCountSlider = document.getElementById('user-count');
+            const userCountLabel = document.getElementById('user-count-label');
+            if (userCountSlider) {
+                userCountSlider.addEventListener('input', () => userCountLabel.textContent = userCountSlider.value);
+            }
+            
+            const integrationCountSlider = document.getElementById('integration-count');
+            const integrationCountLabel = document.getElementById('integration-count-label');
+            if (integrationCountSlider) {
+                integrationCountSlider.addEventListener('input', () => integrationCountLabel.textContent = integrationCountSlider.value);
+            }
         });
     </script>
 </body>
