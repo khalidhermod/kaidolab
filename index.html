@@ -244,14 +244,8 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Instant ERP Budget Estimate</h2>
                         <p class="text-slate-300 mt-4 text-lg max-w-3xl mx-auto">Answer a few questions to get a preliminary budget and a free operational analysis from our team.</p>
                     </div>
-                    <div id="calculator-result" class="hidden text-center p-8 bg-green-500/10 border border-green-500/20 rounded-lg max-w-2xl mx-auto">
-                        <h3 class="text-2xl font-bold text-white">Thank You!</h3>
-                        <p class="mt-2 text-slate-200">Your estimate has been sent to your email. One of our specialists will be in touch shortly.</p>
-                    </div>
-                    <div id="calculator-loader" class="hidden">
-                        <div class="loader"></div>
-                    </div>
-                    <form id="budget-calculator-form" class="max-w-4xl mx-auto">
+                    <!-- Netlify form handling: add data-netlify="true" and a name attribute -->
+                    <form name="budget-calculator" id="budget-calculator-form" class="max-w-4xl mx-auto" data-netlify="true" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
                             <div>
                                 <label for="calc-full-name" class="block text-sm font-medium text-slate-300 mb-1">Full Name *</label>
@@ -279,7 +273,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-8">
-                             <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">Get My Estimate</button>
+                               <button type="submit" class="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition w-full md:w-auto shadow-lg hover:shadow-xl">Get My Estimate</button>
                         </div>
                     </form>
                 </div>
@@ -338,14 +332,8 @@
                     <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">Ready to transform your business? Get in touch with our Dubai-based team for a free, no-obligation consultation.</p>
                 </div>
                 <div class="max-w-3xl mx-auto bg-white text-slate-800 rounded-xl shadow-2xl p-8 md:p-12 animate-on-scroll">
-                     <div id="contact-result" class="hidden text-center p-8 bg-green-50 border border-green-200 rounded-lg">
-                        <h3 class="text-2xl font-bold text-slate-800">Message Sent!</h3>
-                        <p class="mt-2 text-slate-700">Thank you for reaching out. We've received your message and will get back to you within one business day.</p>
-                    </div>
-                    <div id="contact-loader" class="hidden">
-                        <div class="loader"></div>
-                    </div>
-                     <form id="contact-form">
+                   <!-- Netlify form handling: add data-netlify="true" and a name attribute -->
+                   <form name="contact" id="contact-form" data-netlify="true" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="full-name" class="block text-sm font-medium text-slate-700">Full Name *</label>
@@ -463,57 +451,12 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                        if (!mobileMenu.classList.contains('hidden')) {
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
                     }
                 });
             });
-
-            // --- Form Submission Handling ---
-            const handleFormSubmit = async (form, loader, result, formId) => {
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    loader.classList.remove('hidden');
-                    form.style.display = 'none'; // Use style.display to hide
-
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData.entries());
-                    data.formId = formId;
-                    console.log('Form data submitted:', data);
-
-                    const endpoint = 'https://api.web3forms.com/submit';
-                    data.apikey = 'YOUR_WEB3FORMS_API_KEY'; // IMPORTANT: Replace with your actual key
-
-                    try {
-                        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-                        // const response = await fetch(endpoint, {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify(data)
-                        // });
-                        // if (!response.ok) throw new Error('Network response was not ok');
-                        
-                        loader.classList.add('hidden');
-                        result.classList.remove('hidden');
-                    } catch (error) {
-                        console.error('Error submitting form:', error);
-                        loader.classList.add('hidden');
-                        form.style.display = 'block'; // Show form again on error
-                        alert('There was an error submitting your form. Please try again.');
-                    }
-                });
-            };
-
-            const calcForm = document.getElementById('budget-calculator-form');
-            const calcLoader = document.getElementById('calculator-loader');
-            const calcResult = document.getElementById('calculator-result');
-            if (calcForm) handleFormSubmit(calcForm, calcLoader, calcResult, 'Budget Calculator');
-
-            const contactForm = document.getElementById('contact-form');
-            const contactLoader = document.getElementById('contact-loader');
-            const contactResult = document.getElementById('contact-result');
-            if (contactForm) handleFormSubmit(contactForm, contactLoader, contactResult, 'Contact Form');
         });
     </script>
 </body>
