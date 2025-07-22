@@ -56,10 +56,11 @@
         
         /* --- Enhanced Visuals & Animations --- */
 
-        /* Subtle background pattern */
+        /* Subtle background pattern with parallax effect */
         .bg-pattern {
              background-image: radial-gradient(#dbeafe 0.5px, transparent 0.5px);
              background-size: 15px 15px;
+             background-attachment: fixed; /* Creates the parallax effect */
         }
 
         /* Hero Section Background */
@@ -213,6 +214,90 @@
         header nav {
             transition: padding 0.3s ease-in-out;
         }
+
+        /* Animated Process Timeline */
+        .process-timeline {
+            position: relative;
+        }
+        .process-line {
+            position: absolute;
+            top: 32px; /* Vertically center with the number */
+            right: 50%; /* Adjusted for RTL */
+            height: 2px;
+            width: 0;
+            background-color: #cbd5e1; /* slate-300 */
+            transition: width 0.8s ease-in-out;
+        }
+        .process-step-container.is-visible .process-line {
+            width: 100%;
+        }
+        .process-step .process-number, .process-step .process-title, .process-step .process-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .process-step-container.is-visible .process-step:nth-child(1) .process-number { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+        .process-step-container.is-visible .process-step:nth-child(1) .process-title { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .process-step-container.is-visible .process-step:nth-child(1) .process-text { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+        
+        .process-step-container.is-visible .process-step:nth-child(2) .process-number { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+        .process-step-container.is-visible .process-step:nth-child(2) .process-title { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
+        .process-step-container.is-visible .process-step:nth-child(2) .process-text { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+
+        .process-step-container.is-visible .process-step:nth-child(3) .process-number { opacity: 1; transform: translateY(0); transition-delay: 1.0s; }
+        .process-step-container.is-visible .process-step:nth-child(3) .process-title { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
+        .process-step-container.is-visible .process-step:nth-child(3) .process-text { opacity: 1; transform: translateY(0); transition-delay: 1.2s; }
+        
+        /* Back to Top Button */
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Adjusted for RTL */
+            right: auto;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            z-index: 100;
+        }
+        #back-to-top-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Case Study Modal */
+        #case-study-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.8); /* slate-900 with opacity */
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #case-study-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #case-study-modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        #case-study-modal-overlay.visible #case-study-modal-content {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .case-study-card {
+            cursor: pointer;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="text-slate-700 antialiased">
@@ -317,42 +402,49 @@
         </section>
 
         <!-- Our Process Section -->
-        <section id="process" class="py-24 section-gradient">
+        <section id="process" class="py-24 bg-slate-50 bg-pattern relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 h-1 w-24 bg-blue-200 rounded-b-full"></div>
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold brand-heading">طريقك المؤكد للنجاح</h2>
                     <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">لقد قمنا بتحسين منهجيتنا لضمان تطبيق سلس وفعال وناجح في كل مرة.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center">
+                <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center process-step-container animate-on-scroll">
                     <!-- Step 1 -->
-                    <div class="process-step animate-on-scroll">
+                    <div class="process-step">
                         <div class="flex items-center justify-center">
                             <div class="relative">
-                                <span class="text-6xl font-bold text-slate-200">01</span>
-                                <h3 class="absolute w-full bottom-0 text-xl font-bold brand-subheading">الاستكشاف والتخطيط</h3>
+                                <span class="process-number text-6xl font-bold text-blue-100">01</span>
+                                <h3 class="process-title absolute w-full bottom-0 text-xl font-bold brand-subheading">الاستكشاف والتخطيط</h3>
                             </div>
                         </div>
-                        <p class="mt-4 brand-text">نتعمق في عملياتك لفهم تحدياتك وأهدافك الفريدة، ونضع مخططاً مخصصاً لنظام ERP.</p>
+                        <p class="process-text mt-4 brand-text">نتعمق في عملياتك لفهم تحدياتك وأهدافك الفريدة، ونضع مخططاً مخصصاً لنظام ERP.</p>
                     </div>
                     <!-- Step 2 -->
-                    <div class="process-step animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="process-step">
                         <div class="flex items-center justify-center">
                             <div class="relative">
-                                <span class="text-6xl font-bold text-slate-200">02</span>
-                                <h3 class="absolute w-full bottom-0 text-xl font-bold brand-subheading">التنفيذ والتدريب</h3>
+                                <span class="process-number text-6xl font-bold text-blue-100">02</span>
+                                <h3 class="process-title absolute w-full bottom-0 text-xl font-bold brand-subheading">التنفيذ والتدريب</h3>
                             </div>
                         </div>
-                        <p class="mt-4 brand-text">يقوم خبراؤنا بتهيئة وتخصيص ونشر Odoo، مع ضمان تدريب فريقك بالكامل واستعداده للانتقال السلس.</p>
+                        <p class="process-text mt-4 brand-text">يقوم خبراؤنا بتهيئة وتخصيص ونشر Odoo، مع ضمان تدريب فريقك بالكامل واستعداده للانتقال السلس.</p>
                     </div>
                     <!-- Step 3 -->
-                    <div class="process-step animate-on-scroll" style="transition-delay: 400ms;">
+                    <div class="process-step">
                         <div class="flex items-center justify-center">
                             <div class="relative">
-                                <span class="text-6xl font-bold text-slate-200">03</span>
-                                <h3 class="absolute w-full bottom-0 text-xl font-bold brand-subheading">الدعم والنمو</h3>
+                                <span class="process-number text-6xl font-bold text-blue-100">03</span>
+                                <h3 class="process-title absolute w-full bottom-0 text-xl font-bold brand-subheading">الدعم والنمو</h3>
                             </div>
                         </div>
-                        <p class="mt-4 brand-text">نقدم دعماً مستمراً ونصائح استراتيجية لمساعدتك على التوسع وتحسين استثمارك في نظام ERP.</p>
+                        <p class="process-text mt-4 brand-text">نقدم دعماً مستمراً ونصائح استراتيجية لمساعدتك على التوسع وتحسين استثمارك في نظام ERP.</p>
+                    </div>
+                    <!-- Animated Lines for Desktop -->
+                    <div class="hidden md:block absolute top-8 right-0 w-full h-0.5">
+                        <div class="process-timeline absolute top-0 right-1/3 w-1/3 h-full">
+                            <div class="process-line"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -426,7 +518,11 @@
                     <p class="mt-4 text-lg brand-text max-w-2xl mx-auto">شاهد التأثير الحقيقي لنهجنا السريع والموجه نحو النتائج.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll">
+                    <div class="case-study-card interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll"
+                         data-category="التوزيع والتجارة"
+                         data-title="أتمتة المخزون والطلبات"
+                         data-metric="معالجة أسرع للطلبات بنسبة 40%"
+                         data-testimonial="'كان تطبيق كايدو بمثابة نقلة نوعية. إدارة مخزوننا الآن سلسة، ونحن نعالج الطلبات أسرع من أي وقت مضى.' - مدير سلسلة التوريد، موزع إماراتي">
                         <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10H3M21 6H3M21 14H3M21 18H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                         <div>
                             <p class="text-sm font-semibold brand-accent">التوزيع والتجارة</p>
@@ -434,7 +530,11 @@
                             <p class="mt-2 brand-text">أتمتة كاملة لسير عمل المخزون والطلبات لموزع رائد في الإمارات، مما قلل وقت المعالجة بنسبة 40%.</p>
                         </div>
                     </div>
-                    <div class="interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll" style="transition-delay: 150ms;">
+                    <div class="case-study-card interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll" style="transition-delay: 150ms;"
+                         data-category="التجارة الإلكترونية والتجزئة"
+                         data-title="تكامل الأنظمة متعددة القنوات"
+                         data-metric="مبيعات موحدة عبر قنوات متعددة"
+                         data-testimonial="'لقد قاموا بدمج متجرنا على Shopify مع نظامنا الخلفي بالكامل بسلاسة. لدينا الآن مصدر واحد للمعلومات لعملياتنا بأكملها.' - مؤسس، شركة تجزئة سريعة النمو">
                         <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3H21V15H3V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                         <div>
                             <p class="text-sm font-semibold brand-accent">التجارة الإلكترونية والتجزئة</p>
@@ -442,7 +542,11 @@
                             <p class="mt-2 brand-text">دمج Shopify، والتخزين (3PL)، وبوابات الدفع في نظام ERP واحد لمتجر إلكتروني سريع النمو.</p>
                         </div>
                     </div>
-                    <div class="interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll">
+                    <div class="case-study-card interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll"
+                         data-category="التصنيع"
+                         data-title="كفاءة خط الإنتاج"
+                         data-metric="زيادة في الإنتاج بنسبة 22%"
+                         data-testimonial="'الرؤية الفورية لخط الإنتاج التي حصلنا عليها من تطبيق Odoo كانت لا تقدر بثمن. انخفض الهدر وزاد إنتاجنا.' - مدير العمليات، شركة تصنيع">
                         <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3L12 9L9.3 6.3L12 3.6L14.7 6.3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.3 17.7L12 15L14.7 17.7L12 20.4L9.3 17.7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.3 9.3L9 12L6.3 14.7L3.6 12L6.3 9.3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.7 9.3L15 12L17.7 14.7L20.4 12L17.7 9.3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                         <div>
                             <p class="text-sm font-semibold brand-accent">التصنيع</p>
@@ -450,7 +554,11 @@
                             <p class="mt-2 brand-text">توفير رؤية فورية لخط الإنتاج عبر Odoo Manufacturing، مما قلل الهدر بنسبة 15% وزاد الإنتاج بنسبة 22%.</p>
                         </div>
                     </div>
-                    <div class="interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll" style="transition-delay: 150ms;">
+                    <div class="case-study-card interactive-card bg-white rounded-xl overflow-hidden border border-slate-200 p-8 flex items-start gap-6 animate-on-scroll" style="transition-delay: 150ms;"
+                         data-category="الخدمات المهنية"
+                         data-title="تبسيط إدارة المشاريع والفواتير"
+                         data-metric="تقليل دورة الفوترة بنسبة 50%"
+                         data-testimonial="'أتمتة جداولنا الزمنية وفواتيرنا قلصت دورة الفوترة إلى النصف. كانت مكاسب الكفاءة مذهلة.' - شريك، شركة استشارية">
                         <div class="bg-slate-100 text-slate-600 rounded-lg h-12 w-12 flex-shrink-0 flex items-center justify-center"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 21V2H8V21H16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                         <div>
                             <p class="text-sm font-semibold brand-accent">الخدمات المهنية</p>
@@ -545,6 +653,36 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" class="cta-button bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- Case Study Modal -->
+    <div id="case-study-modal-overlay">
+        <div id="case-study-modal-content" class="bg-white w-11/12 max-w-2xl rounded-xl shadow-2xl p-8 md:p-10 relative text-right">
+            <button id="case-study-modal-close" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div>
+                <p id="modal-category" class="text-sm font-semibold brand-accent"></p>
+                <h3 id="modal-title" class="mt-1 text-2xl md:text-3xl font-bold brand-subheading"></h3>
+                <div class="mt-6 border-t pt-6">
+                    <h4 class="font-semibold brand-heading">النتيجة الرئيسية</h4>
+                    <p id="modal-metric" class="text-2xl font-bold brand-accent mt-1"></p>
+                </div>
+                <div class="mt-6">
+                    <h4 class="font-semibold brand-heading">شهادة العميل</h4>
+                    <blockquote id="modal-testimonial" class="mt-2 text-slate-600 italic border-r-4 border-l-0 border-blue-200 pr-4"></blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -596,17 +734,81 @@
                 });
             });
 
-            // --- Header on Scroll Effect ---
+            // --- Header on Scroll & Back to Top Button ---
             const header = document.getElementById('main-header');
-            if (header) {
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+
+            if (header || backToTopBtn) {
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
+                    // Header effect
+                    if (header) {
+                        if (window.scrollY > 50) {
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                        }
+                    }
+                    // Back to top button visibility
+                    if (backToTopBtn) {
+                        if (window.scrollY > 300) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
                     }
                 });
             }
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // --- Parallax Background Effect ---
+            const parallaxSections = document.querySelectorAll('.bg-pattern');
+            window.addEventListener('scroll', () => {
+                parallaxSections.forEach(section => {
+                    const speed = -0.15;
+                    const yPos = window.pageYOffset - section.offsetTop;
+                    section.style.backgroundPosition = `0px ${yPos * speed}px`;
+                });
+            });
+
+            // --- Case Study Modal Logic ---
+            const modalOverlay = document.getElementById('case-study-modal-overlay');
+            const modalCloseBtn = document.getElementById('case-study-modal-close');
+            const caseStudyCards = document.querySelectorAll('.case-study-card');
+
+            const modalCategory = document.getElementById('modal-category');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMetric = document.getElementById('modal-metric');
+            const modalTestimonial = document.getElementById('modal-testimonial');
+
+            const openModal = (card) => {
+                modalCategory.textContent = card.dataset.category;
+                modalTitle.textContent = card.dataset.title;
+                modalMetric.textContent = card.dataset.metric;
+                modalTestimonial.textContent = card.dataset.testimonial;
+                modalOverlay.classList.add('visible');
+                document.body.classList.add('modal-open');
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.remove('visible');
+                document.body.classList.remove('modal-open');
+            };
+
+            caseStudyCards.forEach(card => {
+                card.addEventListener('click', () => openModal(card));
+            });
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+            if (modalOverlay) modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
 
             // --- Hero Canvas Network Animation ---
             const canvas = document.getElementById('hero-canvas');
