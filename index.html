@@ -58,7 +58,7 @@
 
         /* Animated Gradient Background for Hero */
         .hero-gradient {
-            background: linear-gradient(-45deg, #ffffff, #e0e7ff, #d1fae5, #ffffff);
+            background: linear-gradient(-45deg, #f0f4ff, #dbeafe, #eef2ff, #ffffff);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             position: relative;
@@ -91,6 +91,24 @@
             transform: translateY(0);
         }
         
+        /* Headline Animation */
+        #animated-headline .line {
+            display: block;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        #animated-headline.is-visible .line-1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+        #animated-headline.is-visible .line-2 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
         /* Interactive Card Hover Effect */
         .interactive-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -98,6 +116,12 @@
         .interactive-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .interactive-card .service-icon {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .interactive-card:hover .service-icon {
+            transform: scale(1.15) rotate(-10deg);
         }
 
         /* Polished Button Styles */
@@ -107,7 +131,7 @@
         }
         .cta-button:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            box-shadow: 0 10px 15px -3px rgb(37 99 235 / 0.2), 0 4px 6px -4px rgb(37 99 235 / 0.2);
         }
 
         /* Custom styles for form elements */
@@ -159,6 +183,17 @@
             border-color: #2563eb;
             box-shadow: 0 0 0 3px var(--tw-ring-color);
         }
+        
+        /* Footer Enhancements */
+        .footer-gradient-border {
+            border-top: 1px solid;
+            border-image-source: linear-gradient(to right, #1e293b, #475569, #1e293b);
+            border-image-slice: 1;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgb(255 255 255 / 0.5);
+        }
     </style>
 </head>
 <body class="text-slate-700 antialiased">
@@ -197,15 +232,15 @@
         <!-- Hero Section -->
         <section class="hero-gradient py-24 md:py-40 overflow-hidden">
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl font-extrabold brand-subheading leading-tight tracking-tight animate-on-scroll">
-                    Odoo Ready.
+                <h1 id="animated-headline" class="text-4xl md:text-6xl font-extrabold brand-subheading leading-tight tracking-tight animate-on-scroll">
+                    <span class="line line-1">Odoo Ready.</span>
                     <br class="hidden md:block" />
-                    <span class="brand-accent">In 2 Weeks.</span>
+                    <span class="line line-2"><span class="brand-accent">In 2 Weeks.</span></span>
                 </h1>
-                <p class="mt-6 text-lg md:text-xl brand-text max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
+                <p class="mt-6 text-lg md:text-xl brand-text max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 350ms;">
                     We deliver Odoo ERP in weeks, not quarters. At Kaido, we combine speed, clarity, and deep expertise to build the operational backbone your business needs to grow.
                 </p>
-                <div class="mt-12 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="mt-12 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 500ms;">
                     <a href="#contact" class="cta-button bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700">
                         Book a Free Consultation
                     </a>
@@ -224,7 +259,7 @@
                     <!-- Service Card 1 -->
                     <div class="interactive-card bg-slate-50 rounded-xl p-8 text-center border border-slate-200 animate-on-scroll">
                         <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold brand-subheading">Odoo Implementations</h3>
                         <p class="mt-2 brand-text text-sm">Go live with a complete, tailored ERP system in record time.</p>
@@ -232,7 +267,7 @@
                     <!-- Service Card 2 -->
                     <div class="interactive-card bg-slate-50 rounded-xl p-8 text-center border border-slate-200 animate-on-scroll" style="transition-delay: 150ms;">
                         <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold brand-subheading">Rescue Projects</h3>
                         <p class="mt-2 brand-text text-sm">Stuck with a failing implementation? We'll get your project back on track.</p>
@@ -240,7 +275,7 @@
                     <!-- Service Card 3 -->
                     <div class="interactive-card bg-slate-50 rounded-xl p-8 text-center border border-slate-200 animate-on-scroll" style="transition-delay: 300ms;">
                         <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                         </div>
                         <h3 class="text-xl font-bold brand-subheading">Odoo Partnership Setup</h3>
                         <p class="mt-2 brand-text text-sm">Want to become an Odoo partner? We'll build your entire practice.</p>
@@ -248,7 +283,7 @@
                     <!-- Service Card 4 -->
                     <div class="interactive-card bg-slate-50 rounded-xl p-8 text-center border border-slate-200 animate-on-scroll" style="transition-delay: 450ms;">
                         <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold brand-subheading">Odoo AI Agent <span class="text-xs brand-accent font-medium">SOON</span></h3>
                         <p class="mt-2 brand-text text-sm">Automate tasks and get insights with your own AI-powered assistant.</p>
@@ -411,18 +446,18 @@
                 <div>
                     <h4 class="text-lg font-semibold text-white">Quick Links</h4>
                     <ul class="mt-4 space-y-3 text-sm">
-                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Services</a></li>
-                        <li><a href="#casestudies" class="hover:text-white transition-colors duration-300">Case Studies</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
-                        <li><a href="#budget-calculator-section" class="hover:text-white transition-colors duration-300">ERP Calculator</a></li>
+                        <li><a href="#services" class="footer-link transition-colors duration-300">Services</a></li>
+                        <li><a href="#casestudies" class="footer-link transition-colors duration-300">Case Studies</a></li>
+                        <li><a href="#contact" class="footer-link transition-colors duration-300">Contact</a></li>
+                        <li><a href="#budget-calculator-section" class="footer-link transition-colors duration-300">ERP Calculator</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">Our Services</h4>
                     <ul class="mt-4 space-y-3 text-sm">
-                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Odoo Implementations</a></li>
-                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Rescue Projects</a></li>
-                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Odoo Partnership Setup</a></li>
+                        <li><a href="#services" class="footer-link transition-colors duration-300">Odoo Implementations</a></li>
+                        <li><a href="#services" class="footer-link transition-colors duration-300">Rescue Projects</a></li>
+                        <li><a href="#services" class="footer-link transition-colors duration-300">Odoo Partnership Setup</a></li>
                     </ul>
                 </div>
                  <div>
@@ -434,12 +469,12 @@
                         </li>
                         <li class="flex items-start gap-3">
                              <svg class="h-5 w-5 mr-1 mt-0.5 flex-shrink-0 text-slate-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                            <a href="mailto:hello@kaidolab.com" class="hover:text-white transition-colors duration-300">hello@kaidolab.com</a>
+                            <a href="mailto:hello@kaidolab.com" class="footer-link transition-colors duration-300">hello@kaidolab.com</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-16 border-t border-slate-800 pt-8 text-center text-sm">
+            <div class="mt-16 pt-8 text-center text-sm footer-gradient-border">
                 <p>&copy; 2025 Kaido IT Solutions. All Rights Reserved.</p>
             </div>
         </div>
