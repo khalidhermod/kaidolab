@@ -6,7 +6,6 @@
     <title>كايدو | شريكك التقني</title>
 
     <!-- 
-    IMPORTANT: Replace these placeholder links with your actual file URLs.
     -->
     <link rel="icon" href="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidofaviconwebp.webp" sizes="any">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidofaviconwebp.webp">
@@ -616,6 +615,15 @@
                 <div class="lg:col-span-1">
                     <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="شعار كايدو" class="h-12 mb-4" style="filter: brightness(0) invert(1);">
                     <p class="text-sm">نحن نربط الشركات بالتكنولوجيا من أجل النمو.</p>
+                    <!-- Social Links -->
+                    <div class="mt-6 flex space-x-4 space-x-reverse">
+                        <a href="https://www.linkedin.com/company/kaidolab/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.73c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76c.966 0 1.75.79 1.75 1.76S7.466 6.73 6.5 6.73zM19 19h-3v-5.6c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.93V19h-3V8h2.88v1.34h.04c.4-.76 1.37-1.55 2.84-1.55 3.04 0 3.6 2 3.6 4.6V19z"></path></svg>
+                        </a>
+                        <a href="https://twitter.com/kaidolab" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Twitter">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085 4.93 4.93 0 004.6 3.42 9.86 9.86 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-white">روابط سريعة</h4>
@@ -647,7 +655,7 @@
                         </li>
                          <li class="flex items-start gap-3">
                             <svg class="h-5 w-5 ml-1 mt-0.5 flex-shrink-0 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                             </svg>
                             <a href="tel:+971556474674" class="footer-link transition-colors duration-300" dir="ltr">+971 55 647 4674</a>
                         </li>
@@ -863,7 +871,7 @@
                         for (let a = 0; a < particles.length; a++) {
                             for (let b = a; b < particles.length; b++) {
                                 let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x)) +
-                                            ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+                                             ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
                                 
                                 let connectDistance = (canvas.width / 8) * (canvas.height / 8);
                                 if (connectDistance > 150*150) connectDistance = 150*150;
