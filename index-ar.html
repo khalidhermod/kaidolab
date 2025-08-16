@@ -305,7 +305,7 @@
     <header id="main-header" class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200/80">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex-shrink-0">
-                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="شعار كايدو" class="h-12 md:h-14">
+                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="شعار كايدو" class="h-12 md:h-14" onerror="this.onerror=null; this.src='https://placehold.co/200x56/f0f4ff/1e293b?text=Kaido';">
             </a>
             <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                 <a href="#services" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">خدماتنا</a>
@@ -456,11 +456,11 @@
                     <h2 class="text-xl font-bold brand-heading uppercase tracking-widest">موثوقون من قبل رواد الصناعة</h2>
                 </div>
                 <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="شعار آمر" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 100ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="شعار مركز دبي المالي العالمي" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 200ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="شعار شريك جوجل كلاود" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 300ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="شعار Odoo" class="mx-auto h-10 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 400ms;">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="شعار Oracle NetSuite" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 500ms;">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Amer%20logo.png" alt="شعار آمر" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 100ms;" onerror="this.onerror=null; this.src='https://placehold.co/150x48/f8fafc/475569?text=Amer';">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/DIFC%20logo.jpeg" alt="شعار مركز دبي المالي العالمي" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 200ms;" onerror="this.onerror=null; this.src='https://placehold.co/150x48/f8fafc/475569?text=DIFC';">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Google%20Cloud%20Partner.webp" alt="شعار شريك جوجل كلاود" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 300ms;" onerror="this.onerror=null; this.src='https://placehold.co/150x48/f8fafc/475569?text=Google+Cloud';">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Odoo%20logo.webp" alt="شعار Odoo" class="mx-auto h-10 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 400ms;" onerror="this.onerror=null; this.src='https://placehold.co/150x40/f8fafc/475569?text=Odoo';">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/konek/refs/heads/main/Oracle%20NetSuite%20logo.png" alt="شعار Oracle NetSuite" class="mx-auto h-12 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer hover:scale-110 animate-on-scroll" style="transition-delay: 500ms;" onerror="this.onerror=null; this.src='https://placehold.co/150x48/f8fafc/475569?text=NetSuite';">
                 </div>
             </div>
         </section>
@@ -475,7 +475,8 @@
                     </div>
                     <!-- Netlify form handling: add data-netlify="true" and a name attribute -->
                     <form name="budget-calculator-ar" id="budget-calculator-form" class="max-w-4xl mx-auto" data-netlify="true" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-right">
+                        <!-- UPDATED: Changed grid to md:grid-cols-3 to accommodate phone number -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 text-right">
                             <div>
                                 <label for="calc-full-name" class="block text-sm font-medium text-slate-300 mb-1">الاسم الكامل *</label>
                                 <input type="text" name="full-name" id="calc-full-name" required class="form-input-styled block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none text-white">
@@ -483,6 +484,11 @@
                             <div>
                                 <label for="calc-email" class="block text-sm font-medium text-slate-300 mb-1">البريد الإلكتروني *</label>
                                 <input type="email" name="email" id="calc-email" required class="form-input-styled block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none text-white">
+                            </div>
+                            <!-- ADDED: Phone number field -->
+                            <div>
+                                <label for="calc-phone" class="block text-sm font-medium text-slate-300 mb-1">رقم الهاتف *</label>
+                                <input type="tel" name="phone" id="calc-phone" required class="form-input-styled block w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none text-white">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 text-right">
@@ -493,7 +499,7 @@
                             <div class="space-y-2">
                                <label for="industry" class="block font-semibold text-slate-300">مجال عملك</label>
                                <select id="industry" name="industry" class="form-input-styled w-full px-4 py-2.5 bg-slate-700/50 border border-slate-600 rounded-md shadow-sm focus:outline-none text-white">
-                                   <option>التصنيع</option><option>التجزئة</option><option>العقارات</option><option>تجارة الجملة / التوزيع</option><option>الخدمات</option><option>التجارة الإلكترونية</option><option>الطب / الرعاية الصحية</option><option>الضيافة</option><option>أخرى</option>
+                                  <option>التصنيع</option><option>التجزئة</option><option>العقارات</option><option>تجارة الجملة / التوزيع</option><option>الخدمات</option><option>التجارة الإلكترونية</option><option>الطب / الرعاية الصحية</option><option>الضيافة</option><option>أخرى</option>
                                </select>
                             </div>
                             <div class="space-y-2">
@@ -588,9 +594,10 @@
                                 <label for="email" class="block text-sm font-medium text-slate-700 text-right">البريد الإلكتروني *</label>
                                 <input type="email" name="email" id="email" required class="form-input-styled mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none">
                             </div>
+                            <!-- UPDATED: Made phone number required -->
                             <div class="md:col-span-2">
-                                <label for="phone" class="block text-sm font-medium text-slate-700 text-right">رقم الهاتف</label>
-                                <input type="tel" name="phone" id="phone" class="form-input-styled mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none">
+                                <label for="phone" class="block text-sm font-medium text-slate-700 text-right">رقم الهاتف *</label>
+                                <input type="tel" name="phone" id="phone" required class="form-input-styled mt-1 block w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-md shadow-sm focus:outline-none">
                             </div>
                             <div class="md:col-span-2">
                                  <label for="project-details" class="block text-sm font-medium text-slate-700 text-right">كيف يمكننا المساعدة؟ *</label>
@@ -613,7 +620,7 @@
         <div class="container mx-auto px-6 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div class="lg:col-span-1">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="شعار كايدو" class="h-12 mb-4" style="filter: brightness(0) invert(1);">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="شعار كايدو" class="h-12 mb-4" style="filter: brightness(0) invert(1);" onerror="this.onerror=null; this.src='https://placehold.co/200x48/1e293b/ffffff?text=Kaido';">
                     <p class="text-sm">نحن نربط الشركات بالتكنولوجيا من أجل النمو.</p>
                     <!-- Social Links -->
                     <div class="mt-6 flex space-x-4 space-x-reverse">
@@ -642,7 +649,7 @@
                         <li><a href="#services" class="footer-link transition-colors duration-300">إعداد شراكات Odoo</a></li>
                     </ul>
                 </div>
-                 <div>
+               <div>
                     <h4 class="text-lg font-semibold text-white">معلومات الاتصال</h4>
                     <ul class="mt-4 space-y-4 text-sm">
                         <li class="flex items-start gap-3">
