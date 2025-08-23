@@ -56,9 +56,9 @@
         
         /* --- Enhanced Visuals & Animations --- */
         .bg-pattern {
-              background-image: radial-gradient(#dbeafe 0.5px, transparent 0.5px);
-              background-size: 15px 15px;
-              background-attachment: fixed;
+             background-image: radial-gradient(#dbeafe 0.5px, transparent 0.5px);
+             background-size: 15px 15px;
+             background-attachment: fixed;
         }
         .hero-gradient {
             background-color: #f0f4ff;
@@ -169,6 +169,14 @@
         
         .success-story-card { cursor: pointer; }
         body.modal-open { overflow: hidden; }
+
+        .pricing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
     </style>
 </head>
 <body class="text-slate-700 antialiased">
@@ -182,6 +190,7 @@
             <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                 <a href="#services" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">خدماتنا</a>
                 <a href="#why-odoo" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">لماذا Odoo؟</a>
+                <a href="#support" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">الدعم</a>
                 <a href="#successstories" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">قصص نجاح</a>
                 <a href="#faq" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">الأسئلة الشائعة</a>
                 <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">اتصل بنا</a>
@@ -197,6 +206,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
              <a href="#services" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">خدماتنا</a>
             <a href="#why-odoo" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">لماذا Odoo؟</a>
+            <a href="#support" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">الدعم</a>
             <a href="#successstories" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">قصص نجاح</a>
             <a href="#faq" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 text-right">الأسئلة الشائعة</a>
             <a href="#contact" class="block py-3 px-6 text-sm text-slate-700 hover:bg-slate-50 border-b text-right">اتصل بنا</a>
@@ -478,6 +488,61 @@
                             <h3 class="mt-1 text-xl font-bold brand-subheading">تبسيط إدارة المشاريع والفواتير</h3>
                             <p class="mt-2 brand-text">أتمتة تتبع الجداول الزمنية والفواتير لشركة خدمات، مما قلل دورة الفوترة إلى النصف.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Support Packages (Pricing) Section -->
+        <section id="support" class="py-24 bg-slate-50 bg-pattern">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold brand-heading">باقات الدعم والنمو المستمر</h2>
+                    <p class="mt-4 text-lg brand-text max-w-3xl mx-auto">شراكتنا لا تنتهي عند الإطلاق. اختر باقة الدعم التي تناسب طموحات نموك وتضمن أن يظل نظام Odoo ERP الخاص بك أصلاً قوياً لعملك.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- Pricing Card 1: Essential Care -->
+                    <div class="pricing-card bg-white rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll">
+                        <h3 class="text-2xl font-bold brand-subheading">الرعاية الأساسية</h3>
+                        <p class="brand-text mt-2 flex-grow">للشركات التي تحتاج إلى صيانة موثوقة للنظام ودعم عند الطلب.</p>
+                        <p class="text-4xl font-extrabold brand-heading my-6" dir="ltr">2,800 <span class="text-lg font-medium brand-text">درهم/شهرياً</span></p>
+                        <ul class="space-y-4 text-slate-600 flex-grow text-right">
+                            <li class="flex items-center justify-end"><span class="ml-3">10 ساعات دعم/شهرياً</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">وقت استجابة خلال 24 ساعة عمل</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">دعم فني</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">مراقبة صحة النظام</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                        </ul>
+                        <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="cta-button mt-8 block text-center bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-slate-200">اختر الباقة</a>
+                    </div>
+                    <!-- Pricing Card 2: Growth Partner (Featured) -->
+                    <div class="pricing-card bg-blue-600 text-white rounded-xl shadow-2xl p-8 flex flex-col relative animate-on-scroll" style="transition-delay: 150ms;">
+                        <span class="absolute top-0 -translate-y-1/2 bg-yellow-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase">الأكثر شيوعاً</span>
+                        <h3 class="text-2xl font-bold">شريك النمو</h3>
+                        <p class="text-blue-200 mt-2 flex-grow">للشركات النامية التي تتطلع إلى تحسين سير العمل وإضافة ميزات جديدة.</p>
+                        <p class="text-4xl font-extrabold my-6" dir="ltr">5,500 <span class="text-lg font-medium text-blue-200">درهم/شهرياً</span></p>
+                        <ul class="space-y-4 flex-grow text-right">
+                            <li class="flex items-center justify-end"><span class="ml-3">25 ساعة دعم/شهرياً</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">وقت استجابة خلال 8 ساعات عمل</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">دعم فني</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">مراقبة صحة النظام</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">تحسين سير العمل</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">تطبيق ميزات جديدة</span><svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                        </ul>
+                        <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="cta-button mt-8 block text-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50">اختر الباقة</a>
+                    </div>
+                    <!-- Pricing Card 3: Strategic Alliance -->
+                    <div class="pricing-card bg-white rounded-xl shadow-lg p-8 flex flex-col animate-on-scroll" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold brand-subheading">التحالف الاستراتيجي</h3>
+                        <p class="brand-text mt-2 flex-grow">للمؤسسات التي تتطلب توجيهاً استراتيجياً استباقياً وتكاملاً عميقاً.</p>
+                        <p class="text-4xl font-extrabold brand-heading my-6" dir="ltr">9,200 <span class="text-lg font-medium brand-text">درهم/شهرياً</span></p>
+                        <ul class="space-y-4 text-slate-600 flex-grow text-right">
+                            <li class="flex items-center justify-end"><span class="ml-3">50 ساعة دعم/شهرياً</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">استجابة ذات أولوية خلال 4 ساعات</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">كل ما في باقة شريك النمو</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">مراجعة استراتيجية ربع سنوية</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                            <li class="flex items-center justify-end"><span class="ml-3">مدير حساب مخصص</span><svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></li>
+                        </ul>
+                        <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="cta-button mt-8 block text-center bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-slate-200">اختر الباقة</a>
                     </div>
                 </div>
             </div>
