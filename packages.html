@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Retainer Packages | Kaido Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray bg */
+            color: #1f2937; /* Dark gray text */
+        }
+
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Glassmorphism effect for the package card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent light bg */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom glowing effect for the card border */
+        .glow-border {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(115deg, transparent, #4f46e5, #a855f7, #ec4899, transparent);
+            background-size: 50% 100%;
+            animation: glow-animate 4s linear infinite;
+            z-index: -1;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0; /* Initially hidden */
+        }
+        
+        .glow-border.bronze::before { opacity: 0.3; background: linear-gradient(115deg, transparent, #cd7f32, transparent); }
+        .glow-border.silver::before { opacity: 0.4; background: linear-gradient(115deg, transparent, #c0c0c0, transparent); }
+        .glow-border.gold::before { opacity: 0.5; background: linear-gradient(115deg, transparent, #ffd700, transparent); }
+        .glow-border.platinum::before { opacity: 0.7; background: linear-gradient(115deg, transparent, #4f46e5, #a855f7, #ec4899, transparent); }
+
+        @keyframes glow-animate {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Animation for services appearing */
+        .service-item {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .service-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 100px; /* Adjust as needed */
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e5e7eb;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Background decorative gradients -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-purple-600/10 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+        <div class="absolute bottom-[-20%] right-[-20%] w-[700px] h-[700px] bg-indigo-600/10 rounded-full filter blur-3xl opacity-40 animate-pulse animation-delay-4000"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+        <h1 class="text-4xl md:text-7xl font-black tracking-tighter leading-tight mb-4">
+            The All-in-One <span class="gradient-text">Growth Engine</span> for Your Business.
+        </h1>
+        <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-700 mb-8">
+            Stop juggling dozens of vendors. We provide a complete, scalable solution for your finance, tech, HR, and marketing needs—all in one predictable monthly retainer.
+        </p>
+        <a href="#packages" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-500 transition-all duration-300 transform hover:scale-105">
+            Discover Your Package
+        </a>
+    </header>
+
+    <!-- Main Content: Packages Showcase -->
+    <main id="packages" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="lg:flex lg:space-x-8">
+
+                <!-- Sticky Package Card (Left Side on Desktop) -->
+                <div class="lg:w-1/2 lg:sticky top-16 h-full">
+                    <div id="package-card" class="glass-card glow-border rounded-2xl p-8 transition-all duration-500">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 id="package-name" class="text-3xl font-bold transition-all duration-300">Your Package</h2>
+                            <span id="package-tier-badge" class="px-4 py-1 rounded-full text-sm font-semibold transition-all duration-300">Select a Tier</span>
+                        </div>
+
+                        <!-- Services List - grows dynamically -->
+                        <div class="space-y-4">
+                            <!-- Bronze Services -->
+                            <div id="bronze-services" class="service-category">
+                                <h3 class="font-semibold text-indigo-600 mb-2">Core Financials</h3>
+                                <ul class="space-y-2 list-inside list-disc text-gray-700">
+                                    <li class="service-item" data-tier="bronze">Bookkeeping (up to 100 transactions)</li>
+                                    <li class="service-item" data-tier="bronze">Bank Reconciliation (2 accounts)</li>
+                                    <li class="service-item" data-tier="bronze">Quarterly Financial Statements</li>
+                                    <li class="service-item" data-tier="bronze">VAT & Tax Compliance Reminders</li>
+                                    <li class="service-item" data-tier="bronze">Cloud Accounting Software</li>
+                                    <li class="service-item" data-tier="bronze">Payroll (up to 5 employees)</li>
+                                </ul>
+                            </div>
+                            <!-- Silver Services -->
+                            <div id="silver-services" class="service-category">
+                                <h3 class="font-semibold text-gray-800 mb-2 service-item" data-tier="silver">Growth & Operations</h3>
+                                <ul class="space-y-2 list-inside list-disc text-gray-700">
+                                    <li class="service-item" data-tier="silver">Proactive Tax Planning</li>
+                                    <li class="service-item" data-tier="silver">Audit Preparation & Liaison</li>
+                                    <li class="service-item" data-tier="silver">Managed Web Security (10 devices)</li>
+                                    <li class="service-item" data-tier="silver">Hardware Procurement Assistance</li>
+                                    <li class="service-item" data-tier="silver">Basic HR Templates</li>
+                                    <li class="service-item" data-tier="silver">Website Analytics & Reporting</li>
+                                </ul>
+                            </div>
+                            <!-- Gold Services -->
+                            <div id="gold-services" class="service-category">
+                                <h3 class="font-semibold text-amber-500 mb-2 service-item" data-tier="gold">Strategic Partnership</h3>
+                                <ul class="space-y-2 list-inside list-disc text-gray-700">
+                                    <li class="service-item" data-tier="gold">Budgeting & Forecasting</li>
+                                    <li class="service-item" data-tier="gold">Cash Flow Management</li>
+                                    <li class="service-item" data-tier="gold">Tax Audit Representation</li>
+                                    <li class="service-item" data-tier="gold">ERP Readiness Assessment</li>
+                                    <li class="service-item" data-tier="gold">Managed IT Support (25 users)</li>
+                                    <li class="service-item" data-tier="gold">Quarterly Strategic Reviews</li>
+                                </ul>
+                            </div>
+                            <!-- Platinum Services -->
+                             <div id="platinum-services" class="service-category">
+                                <h3 class="font-semibold text-pink-600 mb-2 service-item" data-tier="platinum">Executive Leadership</h3>
+                                <ul class="space-y-2 list-inside list-disc text-gray-700">
+                                    <li class="service-item" data-tier="platinum">Virtual CFO Services</li>
+                                    <li class="service-item" data-tier="platinum">M&A Advisory Support</li>
+                                    <li class="service-item" data-tier="platinum">International Tax Advisory</li>
+                                    <li class="service-item" data-tier="platinum">Full ERP Project Management</li>
+                                    <li class="service-item" data-tier="platinum">Comprehensive Cybersecurity</li>
+                                    <li class="service-item" data-tier="platinum">Monthly Board-level Meetings</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Button inside the card -->
+                        <div class="mt-8">
+                            <a href="#contact" class="block w-full text-center bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-500 transition-all duration-300 transform hover:scale-105">
+                                Get a Custom Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Content (Right Side on Desktop) -->
+                <div class="lg:w-1/2 mt-16 lg:mt-0">
+                    <div class="space-y-32">
+                        <!-- Bronze Trigger -->
+                        <div id="bronze-trigger" class="package-trigger p-8 min-h-[60vh] flex flex-col justify-center">
+                            <span class="text-indigo-600 font-bold tracking-widest uppercase">Tier 1</span>
+                            <h3 class="text-4xl font-extrabold my-3">Bronze Package: The Essentials</h3>
+                            <p class="text-lg text-gray-600">Perfect for startups and small businesses focused on getting the fundamentals right. We handle your core financial compliance so you can focus on your product.</p>
+                        </div>
+
+                        <!-- Silver Trigger -->
+                        <div id="silver-trigger" class="package-trigger p-8 min-h-[60vh] flex flex-col justify-center">
+                            <span class="text-gray-600 font-bold tracking-widest uppercase">Tier 2</span>
+                             <h3 class="text-4xl font-extrabold my-3">Silver Package: Growth & Stability</h3>
+                            <p class="text-lg text-gray-600">For growing businesses ready to scale. Gain deeper financial insights, proactive support, and the operational backbone to support your expansion.</p>
+                        </div>
+
+                        <!-- Gold Trigger -->
+                        <div id="gold-trigger" class="package-trigger p-8 min-h-[60vh] flex flex-col justify-center">
+                            <span class="text-amber-500 font-bold tracking-widest uppercase">Tier 3</span>
+                             <h3 class="text-4xl font-extrabold my-3">Gold Package: Strategic Partnership</h3>
+                            <p class="text-lg text-gray-600">Become a data-driven enterprise. This package provides the strategic advice and robust systems you need to optimize performance and make informed decisions.</p>
+                        </div>
+
+                        <!-- Platinum Trigger -->
+                        <div id="platinum-trigger" class="package-trigger p-8 min-h-[60vh] flex flex-col justify-center">
+                             <span class="gradient-text font-bold tracking-widest uppercase">Tier 4</span>
+                             <h3 class="text-4xl font-extrabold my-3">Platinum Package: The Virtual Executive Suite</h3>
+                             <p class="text-lg text-gray-600">For industry leaders and high-growth scale-ups. Get executive-level guidance with our Virtual CFO, CIO, and CMO services, driving your business to the next level.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Lead Magnet Section -->
+    <section id="lead-magnets" class="py-24 bg-gray-100/50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Unlock Your Growth Potential</h2>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-12">Download our free resources designed to help businesses like yours thrive in a competitive landscape.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lead Magnet 1: Checklist -->
+                <div class="glass-card rounded-2xl p-8 text-left flex flex-col">
+                    <div class="flex-grow">
+                        <svg class="w-12 h-12 mb-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">Business Financial Health Checklist</h3>
+                        <p class="text-gray-600 mb-6">A step-by-step guide to assessing your company's financial stability and identifying areas for improvement.</p>
+                    </div>
+                    <form class="mt-auto">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                        <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-500 transition-all duration-300">Download Now</button>
+                    </form>
+                </div>
+                <!-- Lead Magnet 2: Guide -->
+                <div class="glass-card rounded-2xl p-8 text-left flex flex-col">
+                     <div class="flex-grow">
+                        <svg class="w-12 h-12 mb-4 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">The Ultimate Outsourcing Guide</h3>
+                        <p class="text-gray-600 mb-6">Learn what, when, and how to outsource key business functions to save time and accelerate growth.</p>
+                    </div>
+                    <form class="mt-auto">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" required>
+                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition">
+                        <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 rounded-md hover:bg-purple-500 transition-all duration-300">Get The Guide</button>
+                    </form>
+                </div>
+                <!-- Lead Magnet 3: Calculator -->
+                <div class="glass-card rounded-2xl p-8 text-left flex flex-col">
+                     <div class="flex-grow">
+                        <svg class="w-12 h-12 mb-4 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-6h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zM4.5 12.75a.75.75 0 01.75-.75h13.5a.75.75 0 010 1.5H5.25a.75.75 0 01-.75-.75z" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">ROI Calculator</h3>
+                        <p class="text-gray-600 mb-6">Instantly calculate the potential return on investment when you partner with us. See how much you can save.</p>
+                    </div>
+                    <form class="mt-auto">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition" required>
+                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition">
+                        <button type="submit" class="w-full bg-pink-600 text-white font-semibold py-2 rounded-md hover:bg-pink-500 transition-all duration-300">Access Calculator</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <footer id="contact" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Ready to Build Your <span class="gradient-text">All-in-One Solution?</span></h2>
+                <p class="text-lg text-gray-600 mb-12">Let's talk. Fill out the form below for a no-obligation consultation and a custom quote tailored to your exact business needs.</p>
+            </div>
+            <form class="max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                        <input type="text" id="company" name="company" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+                        <input type="email" id="email" name="email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">How can we help?</label>
+                    <textarea id="message" name="message" rows="4" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" placeholder="Tell us about your business challenges and goals..."></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg-indigo-600 text-white font-semibold px-12 py-3 rounded-lg hover:bg-indigo-500 transition-all duration-300 transform hover:scale-105">
+                        Request a Free Consultation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const packageCard = document.getElementById('package-card');
+            const packageName = document.getElementById('package-name');
+            const packageBadge = document.getElementById('package-tier-badge');
+            
+            const allServiceItems = document.querySelectorAll('.service-item');
+
+            const tiers = {
+                bronze: {
+                    name: 'Bronze Package',
+                    badgeText: 'Essentials',
+                    badgeClass: 'bg-indigo-100 text-indigo-800',
+                    glowClass: 'bronze'
+                },
+                silver: {
+                    name: 'Silver Package',
+                    badgeText: 'Growth',
+                    badgeClass: 'bg-gray-200 text-gray-800',
+                    glowClass: 'silver'
+                },
+                gold: {
+                    name: 'Gold Package',
+                    badgeText: 'Strategic',
+                    badgeClass: 'bg-amber-100 text-amber-800',
+                    glowClass: 'gold'
+                },
+                platinum: {
+                    name: 'Platinum Package',
+                    badgeText: 'Executive',
+                    badgeClass: 'bg-pink-100 text-pink-800',
+                    glowClass: 'platinum'
+                }
+            };
+
+            const tierOrder = ['bronze', 'silver', 'gold', 'platinum'];
+
+            // Function to update the card and reveal services
+            const updatePackageView = (tier) => {
+                const tierInfo = tiers[tier];
+                
+                // Update text and badges
+                packageName.textContent = tierInfo.name;
+                packageBadge.textContent = tierInfo.badgeText;
+                packageBadge.className = `px-4 py-1 rounded-full text-sm font-semibold transition-all duration-300 ${tierInfo.badgeClass}`;
+                
+                // Update glow effect
+                packageCard.className = `glass-card glow-border rounded-2xl p-8 transition-all duration-500 ${tierInfo.glowClass}`;
+                
+                // Determine which services to show
+                const currentTierIndex = tierOrder.indexOf(tier);
+                
+                allServiceItems.forEach(item => {
+                    const itemTier = item.dataset.tier;
+                    const itemTierIndex = tierOrder.indexOf(itemTier);
+                    
+                    if (itemTierIndex <= currentTierIndex) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible');
+                    }
+                });
+            };
+
+            // Intersection Observer to trigger updates on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const tier = entry.target.id.replace('-trigger', '');
+                        updatePackageView(tier);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.5 // Trigger when 50% of the section is visible
+            });
+
+            // Observe all trigger elements
+            document.querySelectorAll('.package-trigger').forEach(trigger => {
+                observer.observe(trigger);
+            });
+            
+            // Set initial state
+            updatePackageView('bronze');
+        });
+    </script>
+</body>
+</html>
