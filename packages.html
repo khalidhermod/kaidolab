@@ -240,9 +240,11 @@
                         <h3 class="text-2xl font-bold mb-2">Business Financial Health Checklist</h3>
                         <p class="text-gray-600 mb-6">A step-by-step guide to assessing your company's financial stability and identifying areas for improvement.</p>
                     </div>
-                    <form class="mt-auto">
-                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
-                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                    <!-- Netlify Form 1 -->
+                    <form name="lead-magnet-checklist" method="POST" data-netlify="true" class="mt-auto">
+                        <input type="hidden" name="form-name" value="lead-magnet-checklist" />
+                        <input type="email" name="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                        <input type="tel" name="phone" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
                         <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-500 transition-all duration-300">Download Now</button>
                     </form>
                 </div>
@@ -253,9 +255,11 @@
                         <h3 class="text-2xl font-bold mb-2">The Ultimate Outsourcing Guide</h3>
                         <p class="text-gray-600 mb-6">Learn what, when, and how to outsource key business functions to save time and accelerate growth.</p>
                     </div>
-                    <form class="mt-auto">
-                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" required>
-                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition">
+                    <!-- Netlify Form 2 -->
+                    <form name="lead-magnet-guide" method="POST" data-netlify="true" class="mt-auto">
+                        <input type="hidden" name="form-name" value="lead-magnet-guide" />
+                        <input type="email" name="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" required>
+                        <input type="tel" name="phone" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-purple-500 focus:outline-none transition">
                         <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 rounded-md hover:bg-purple-500 transition-all duration-300">Get The Guide</button>
                     </form>
                 </div>
@@ -266,9 +270,11 @@
                         <h3 class="text-2xl font-bold mb-2">ROI Calculator</h3>
                         <p class="text-gray-600 mb-6">Instantly calculate the potential return on investment when you partner with us. See how much you can save.</p>
                     </div>
-                    <form class="mt-auto">
-                        <input type="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition" required>
-                        <input type="tel" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition">
+                    <!-- Netlify Form 3 -->
+                    <form name="lead-magnet-calculator" method="POST" data-netlify="true" class="mt-auto">
+                        <input type="hidden" name="form-name" value="lead-magnet-calculator" />
+                        <input type="email" name="email" placeholder="Enter your email" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition" required>
+                        <input type="tel" name="phone" placeholder="Your phone number" class="w-full bg-white/50 border border-gray-300 rounded-md px-4 py-2 mb-3 focus:ring-2 focus:ring-pink-500 focus:outline-none transition">
                         <button type="submit" class="w-full bg-pink-600 text-white font-semibold py-2 rounded-md hover:bg-pink-500 transition-all duration-300">Access Calculator</button>
                     </form>
                 </div>
@@ -283,7 +289,9 @@
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Ready to Build Your <span class="gradient-text">All-in-One Solution?</span></h2>
                 <p class="text-lg text-gray-600 mb-12">Let's talk. Fill out the form below for a no-obligation consultation and a custom quote tailored to your exact business needs.</p>
             </div>
-            <form class="max-w-xl mx-auto">
+            <!-- Main Contact Form for Netlify -->
+            <form name="contact-consultation" method="POST" data-netlify="true" class="max-w-xl mx-auto">
+                <input type="hidden" name="form-name" value="contact-consultation" />
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
