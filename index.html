@@ -63,34 +63,62 @@
 
     <style>
         :root {
-            --background-color: #0D1117;
-            --text-primary: #E6EDF3;
-            --text-secondary: #8B949E;
-            --border-color: rgba(229, 231, 235, 0.1);
+            --background-dark: #0D1117;
+            --text-primary-dark: #E6EDF3;
+            --text-secondary-dark: #8B949E;
+            --border-dark: rgba(229, 231, 235, 0.1);
+            --glass-card-bg-dark: rgba(22, 27, 34, 0.6);
+
+            --background-light: #F3F4F6;
+            --text-primary-light: #1F2937;
+            --text-secondary-light: #4B5563;
+            --border-light: rgba(31, 41, 55, 0.1);
+            --glass-card-bg-light: rgba(255, 255, 255, 0.6);
         }
+
+        html.dark {
+            --background-color: var(--background-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+            --glass-card-bg: var(--glass-card-bg-dark);
+        }
+
+        html:not(.dark) {
+            --background-color: var(--background-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+            --glass-card-bg: var(--glass-card-bg-light);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--background-color);
             color: var(--text-primary);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
+        
         .gradient-text {
             background: linear-gradient(90deg, #58A6FF, #A371F7, #F778BA);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .glass-card {
-            background: rgba(22, 27, 34, 0.6);
+            background: var(--glass-card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.5s ease;
         }
+
         .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2);
-            border-color: rgba(229, 231, 235, 0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(88, 166, 255, 0.5);
         }
         
         #hero-canvas {
@@ -99,19 +127,20 @@
         
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         
         .faq-question { cursor: pointer; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .faq-item.open .faq-answer { max-height: 200px; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.23, 1, 0.320, 1), padding 0.5s ease; padding-top: 0; padding-bottom: 0; }
+        .faq-item.open .faq-answer { max-height: 200px; padding-top: 0; padding-bottom: 1.5rem;}
         .faq-item.open .faq-arrow { transform: rotate(180deg); }
-        .faq-arrow { transition: transform 0.3s ease; }
+        .faq-arrow { transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -119,22 +148,100 @@
             z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
             display: flex; align-items: center; justify-content: center;
         }
+
         .modal-overlay.visible { opacity: 1; visibility: visible; }
         .modal-content {
-            transform: scale(0.95); transition: transform 0.3s ease;
+            transform: scale(0.9) translateY(20px); opacity: 0; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
         }
-        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-overlay.visible .modal-content { transform: scale(1) translateY(0); opacity: 1; }
         body.modal-open { overflow: hidden; }
+
+        .theme-switcher {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .dark .theme-switcher { background-color: #2c3e50; }
+        html:not(.dark) .theme-switcher { background-color: #bdc3c7; }
+
+        .theme-switcher-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dark .theme-switcher-knob { transform: translateX(24px); }
+        
+        .theme-icon { position: absolute; font-size: 12px; transition: opacity 0.3s ease; }
+        .sun-icon { opacity: 0; } .dark .sun-icon { opacity: 1; }
+        .moon-icon { opacity: 1; } .dark .moon-icon { opacity: 0; }
+
+        /* General styles update for dark/light mode */
+        html:not(.dark) .bg-black\/50 { background-color: rgba(255, 255, 255, 0.5); }
+        html:not(.dark) .border-white\/10 { border-color: var(--border-light); }
+        html:not(.dark) .text-gray-400 { color: var(--text-secondary); }
+        html:not(.dark) .text-white { color: var(--text-primary); }
+        html:not(.dark) .hover\:text-white:hover { color: var(--text-primary); }
+        
+        /* Logo color switching logic */
+        #main-header img, .footer-logo {
+            transition: filter 0.5s ease;
+        }
+        html.dark #main-header img,
+        html.dark .footer-logo {
+            filter: brightness(0) invert(1); /* Makes the black logo white */
+        }
+        /* In light mode, no filter is applied, so original black logo is shown */
+
+        html:not(.dark) .bg-gray-900 { background-color: #e5e7eb; }
+        html:not(.dark) .text-gray-300 { color: #374151; }
+        html:not(.dark) .hover\:bg-gray-800:hover { background-color: #d1d5db; }
+        html:not(.dark) .border-gray-700 { border-color: #d1d5db; }
+        html:not(.dark) .bg-white { background-color: #1F2937; }
+        html:not(.dark) .text-black { color: #F9FAFB; }
+        html:not(.dark) .hover\:bg-gray-200:hover { background-color: #374151; }
+        html:not(.dark) .bg-blue-500\/10 { background-color: rgba(59, 130, 246, 0.1); }
+        html:not(.dark) .text-blue-400 { color: #3b82f6; }
+        html:not(.dark) .border-blue-500\/20 { border-color: rgba(59, 130, 246, 0.2); }
+        html:not(.dark) .bg-purple-500\/10 { background-color: rgba(168, 85, 247, 0.1); }
+        html:not(.dark) .text-purple-400 { color: #a855f7; }
+        html:not(.dark) .border-purple-500\/20 { border-color: rgba(168, 85, 247, 0.2); }
+        html:not(.dark) .bg-pink-500\/10 { background-color: rgba(236, 72, 153, 0.1); }
+        html:not(.dark) .text-pink-400 { color: #ec4899; }
+        html:not(.dark) .border-pink-500\/20 { border-color: rgba(236, 72, 153, 0.2); }
+        html:not(.dark) .bg-green-500\/10 { background-color: rgba(34, 197, 94, 0.1); }
+        html:not(.dark) .border-green-500\/20 { border-color: rgba(34, 197, 94, 0.2); }
+        html:not(.dark) .text-green-400 { color: #22c55e; }
+        html:not(.dark) .hover\:text-green-300:hover { color: #16a34a; }
+        html:not(.dark) .bg-gray-900\/50 { background-color: rgba(229, 231, 235, 0.5); }
+        html:not(.dark) .focus\:ring-blue-500:focus { --tw-ring-color: #3b82f6; }
+        html:not(.dark) .bg-black\/20 { background-color: rgba(0, 0, 0, 0.05); }
+        html:not(.dark) .accent-blue-500 { accent-color: #3b82f6; }
+        html:not(.dark) .bg-gray-700 { background-color: #d1d5db; }
+        html:not(.dark) .bg-black\/30 { background-color: rgba(0,0,0,0.03); }
+        html:not(.dark) .text-gray-500 { color: #6b7280; }
+        html:not(.dark) .calendly-inline-widget { filter: invert(1) hue-rotate(180deg); }
+
 
     </style>
 </head>
-<body class="text-slate-300 antialiased">
+<body class="antialiased">
 
     <!-- Header Section -->
     <header id="main-header" class="bg-black/50 backdrop-blur-lg sticky top-0 z-50 border-b border-white/10">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex-shrink-0">
-                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10" style="filter: brightness(0) invert(1);" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
+                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
             </a>
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
                 <a href="#services" class="hover:text-white transition-colors">Services</a>
@@ -143,12 +250,20 @@
                 <a href="#successstories" class="hover:text-white transition-colors">Case Studies</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </div>
-            <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="hidden lg:block bg-white text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition-colors">
-                Book a Free Strategy Call
-            </a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-            </button>
+            <div class="flex items-center gap-4">
+                <div id="theme-switcher" class="theme-switcher">
+                    <div class="theme-switcher-knob">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </div>
+                </div>
+                <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="hidden lg:block bg-white text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
+                    Book a Free Strategy Call
+                </a>
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-700">
              <a href="#services" class="block py-3 px-6 text-sm text-gray-300 hover:bg-gray-800">Services</a>
@@ -174,7 +289,7 @@
                 </p>
 
                 <div class="mt-12 flex justify-center items-center gap-4 animate-on-scroll" style="transition-delay: 400ms;">
-                    <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-200 transition-transform hover:scale-105">
+                    <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg hover:shadow-2xl">
                         Book Free Strategy Call
                     </a>
                 </div>
@@ -208,7 +323,7 @@
                     <!-- Service Card 3 -->
                     <div class="glass-card p-8 text-left animate-on-scroll" style="transition-delay: 300ms;">
                         <div class="bg-pink-500/10 text-pink-400 rounded-xl h-16 w-16 flex items-center justify-center mb-6 border border-pink-500/20">
-                            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                             <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold text-white">Rescue Projects</h3>
                         <p class="mt-2 text-gray-400 text-sm">We salvage failing ERP projects, realigning them with your strategic goals to deliver the value you were promised.</p>
@@ -216,7 +331,7 @@
                     <!-- Service Card 4 -->
                     <div class="glass-card bg-green-500/10 border-green-500/20 text-white p-8 animate-on-scroll md:col-span-2" style="transition-delay: 450ms;">
                          <div class="bg-green-500/10 text-green-400 rounded-xl h-16 w-16 flex items-center justify-center mb-6 border border-green-500/20">
-                           <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+                            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold">Growth Packages <span class="text-xs bg-white/10 text-white px-2 py-1 rounded-full font-medium ml-2">NEW</span></h3>
                         <p class="mt-2 text-sm text-gray-300">Our core offering. A monthly retainer that provides a complete, scalable solution for your finance, tech, and data strategy needs. The engine for your growth.</p>
@@ -265,6 +380,10 @@
                             <div>
                                 <label for="calc-email" class="block text-sm font-medium text-gray-400 mb-1">Email Address *</label>
                                 <input type="email" name="email" id="calc-email" required class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="calc-phone" class="block text-sm font-medium text-gray-400 mb-1">Phone Number *</label>
+                                <input type="tel" name="phone" id="calc-phone" required class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 text-left">
@@ -381,7 +500,7 @@
                             <h3 class="font-semibold text-white">How long does an ERP implementation take?</h3>
                             <svg class="faq-arrow h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </div>
-                        <div class="faq-answer px-6 pb-6">
+                        <div class="faq-answer px-6">
                             <p class="text-gray-400 text-sm">Our streamlined process allows us to get businesses live with core functionality in weeks, not months. Our focus is always on speed-to-value.</p>
                         </div>
                     </div>
@@ -390,7 +509,7 @@
                             <h3 class="font-semibold text-white">Is this only for businesses using Odoo?</h3>
                              <svg class="faq-arrow h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </div>
-                        <div class="faq-answer px-6 pb-6">
+                        <div class="faq-answer px-6">
                             <p class="text-gray-400 text-sm">While we are expert Odoo partners, our data strategy and business intelligence services are platform-agnostic. We work with your existing tech stack to unify and analyze your data.</p>
                         </div>
                     </div>
@@ -399,7 +518,7 @@
                             <h3 class="font-semibold text-white">What does a 'Growth Package' retainer include?</h3>
                              <svg class="faq-arrow h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </div>
-                        <div class="faq-answer px-6 pb-6">
+                        <div class="faq-answer px-6">
                             <p class="text-gray-400 text-sm">It's a comprehensive monthly partnership covering your finance, tech, and data strategy needs. It's designed to be a scalable, all-in-one solution that grows with you. <a href="packages.html" class="text-blue-400 hover:underline">See the full breakdown here.</a></p>
                         </div>
                     </div>
@@ -414,7 +533,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Evolve?</h2>
                     <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Book your free, no-obligation strategy call. Let's build your data-driven future.</p>
                 </div>
-                <div class="calendly-inline-widget animate-on-scroll rounded-lg overflow-hidden" data-url="https://calendly.com/khalid-kaidolab/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0d1117&text_color=e6edf3&primary_color=58a6ff" style="min-width:320px;height:700px;"></div>
+                <div class="calendly-inline-widget animate-on-scroll rounded-lg overflow-hidden" data-url="https://calendly.com/khalid-kaidolab/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
             </div>
         </section>
 
@@ -438,12 +557,12 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                             <label for="phone" class="block text-sm font-medium text-gray-400">Phone Number</label>
-                             <input type="tel" name="phone" id="phone" class="mt-1 block w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                           <label for="phone" class="block text-sm font-medium text-gray-400">Phone Number *</label>
+                           <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
                         </div>
                         <div class="mt-6">
-                            <label for="message" class="block text-sm font-medium text-gray-400">How can we help? *</label>
-                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition" placeholder="Tell us about your project, goals, or challenges..."></textarea>
+                            <label for="message" class="block text-sm font-medium text-gray-400">How can we help?</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition" placeholder="Tell us about your project, goals, or challenges..."></textarea>
                         </div>
                         <div class="mt-8 text-center">
                             <button type="submit" class="bg-white text-black px-10 py-3 rounded-lg font-bold text-lg hover:bg-gray-200 transition-transform hover:scale-105">
@@ -461,7 +580,7 @@
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-1">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10 mb-4" style="filter: brightness(0) invert(1);" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
+                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10 mb-4 footer-logo" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
                     <p class="text-sm">From data to dominance.</p>
                     <div class="mt-4 flex space-x-4">
                         <a href="https://www.linkedin.com/company/kaidolab/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="LinkedIn">
@@ -517,10 +636,46 @@
         </div>
     </div>
     
+    <!-- Exit Intent Modal -->
+    <div id="exit-intent-modal" class="modal-overlay p-4">
+        <div class="modal-content glass-card w-11/12 max-w-lg text-center p-8 md:p-12">
+            <h2 class="text-3xl font-bold text-white mb-4">Leaving So Soon?</h2>
+            <p class="text-gray-400 mb-8">Unlock your business's potential. Let's discuss your data strategy on a free, no-obligation call.</p>
+            <a href="https://calendly.com/khalid-kaidolab/30min" target="_blank" class="bg-white text-black px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-200 transition-transform hover:scale-105 inline-block">
+                Book My Free Call
+            </a>
+            <button id="close-exit-modal-btn" class="mt-4 text-sm text-gray-500 hover:text-white">No thanks, I'm just browsing.</button>
+        </div>
+    </div>
+    
     <!-- Calendly Widget Script -->
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme Switcher Logic ---
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const html = document.documentElement;
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+            };
+            
+            // On page load, check for saved theme
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+            applyTheme(savedTheme);
+            
+            themeSwitcher.addEventListener('click', () => {
+                const isDark = html.classList.contains('dark');
+                const newTheme = isDark ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+
             // --- Mobile Menu Toggle ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -624,16 +779,45 @@
                 const baseCost = 25000;
                 const userCost = users * 550;
                 const integrationCost = integrations * 7500;
-                const totalBudget = baseCost + userCost + integrationCost;
+                // Increased budget by 40%
+                const totalBudget = (baseCost + userCost + integrationCost) * 1.40;
 
-                budgetResult.textContent = `AED ${totalBudget.toLocaleString()}`;
+                budgetResult.textContent = `AED ${Math.round(totalBudget).toLocaleString()}`;
             }
             if(userCountSlider){
                  [userCountSlider, integrationCountSlider].forEach(slider => {
-                    if(slider) slider.addEventListener('input', calculateBudget);
+                     if(slider) slider.addEventListener('input', calculateBudget);
                  });
                  calculateBudget();
             }
+
+            // --- Exit Intent Popup Logic ---
+            const exitModal = document.getElementById('exit-intent-modal');
+            const closeExitModalBtn = document.getElementById('close-exit-modal-btn');
+            
+            const showExitModal = () => {
+                if (!sessionStorage.getItem('exitModalShown')) {
+                    exitModal.classList.add('visible');
+                    document.body.classList.add('modal-open');
+                    sessionStorage.setItem('exitModalShown', 'true');
+                }
+            };
+            
+            const hideExitModal = () => {
+                exitModal.classList.remove('visible');
+                document.body.classList.remove('modal-open');
+            };
+
+            document.addEventListener('mouseleave', (e) => {
+                if (e.clientY <= 0) {
+                    showExitModal();
+                }
+            });
+
+            closeExitModalBtn.addEventListener('click', hideExitModal);
+            exitModal.addEventListener('click', (e) => {
+                if(e.target === exitModal) hideExitModal();
+            });
 
 
             // --- Hero Canvas Network Animation ---
