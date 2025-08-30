@@ -15,29 +15,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background-color: #0D1117;
-            --text-primary: #E6EDF3;
-            --text-secondary: #8B949E;
-            --border-color: rgba(229, 231, 235, 0.1);
+            --background-dark: #0D1117;
+            --text-primary-dark: #E6EDF3;
+            --text-secondary-dark: #8B949E;
+            --border-dark: rgba(229, 231, 235, 0.1);
+            --glass-card-bg-dark: rgba(22, 27, 34, 0.6);
+
+            --background-light: #F3F4F6;
+            --text-primary-light: #1F2937;
+            --text-secondary-light: #4B5563;
+            --border-light: rgba(31, 41, 55, 0.1);
+            --glass-card-bg-light: rgba(255, 255, 255, 0.6);
         }
+
+        html.dark {
+            --background-color: var(--background-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+            --glass-card-bg: var(--glass-card-bg-dark);
+        }
+
+        html:not(.dark) {
+            --background-color: var(--background-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+            --glass-card-bg: var(--glass-card-bg-light);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--background-color);
             color: var(--text-primary);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
+        
         .gradient-text {
             background: linear-gradient(90deg, #58A6FF, #A371F7, #F778BA);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .glass-card {
-            background: rgba(22, 27, 34, 0.6);
+            background: var(--glass-card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.5s ease;
         }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(88, 166, 255, 0.5);
+        }
+
         .glow-border { position: relative; overflow: hidden; z-index: 1; }
         .glow-border::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -61,7 +96,7 @@
         .service-item:hover .check-icon { transform: rotate(360deg) scale(1.2); }
         
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0D1117; }
+        ::-webkit-scrollbar-track { background: var(--background-color); }
         ::-webkit-scrollbar-thumb { background: #238636; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #2ea043; }
         
@@ -75,45 +110,102 @@
         }
         .modal-overlay.visible { opacity: 1; visibility: visible; }
         .modal-content {
-            transform: scale(0.95); transition: transform 0.3s ease;
+            transform: scale(0.9) translateY(20px); opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
             max-height: 90vh; overflow-y: auto;
-            background-color: var(--background-color); color: var(--text-primary);
         }
-        .modal-overlay.visible .modal-content { transform: scale(1); }
+        html:not(.dark) .modal-content {
+             background-color: var(--background-light); 
+             color: var(--text-primary-light);
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1) translateY(0); opacity: 1; }
         
         #cookie-banner { transition: transform 0.5s ease-in-out; }
 
         .kaido-method-step::before {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            left: -1rem;
-            right: -1rem;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            content: ''; position: absolute; top: 2rem; left: -1rem; right: -1rem;
+            height: 2px; background: linear-gradient(90deg, transparent, var(--border-color), transparent);
             z-index: -1;
         }
-         .kaido-method-step:first-child::before {
-            background: linear-gradient(90deg, transparent, var(--border-color));
-         }
-         .kaido-method-step:last-child::before {
-            background: linear-gradient(90deg, var(--border-color), transparent);
-         }
+        .kaido-method-step:first-child::before { background: linear-gradient(90deg, transparent, var(--border-color)); }
+        .kaido-method-step:last-child::before { background: linear-gradient(90deg, var(--border-color), transparent); }
+
+        .theme-switcher {
+            position: relative; width: 50px; height: 26px; border-radius: 13px;
+            cursor: pointer; transition: background-color 0.3s ease;
+        }
+        .dark .theme-switcher { background-color: #2c3e50; }
+        html:not(.dark) .theme-switcher { background-color: #bdc3c7; }
+
+        .theme-switcher-knob {
+            position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+            border-radius: 50%; background-color: white;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .dark .theme-switcher-knob { transform: translateX(24px); }
+        
+        .theme-icon { position: absolute; font-size: 12px; transition: opacity 0.3s ease; }
+        .sun-icon { opacity: 0; } .dark .sun-icon { opacity: 1; }
+        .moon-icon { opacity: 1; } .dark .moon-icon { opacity: 0; }
+
+        /* General styles update for dark/light mode */
+        html:not(.dark) .bg-black\/50 { background-color: rgba(255, 255, 255, 0.5); }
+        html:not(.dark) .border-white\/10, html:not(.dark) .border-gray-200\/10 { border-color: var(--border-light); }
+        html:not(.dark) .text-gray-400 { color: var(--text-secondary); }
+        html:not(.dark) .text-white { color: var(--text-primary); }
+        html:not(.dark) .hover\:text-white:hover { color: var(--text-primary); }
+        
+        #main-header img, .footer-logo { transition: filter 0.5s ease; }
+        html.dark #main-header img, html.dark .footer-logo { filter: brightness(0) invert(1); }
+
+        html:not(.dark) .bg-gray-900 { background-color: #e5e7eb; }
+        html:not(.dark) .text-gray-300 { color: #374151; }
+        html:not(.dark) .hover\:bg-gray-800:hover { background-color: #d1d5db; }
+        html:not(.dark) .border-gray-700 { border-color: #d1d5db; }
+
+        /* Invert nav CTA button color in light mode for better contrast */
+        html:not(.dark) #main-header .bg-white.text-black {
+            background-color: var(--text-primary-light);
+            color: var(--background-light);
+        }
+        html:not(.dark) #main-header .bg-white.text-black:hover {
+            background-color: #374151;
+        }
+        
+        html:not(.dark) .bg-gray-900\/50 { background-color: rgba(229, 231, 235, 0.5); }
+        html:not(.dark) .focus\:ring-indigo-500:focus { --tw-ring-color: #6366f1; }
+        html:not(.dark) .bg-black\/20 { background-color: rgba(0, 0, 0, 0.05); }
+        html:not(.dark) .accent-indigo-500 { accent-color: #6366f1; }
+        html:not(.dark) .bg-gray-700 { background-color: #d1d5db; }
+        html:not(.dark) .text-gray-500 { color: #6b7280; }
+        html:not(.dark) .bg-gray-800 { background-color: #e5e7eb; }
+        html:not(.dark) .hover\:bg-gray-700:hover { background-color: #d1d5db; }
+        
     </style>
 </head>
 <body class="overflow-x-hidden">
     <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-black/50 backdrop-blur-lg border-b border-gray-200/10">
+    <nav id="main-header" class="sticky top-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
         <div class="container mx-auto px-4 flex justify-between items-center py-3">
             <a href="index.html" class="flex-shrink-0">
-                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10 brightness-200" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
+                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
             </a>
             <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-400">
                 <a href="#packages" class="hover:text-white transition-colors">Packages</a>
                 <a href="#roi-calculator" class="hover:text-white transition-colors">Growth Calculator</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                 <a href="index.html" class="hover:text-white transition-colors">Home</a>
             </div>
-            <a href="#contact" class="hidden md:block bg-white text-black text-sm font-bold px-4 py-2 rounded-lg hover:bg-gray-200 transition-all">Start Scaling</a>
+             <div class="flex items-center gap-4">
+                <div id="theme-switcher" class="theme-switcher">
+                    <div class="theme-switcher-knob">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </div>
+                </div>
+                <a href="#contact" class="hidden md:block bg-white text-black text-sm font-bold px-4 py-2 rounded-lg hover:bg-gray-200 transition-all">Start Scaling</a>
+            </div>
         </div>
     </nav>
 
@@ -122,7 +214,7 @@
 
     <!-- Hero Section -->
     <header class="min-h-[90vh] flex flex-col items-center justify-center text-center p-4">
-        <h1 class="text-4xl md:text-7xl font-black tracking-tighter leading-tight mb-4">
+        <h1 class="text-4xl md:text-7xl font-black tracking-tighter leading-tight mb-4 text-white">
             Your Data is an Untapped Asset.<br><span class="gradient-text">We Unlock Its Value.</span>
         </h1>
         <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
@@ -136,19 +228,19 @@
     <!-- Redesigned "Are You Ready to Scale?" Section -->
     <section id="who-we-help" class="py-24">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Are You Flying Blind?</h2>
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-white">Are You Flying Blind?</h2>
             <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-12">Scaling without a clear data strategy leads to costly mistakes. Our packages are for businesses that are ready to evolve.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="glass-card p-8 text-center border-indigo-500/20 border-t-2">
-                    <h3 class="text-xl font-bold mb-2">Disconnected Systems</h3>
+                    <h3 class="text-xl font-bold mb-2 text-white">Disconnected Systems</h3>
                     <p class="text-gray-400">Is your sales data siloed from finance? We unify your tech stack, creating a single source of truth for your entire operation.</p>
                 </div>
                 <div class="glass-card p-8 text-center border-purple-500/20 border-t-2">
-                    <h3 class="text-xl font-bold mb-2">Delayed Insights</h3>
+                    <h3 class="text-xl font-bold mb-2 text-white">Delayed Insights</h3>
                     <p class="text-gray-400">Are you waiting weeks for reports? We deliver real-time dashboards that turn complex data into actionable insights, instantly.</p>
                 </div>
                 <div class="glass-card p-8 text-center border-pink-500/20 border-t-2">
-                    <h3 class="text-xl font-bold mb-2">Inefficient Operations</h3>
+                    <h3 class="text-xl font-bold mb-2 text-white">Inefficient Operations</h3>
                     <p class="text-gray-400">Are manual tasks slowing you down? We automate workflows, freeing up your team to focus on high-impact strategic initiatives.</p>
                 </div>
             </div>
@@ -158,21 +250,21 @@
     <!-- "The Kaido Method" Section -->
     <section class="py-24">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-12">The Kaido Method: From Data to Dominance</h2>
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-white">The Kaido Method: From Data to Dominance</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto relative">
                 <div class="kaido-method-step relative p-6">
                     <div class="text-5xl font-black gradient-text mb-4">1</div>
-                    <h3 class="text-2xl font-bold mb-2">Unify Data</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Unify Data</h3>
                     <p class="text-gray-400">We integrate your disparate software (CRM, accounting, etc.) into a cohesive data ecosystem, ensuring every piece of information is clean, accessible, and ready for analysis.</p>
                 </div>
                 <div class="kaido-method-step relative p-6">
                      <div class="text-5xl font-black gradient-text mb-4">2</div>
-                    <h3 class="text-2xl font-bold mb-2">Derive Insights</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Derive Insights</h3>
                     <p class="text-gray-400">Using advanced analytics and business intelligence tools, we transform raw data into clear, concise dashboards and reports that highlight trends, risks, and opportunities.</p>
                 </div>
                 <div class="kaido-method-step relative p-6">
                     <div class="text-5xl font-black gradient-text mb-4">3</div>
-                    <h3 class="text-2xl font-bold mb-2">Accelerate Growth</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Accelerate Growth</h3>
                     <p class="text-gray-400">Armed with data-driven insights, we provide executive-level strategy (vCFO/vCIO) to help you optimize operations, increase profitability, and outmaneuver the competition.</p>
                 </div>
             </div>
@@ -192,7 +284,7 @@
                 <div class="lg:w-1/2 lg:sticky top-24 h-fit mb-12 lg:mb-0">
                     <div id="package-card" class="glass-card glow-border rounded-2xl p-8 transition-all duration-500">
                         <div class="flex justify-between items-center mb-6">
-                            <h2 id="package-name" class="text-3xl font-bold transition-all duration-300">Your Package</h2>
+                            <h2 id="package-name" class="text-3xl font-bold transition-all duration-300 text-white">Your Package</h2>
                             <span id="package-tier-badge" class="px-4 py-1 rounded-full text-sm font-semibold transition-all duration-300">Select a Tier</span>
                         </div>
                         <div id="services-container" class="space-y-4">
@@ -210,19 +302,19 @@
                 <div class="lg:w-1/2">
                     <div class="space-y-32">
                         <div id="foundation-trigger" class="package-trigger min-h-[50vh] flex flex-col justify-center">
-                            <h3 class="text-4xl font-extrabold my-3">Foundation</h3>
+                            <h3 class="text-4xl font-extrabold my-3 text-white">Foundation</h3>
                             <p class="text-lg text-gray-400 mb-4">Establish a rock-solid data foundation. We streamline your core operations to ensure every transaction, sale, and interaction is captured accurately, making you ready for scalable growth.</p>
                         </div>
                         <div id="momentum-trigger" class="package-trigger min-h-[50vh] flex flex-col justify-center">
-                            <h3 class="text-4xl font-extrabold my-3">Momentum</h3>
+                            <h3 class="text-4xl font-extrabold my-3 text-white">Momentum</h3>
                             <p class="text-lg text-gray-400 mb-4">Move beyond basic reporting. This package provides the analytical tools and proactive insights to turn your operational data into a competitive advantage.</p>
                         </div>
                         <div id="accelerator-trigger" class="package-trigger min-h-[50vh] flex flex-col justify-center">
-                            <h3 class="text-4xl font-extrabold my-3">Accelerator</h3>
+                            <h3 class="text-4xl font-extrabold my-3 text-white">Accelerator</h3>
                             <p class="text-lg text-gray-400 mb-4">Integrate your entire business. We connect your systems and provide strategic oversight to create a fully optimized, data-driven enterprise.</p>
                         </div>
                         <div id="apex-trigger" class="package-trigger min-h-[50vh] flex flex-col justify-center">
-                            <h3 class="text-4xl font-extrabold my-3">Apex</h3>
+                            <h3 class="text-4xl font-extrabold my-3 text-white">Apex</h3>
                             <p class="text-lg text-gray-400 mb-4">Operate at an executive level. Gain a dedicated strategic partner (vCFO/vCIO) to guide high-stakes decisions, from M&A to international expansion, all powered by AI-enhanced insights.</p>
                         </div>
                     </div>
@@ -235,7 +327,7 @@
     <section id="roi-calculator" class="py-24">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto glass-card rounded-2xl p-8 md:p-12 text-center">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Growth Potential Calculator</h2>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Growth Potential Calculator</h2>
                 <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-12">Estimate the hidden value you could unlock with a unified data strategy. Adjust the sliders to match your business.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-left">
                     <div>
@@ -265,7 +357,7 @@
         <div class="container mx-auto px-4">
             <div id="form-container">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Ready to Unlock Your Growth?</h2>
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Ready to Unlock Your Growth?</h2>
                     <p class="text-lg text-gray-400 mb-12">Let's discuss your unique challenges. Fill out the form for a no-obligation consultation and a custom growth plan.</p>
                 </div>
                 <form name="contact-consultation" method="POST" data-netlify="true" action="?submission=success" data-netlify-honeypot="bot-field" class="max-w-xl mx-auto glass-card p-8">
@@ -286,12 +378,12 @@
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-400 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                            <input type="tel" id="phone" name="phone" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
                         </div>
                     </div>
                     <div class="mb-4">
-                         <label for="package-interest" class="block text-sm font-medium text-gray-400 mb-1">Package of Interest</label>
-                         <select id="package-interest" name="package-interest" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                       <label for="package-interest" class="block text-sm font-medium text-gray-400 mb-1">Package of Interest</label>
+                       <select id="package-interest" name="package-interest" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
                             <option>Not Sure Yet</option><option value="Foundation">Foundation</option><option value="Momentum">Momentum</option><option value="Accelerator">Accelerator</option><option value="Apex">Apex</option>
                         </select>
                     </div>
@@ -315,6 +407,54 @@
         </div>
     </footer>
 
+    <!-- Site Footer -->
+    <footer class="bg-black/30 text-gray-400 border-t border-white/10">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <a href="index.html">
+                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido Lab Logo" class="h-10 mb-4 footer-logo" onerror="this.onerror=null; this.src='https://placehold.co/160x40/0D1117/E6EDF3?text=Kaido';">
+                    </a>
+                    <p class="text-sm">From data to dominance.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="https://www.linkedin.com/company/kaidolab/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="LinkedIn">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="https://twitter.com/kaidolab" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="Twitter">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.424.727-.666 1.581-.666 2.477 0 1.648.838 2.943 2.12 3.748-.778-.024-1.512-.24-2.158-.598v.06c0 2.306 1.638 4.225 3.804 4.664-.397.108-.816.166-1.249.166-.307 0-.604-.03-.893-.084.608 1.892 2.373 3.273 4.464 3.311-1.624 1.274-3.665 2.031-5.88 2.031-.383 0-.761-.022-1.135-.067 2.099 1.353 4.59 2.144 7.29 2.144 8.76 0 13.556-7.252 13.556-13.556 0-.206-.005-.411-.013-.615.932-.673 1.739-1.511 2.383-2.464z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider">Explore</h4>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#packages" class="hover:text-white transition-colors">Packages</a></li>
+                        <li><a href="#roi-calculator" class="hover:text-white transition-colors">Growth Calculator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider">Company</h4>
+                     <ul class="mt-4 space-y-3 text-sm">
+                         <li><a href="index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                         <li><a href="index.html#schedule" class="hover:text-white transition-colors">Book a Call</a></li>
+                         <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+                     </ul>
+                </div>
+               <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider">Connect</h4>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="mailto:hello@kaidolab.com" class="hover:text-white transition-colors">hello@kaidolab.com</a></li>
+                        <li><a href="tel:+971556474674" class="hover:text-white transition-colors">+971 55 647 4674</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 text-center text-xs border-t border-white/10">
+                <p>&copy; 2025 Kaido IT Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Back to Top Button -->
     <button id="back-to-top" class="fixed bottom-8 right-8 bg-white/10 backdrop-blur-sm text-white w-12 h-12 rounded-full hidden justify-center items-center shadow-lg hover:bg-white/20 transition-all transform hover:scale-110 border border-white/10">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" /></svg>
@@ -332,6 +472,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+             // --- Theme Switcher Logic ---
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const html = document.documentElement;
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+            };
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+            applyTheme(savedTheme);
+            
+            themeSwitcher.addEventListener('click', () => {
+                const isDark = html.classList.contains('dark');
+                const newTheme = isDark ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
             // --- DATA STORE ---
             const packageData = {
                 foundation: {
@@ -489,15 +651,8 @@
             document.addEventListener('mouseout', exitIntentHandler);
             
             const cookieBanner = document.getElementById('cookie-banner');
-            const acceptCookiesBtn = document.getElementById('accept-cookies');
-            if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => { cookieBanner.style.transform = 'translateY(0)'; }, 2000);
-            }
-            if(acceptCookiesBtn) {
-                acceptCookiesBtn.addEventListener('click', () => {
-                    localStorage.setItem('cookiesAccepted', 'true');
-                    cookieBanner.style.transform = 'translateY(100%)';
-                });
+            if (cookieBanner) {
+                cookieBanner.remove();
             }
         });
         
@@ -517,15 +672,15 @@
             
             let tableHtml = `<div class="modal-content glass-card w-11/12 max-w-6xl rounded-2xl p-6 relative">
                 <button class="close-modal-btn absolute top-4 right-4 text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-                <h2 class="text-3xl font-bold text-center mb-8">Package Comparison</h2>
+                <h2 class="text-3xl font-bold text-center mb-8 text-white">Package Comparison</h2>
                 <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left">
                     <thead><tr class="border-b border-gray-700">
-                        <th class="p-4">Feature</th>
-                        <th class="p-4 text-center">Foundation</th>
-                        <th class="p-4 text-center">Momentum</th>
-                        <th class="p-4 text-center">Accelerator</th>
-                        <th class="p-4 text-center">Apex</th>
+                        <th class="p-4 text-white">Feature</th>
+                        <th class="p-4 text-center text-white">Foundation</th>
+                        <th class="p-4 text-center text-white">Momentum</th>
+                        <th class="p-4 text-center text-white">Accelerator</th>
+                        <th class="p-4 text-center text-white">Apex</th>
                     </tr></thead><tbody>`;
             
             let featureIndex = 0;
