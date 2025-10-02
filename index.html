@@ -340,67 +340,6 @@
             </div>
         </section>
 
-        <!-- ERP Budget Calculator Section -->
-        <section id="budget-calculator" class="py-24">
-            <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto glass-card rounded-2xl p-8 md:p-12 text-center animate-on-scroll">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">ERP Budget Estimator</h2>
-                    <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-12">Get a preliminary budget estimate for your ERP implementation. Fill out your details to receive your estimate and a free consultation.</p>
-                    <form name="budget-calculator" id="budget-calculator-form" class="max-w-4xl mx-auto" data-netlify="true" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
-                            <div>
-                                <label for="calc-full-name" class="block text-sm font-medium text-gray-400 mb-1">Full Name *</label>
-                                <input type="text" name="full-name" id="calc-full-name" required class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
-                            </div>
-                            <div>
-                                <label for="calc-email" class="block text-sm font-medium text-gray-400 mb-1">Email Address *</label>
-                                <input type="email" name="email" id="calc-email" required class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label for="calc-phone" class="block text-sm font-medium text-gray-400 mb-1">Phone Number *</label>
-                                <input type="tel" name="phone" id="calc-phone" required class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 text-left">
-                            <div class="space-y-2">
-                                <label for="user-count" class="block font-semibold text-gray-300">Number of Users: <span id="user-count-label" class="font-bold text-white">50</span></label>
-                                <input type="range" id="user-count" name="user-count" min="5" max="250" value="50" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-                            </div>
-                            <div class="space-y-2">
-                               <label for="industry" class="block font-semibold text-gray-300">Your Industry</label>
-                               <select id="industry" name="industry" class="w-full bg-gray-900/50 border-gray-700 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
-                                    <option>Manufacturing</option>
-                                    <option>Retail & eCommerce</option>
-                                    <option>Wholesale & Distribution</option>
-                                    <option>Professional Services</option>
-                                    <option>Construction & Real Estate</option>
-                                    <option>Healthcare & Pharmaceuticals</option>
-                                    <option>Hospitality & Food Service</option>
-                                    <option>Non-Profit</option>
-                                    <option>Financial Services</option>
-                                    <option>Automotive</option>
-                                    <option>Education</option>
-                                    <option>Other</option>
-                               </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label for="integration-count" class="block font-semibold text-gray-300">Integrations: <span id="integration-count-label" class="font-bold text-white">1</span></label>
-                                <input type="range" id="integration-count" name="integration-count" min="0" max="10" value="1" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-                            </div>
-                        </div>
-                         <div class="bg-black/20 border-2 border-dashed border-gray-700 rounded-lg p-6 mb-8">
-                            <p class="text-lg text-gray-300">Estimated Project Budget</p>
-                            <p id="budget-result" class="text-4xl md:text-5xl font-extrabold gradient-text my-2">AED 0</p>
-                        </div>
-                        <div class="text-center mt-8">
-                            <button type="submit" class="bg-white text-black px-10 py-3 rounded-lg font-bold text-lg hover:bg-gray-200 transition-transform hover:scale-105">Get My Estimate & Free Consultation</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-
         <!-- Success Stories Section -->
         <section id="successstories" class="py-24">
             <div class="container mx-auto px-6">
