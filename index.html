@@ -1,614 +1,1112 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaido | Specialized ERP Strategy</title>
-    
-    <link rel="icon" href="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidofaviconwebp.webp" sizes="any">
-    <link rel="canonical" href="https://kaidolab.com/">
-    <meta name="description" content="Strategic ERP consulting in MENA. Workflow optimization first, technology second. Free readiness audit for leaders in MENA.">
-    <meta name="keywords" content="ERP consultancy , ERP implementation, retail ERP , ecommerce automation , SAP Odoo Oracle consultants">
+    <meta name="description" content="Certified ERP specialists in Dubai. Odoo, SAP, Oracle & Microsoft Dynamics implemented with fixed prices and zero downtime. Free gap analysis for MENA businesses.">
+    <title>Kaido | ERP Strategy & Implementation · GCC & MENA</title>
+    <meta property="og:title" content="Run Your Whole Business on One System | Kaido">
+    <meta property="og:description" content="Replace spreadsheets and disconnected apps with a unified ERP. Fixed price. Live in weeks. Free gap analysis.">
+    <meta property="og:type" content="website">
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Kaido Solutions",
-      "image": "https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp",
-      "url": "https://kaidolab.com",
-      "telephone": "+971556474674",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Dubai Digital Park",
-        "addressLocality": "Dubai",
-        "addressCountry": "AE"
-      },
-      "sameAs": ["https://www.linkedin.com/company/kaidolab/"]
-    }
-    </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GWKK516F9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8GWKK516F9', { 'send_page_view': true });
-
-      function trackLeadEvent(label, company = 'unknown') {
-        gtag('event', 'generate_lead', { 'event_category': 'Engagement', 'event_label': label, 'company_name': company });
-      }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        /* ── RESET ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: #111;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ── TOKENS ── */
         :root {
-            --background: #FAFAFA;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --accent-primary: #0066FF;
-            --border-color: rgba(15, 23, 42, 0.06);
-        }
-        
-        body { font-family: 'DM Sans', sans-serif; background-color: var(--background); color: var(--text-primary); line-height: 1.6; }
-        .serif { font-family: 'DM Serif Display', serif; }
-
-        .gradient-text {
-            background: linear-gradient(120deg, #0066FF 0%, #6366F1 50%, #8B5CF6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            --black:   #0F0F0F;
+            --white:   #FFFFFF;
+            --gray-50: #F9F8F6;
+            --gray-100:#F2F1EF;
+            --gray-200:#E5E3E0;
+            --gray-400:#9B9994;
+            --gray-600:#5A5855;
+            --accent:  #E8500A;   /* used sparingly: h1 italic, numbers */
+            --radius:  8px;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--border-color);
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ── LAYOUT ── */
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+        section { padding: 96px 0; }
+
+        /* ── TYPE ── */
+        .eyebrow {
+            display: inline-block; font-size: 10px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--gray-400); margin-bottom: 18px;
+        }
+        h1 { font-size: clamp(40px, 5vw, 68px); font-weight: 900; line-height: 1.08; letter-spacing: -.03em; }
+        h2 { font-size: clamp(28px, 3.5vw, 46px); font-weight: 800; line-height: 1.12; letter-spacing: -.025em; }
+        h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.show { opacity: 1; transform: none; }
+        .d1 { transition-delay: .07s; } .d2 { transition-delay: .14s; }
+        .d3 { transition-delay: .21s; } .d4 { transition-delay: .28s; }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 13px 26px; border-radius: var(--radius);
+            font-size: 14px; font-weight: 700; transition: all .2s;
+            cursor: pointer; border: 1.5px solid transparent; font-family: inherit; white-space: nowrap;
+        }
+        .btn-black { background: var(--black); color: #fff; border-color: var(--black); }
+        .btn-black:hover { background: #2a2a2a; border-color: #2a2a2a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+        .btn-outline { background: transparent; color: var(--black); border-color: var(--gray-200); }
+        .btn-outline:hover { border-color: var(--black); }
+        .btn-white { background: #fff; color: var(--black); border-color: #fff; }
+        .btn-white:hover { background: var(--gray-100); transform: translateY(-1px); }
+        .btn-lg { padding: 16px 32px; font-size: 15px; border-radius: 10px; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            background: rgba(255,255,255,.95); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gray-200); transition: box-shadow .3s;
+        }
+        nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.07); }
+        .nav-inner { display: flex; align-items: center; height: 66px; }
+        .nav-logo img { height: 38px; }
+        .nav-links { display: flex; gap: 26px; list-style: none; margin-left: 28px; }
+        .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-600); transition: color .2s; }
+        .nav-links a:hover { color: var(--black); }
+        .nav-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+        .nav-phone { font-size: 13px; font-weight: 600; color: var(--black); }
+        .nav-phone:hover { color: var(--accent); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { display: block; width: 20px; height: 2px; background: var(--black); border-radius: 2px; }
+        .mob-menu {
+            display: none; position: fixed; top: 66px; left: 0; right: 0;
+            background: #fff; border-bottom: 1px solid var(--gray-200);
+            padding: 24px 28px; flex-direction: column; gap: 18px; z-index: 199;
+        }
+        .mob-menu.open { display: flex; }
+        .mob-menu a { font-size: 16px; font-weight: 600; color: var(--black); }
+
+        /* ── HERO ── */
+        .hero { padding: 148px 0 72px; background: var(--white); }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            border: 1.5px solid var(--gray-200); padding: 6px 14px 6px 10px;
+            border-radius: 100px; font-size: 12px; font-weight: 600;
+            color: var(--gray-600); margin-bottom: 28px;
+        }
+        .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 3px rgba(34,197,94,.18); }
+
+        .hero h1 { margin-bottom: 22px; }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero-sub { font-size: 17px; color: var(--gray-600); line-height: 1.72; max-width: 440px; margin-bottom: 36px; }
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+
+        .hero-pills { display: flex; flex-wrap: wrap; gap: 20px; }
+        .pill { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--gray-600); }
+        .pill-mark { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* ── DASHBOARD ── */
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        .hero-visual-wrap { animation: float 7s ease-in-out infinite; position: relative; }
+        .dash-frame {
+            background: var(--white); border: 1px solid var(--gray-200);
+            border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.10), 0 4px 16px rgba(0,0,0,.06);
+            overflow: hidden;
+        }
+        .dash-bar { background: var(--gray-50); padding: 11px 16px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 7px; }
+        .win-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .win-red{background:#FF5F57;} .win-yel{background:#FEBC2E;} .win-grn{background:#28C840;}
+        .dash-bar-title { margin-left: 8px; font-size: 12px; font-weight: 600; color: var(--gray-400); }
+        .dash-body { padding: 20px; }
+        .dash-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 18px; }
+        .kpi { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 13px; }
+        .kpi-lbl { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 5px; }
+        .kpi-val { font-size: 18px; font-weight: 900; color: var(--black); line-height: 1.1; }
+        .kpi-delta { font-size: 11px; font-weight: 600; color: #16A34A; margin-top: 3px; }
+        .dash-chart { display: flex; align-items: flex-end; gap: 5px; height: 64px; margin-bottom: 16px; }
+        .dbar { flex: 1; border-radius: 3px 3px 0 0; background: var(--gray-200); }
+        .dbar.hi { background: var(--black); }
+        .dash-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .dtag { font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 100px; border: 1px solid var(--gray-200); color: var(--gray-600); background: var(--gray-50); }
+        .dtag.on { background: var(--black); color: #fff; border-color: var(--black); }
+
+        .notif {
+            position: absolute; bottom: -16px; left: -24px;
+            background: white; border: 1px solid var(--gray-200); border-radius: 12px;
+            padding: 13px 16px; box-shadow: 0 8px 32px rgba(0,0,0,.12);
+            display: flex; align-items: center; gap: 11px; min-width: 210px;
+        }
+        .notif-ico { width: 34px; height: 34px; border-radius: 8px; background: #DCFCE7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .notif-t { font-size: 12px; font-weight: 700; color: var(--black); }
+        .notif-s { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+        .hero-cert {
+            position: absolute; top: 16px; right: -20px;
+            background: var(--black); color: #fff; border-radius: 10px;
+            padding: 10px 14px; font-size: 11px; font-weight: 700;
+            text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.2); min-width: 110px;
+        }
+        .hero-cert .cert-num { font-size: 22px; font-weight: 900; display: block; line-height: 1; margin-bottom: 3px; }
+
+        /* ── DIVIDER ── */
+        hr.divider { border: none; border-top: 1px solid var(--gray-200); }
+
+        /* ── LOGO MARQUEE ── */
+        .clients-section { padding: 56px 0; background: var(--white); overflow: hidden; }
+        .clients-section .eyebrow { display: block; text-align: center; margin-bottom: 36px; }
+
+        @keyframes ticker-left  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        @keyframes ticker-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+
+        .marquee-outer {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+        }
+        .marquee-track {
+            display: flex; gap: 56px; width: max-content;
+            animation: ticker-left 28s linear infinite;
+            align-items: center;
+        }
+        .marquee-track.reverse { animation: ticker-right 32s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-track img {
+            height: 42px; width: auto; max-width: 130px;
+            object-fit: contain;
+            /* always visible — no grayscale */
+            opacity: 1;
+            filter: none;
+            transition: transform .25s;
+        }
+        .marquee-track img:hover { transform: scale(1.08); }
+
+        .marquee-row { margin-bottom: 20px; }
+        .marquee-row:last-child { margin-bottom: 0; }
+
+        /* ── PROBLEM ── */
+        .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; }
+        .p-card { background: var(--white); padding: 36px 32px; transition: background .2s; }
+        .p-card:hover { background: var(--gray-50); }
+
+        .p-icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--black); }
+
+        .p-card h3 { font-size: 19px; margin-bottom: 12px; }
+        .p-card p  { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 20px; }
+        .p-result { font-size: 12px; font-weight: 700; color: var(--black); display: flex; align-items: center; gap: 6px; }
+        .p-arrow { color: var(--accent); font-size: 15px; }
+
+        /* ── SERVICES ── */
+        .services-section { background: var(--gray-50); }
+        .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; }
+        .svc-card { background: var(--white); padding: 36px 32px; transition: background .2s; }
+        .svc-card:hover { background: var(--gray-50); }
+        .svc-icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--black); }
+        .svc-num { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--accent); margin-bottom: 10px; display: block; }
+        .svc-card h3 { margin-bottom: 12px; }
+        .svc-card p  { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+        /* ── PROCESS ── */
+        .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 56px; position: relative; }
+        .process-steps::before {
+            content: ''; position: absolute;
+            top: 22px; left: 12%; right: 12%; height: 1px; background: var(--gray-200);
+        }
+        .ps { text-align: center; padding: 0 16px; }
+        .ps-num {
+            width: 46px; height: 46px; border-radius: 50%;
+            border: 1.5px solid var(--gray-200); background: var(--white);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 800; color: var(--gray-400);
+            margin: 0 auto 22px; position: relative; z-index: 1;
+        }
+        .ps:first-child .ps-num { background: var(--black); border-color: var(--black); color: #fff; }
+        .ps h3 { font-size: 15px; margin-bottom: 10px; }
+        .ps p  { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+
+        /* ── STATS ── */
+        .stats-band { background: var(--black); }
+        .stats-inner { display: grid; grid-template-columns: repeat(3,1fr); }
+        .stat { text-align: center; padding: 60px 20px; border-right: 1px solid rgba(255,255,255,.08); }
+        .stat:last-child { border-right: none; }
+        .stat-n { font-size: clamp(56px, 6vw, 80px); font-weight: 900; color: #fff; line-height: 1; margin-bottom: 10px; display: flex; align-items: flex-start; justify-content: center; gap: 2px; }
+        .stat-suf { font-size: .55em; color: var(--accent); margin-top: 8px; }
+        .stat-lbl { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+        /* ── RESULTS ── */
+        .results-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+        .r-card { border: 1px solid var(--gray-200); border-radius: 12px; padding: 36px; transition: box-shadow .3s, transform .3s; }
+        .r-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-4px); }
+        .r-ind { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: block; text-align: center; }
+        .r-card h3 { font-size: 20px; margin-bottom: 12px; text-align: center; }
+        .r-card p  { font-size: 14px; color: var(--gray-600); line-height: 1.68; margin-bottom: 24px; text-align: center; }
+        .r-box { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 18px; text-align: center; }
+        .r-box-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px; }
+        .r-box-val { font-size: 15px; font-weight: 800; color: var(--black); line-height: 1.5; }
+
+        /* ── TESTIMONIAL ── */
+        .testimonial-section { background: var(--black); padding: 80px 0; }
+        .t-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+        .t-mark { font-size: 80px; line-height: .8; color: var(--accent); font-family: Georgia, serif; opacity: .5; margin-bottom: 8px; }
+        .t-text { font-size: clamp(19px, 2.4vw, 26px); font-weight: 600; color: #fff; line-height: 1.55; margin-bottom: 28px; }
+        .t-author { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+        /* ── CTA SECTION ── */
+        .cta-section { background: var(--gray-50); }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .cta-l { padding-top: 6px; }
+        .cta-l h2 { margin-bottom: 16px; }
+        .cta-l p { font-size: 16px; color: var(--gray-600); line-height: 1.72; margin-bottom: 32px; }
+        .or-divider {
+            display: flex; align-items: center; gap: 14px;
+            font-size: 12px; font-weight: 600; color: var(--gray-400); margin: 28px 0;
+        }
+        .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+        .call-box { background: var(--black); border-radius: 12px; padding: 28px; color: #fff; }
+        .call-box h3 { font-size: 18px; margin-bottom: 8px; }
+        .call-box p { font-size: 14px; color: rgba(255,255,255,.5); margin-bottom: 20px; }
+        .call-lines { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+        .call-line { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,.5); }
+        .call-line a { color: rgba(255,255,255,.5); }
+        .call-line:hover, .call-line a:hover { color: #fff; }
+
+        /* ── FORM ── */
+        .lead-form { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 36px; }
+        .form-hed { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+        .form-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 26px; }
+        .fg { margin-bottom: 14px; }
+        .fg label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--black); }
+        .fg input, .fg select {
+            width: 100%; padding: 12px 14px;
+            border: 1.5px solid var(--gray-200); border-radius: var(--radius);
+            font-size: 14px; font-family: inherit; color: var(--black);
+            background: var(--white); outline: none;
+            transition: border-color .2s, box-shadow .2s; -webkit-appearance: none;
+        }
+        .fg input:focus, .fg select:focus { border-color: var(--black); box-shadow: 0 0 0 3px rgba(15,15,15,.08); }
+        .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-submit {
+            width: 100%; padding: 15px;
+            background: var(--black); color: #fff;
+            border: none; border-radius: var(--radius);
+            font-size: 15px; font-weight: 700; font-family: inherit;
+            cursor: pointer; transition: all .2s; margin-top: 6px;
+        }
+        .form-submit:hover { background: #2a2a2a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+        .form-note { font-size: 11px; color: var(--gray-400); text-align: center; margin-top: 10px; }
+        .form-success { display: none; text-align: center; padding: 40px 16px; }
+        .form-success.show { display: block; }
+        .form-success h3 { font-size: 21px; font-weight: 800; margin-bottom: 10px; }
+        .form-success p { color: var(--gray-600); font-size: 14px; line-height: 1.65; }
+
+        /* ── FAQ ── */
+        .faq-list { max-width: 740px; margin-top: 48px; }
+        .faq-item { border-bottom: 1px solid var(--gray-200); }
+        .faq-q {
+            width: 100%; text-align: left; padding: 20px 0;
+            font-size: 15px; font-weight: 600; color: var(--black);
+            background: none; border: none; cursor: pointer;
+            font-family: inherit; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        }
+        .faq-ico {
+            width: 24px; height: 24px; flex-shrink: 0;
+            background: var(--gray-100); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; transition: all .3s;
+        }
+        .faq-item.open .faq-ico { background: var(--black); color: #fff; transform: rotate(45deg); }
+        .faq-a {
+            font-size: 14px; color: var(--gray-600); line-height: 1.75;
+            max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s;
+        }
+        .faq-item.open .faq-a { max-height: 260px; padding-bottom: 20px; }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); padding: 64px 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .f-logo img { height: 36px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+        .f-desc { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.7; margin-bottom: 22px; }
+        .f-socials { display: flex; gap: 8px; }
+        .f-soc {
+            width: 34px; height: 34px; border-radius: 7px; background: rgba(255,255,255,.07);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,.4); font-size: 13px; font-weight: 700; transition: all .2s;
+        }
+        .f-soc:hover { background: var(--accent); color: #fff; }
+        .f-col h4 { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+        .f-col ul { list-style: none; }
+        .f-col ul li { margin-bottom: 9px; }
+        .f-col ul li a { font-size: 13px; color: rgba(255,255,255,.38); transition: color .2s; }
+        .f-col ul li a:hover { color: #fff; }
+        .footer-bottom {
+            padding-top: 22px; border-top: 1px solid rgba(255,255,255,.07);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 12px; color: rgba(255,255,255,.25);
         }
 
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 25px 50px -12px rgba(0, 102, 255, 0.1);
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .svc-grid, .problem-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-            box-shadow: 0 8px 16px -4px rgba(0, 102, 255, 0.3);
-            transition: all 0.3s ease;
+        @media (max-width: 768px) {
+            section { padding: 64px 0; }
+            .nav-links, .nav-phone { display: none; }
+            .hamburger { display: flex; }
+            .hero { padding: 120px 0 56px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-visual-wrap { display: none; }
+            .problem-grid, .svc-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            .process-steps::before { display: none; }
+            .stats-inner { grid-template-columns: 1fr; }
+            .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 40px 20px; }
+            .results-grid { grid-template-columns: 1fr; }
+            .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+            .fg-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -4px rgba(0, 102, 255, 0.4);
-        }
-
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.1; }
-        
-        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
-        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; background: #E2E8F0; border-radius: 4px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: var(--accent-primary); border: 3px solid white; box-shadow: 0 4px 8px rgba(0, 102, 255, 0.2); cursor: pointer; margin-top: -8px; }
-        
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquee { display: flex; width: 200%; animation: scroll 40s linear infinite; }
-
-        .client-logo { filter: grayscale(100%) contrast(0.5); opacity: 0.4; transition: all 0.3s ease; max-height: 35px; width: auto; }
-        .client-logo:hover { filter: grayscale(0%); opacity: 1; }
-
-        .sticky-cta { position: fixed; bottom: -100px; left: 0; right: 0; background: white; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); z-index: 100; transition: bottom 0.4s ease; border-top: 1px solid #EEE; }
-        .sticky-cta.visible { bottom: 0; }
-
-        /* Enhanced Exit Popup Styling */
-        .exit-popup { 
-            position: fixed; 
-            inset: 0; 
-            background: rgba(15, 23, 42, 0.85); /* Deep navy, slightly higher contrast overlay */
-            z-index: 9999; 
-            display: none; 
-            align-items: center; 
-            justify-content: center; 
-            backdrop-filter: blur(12px); 
-            padding: 20px;
-        }
-        .exit-popup.show { display: flex; }
-        .exit-popup-content {
-            background: #FFFFFF;
-            border-radius: 2rem;
-            max-width: 520px;
-            width: 100%;
-            padding: 56px 40px;
-            position: relative;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .trust-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 100px; font-size: 12px; font-weight: 700; color: #0369A1; }
-
-        .chaos-cell { background: #FEF2F2; color: #991B1B; }
-        .clarity-cell { background: #F0FDF4; color: #166534; }
-
-        .blur-result { filter: blur(8px); user-select: none; pointer-events: none; }
-        .unlocked .blur-result { filter: blur(0); }
-        .calc-overlay { background: rgba(15, 23, 42, 0.95); transition: all 0.5s ease; }
-        .unlocked .calc-overlay { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        .faq-item { border-bottom: 1px solid #F1F5F9; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; }
-        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Header -->
-    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-neutral-100">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2">
-                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido ERP Strategy" class="h-9">
+<!-- ── NAV ── -->
+<nav id="nav">
+    <div class="container">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="kaido-logo.png" alt="Kaido">
             </a>
-            <div class="hidden md:flex items-center space-x-8 text-[13px] font-bold uppercase tracking-wider">
-                <a href="#method" class="text-neutral-500 hover:text-blue-600 transition">Process</a>
-                <a href="#solutions" class="text-neutral-500 hover:text-blue-600 transition">Solutions</a>
-                <a href="#calculator" class="text-neutral-500 hover:text-blue-600 transition">ROI</a>
-                <a href="#authority" class="text-neutral-500 hover:text-blue-600 transition">Case Studies</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="tel:+971556474674" class="nav-phone">+971 55 647 4674</a>
+                <a href="#contact" class="btn btn-black">Free Gap Analysis</a>
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="tel:+971556474674" class="hidden lg:block text-sm font-bold text-neutral-800">+971 55 647 4674</a>
-                <button onclick="scrollToAudit()" class="btn-primary text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest">Free Audit</button>
-            </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+</nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-white">
-            <canvas id="hero-canvas"></canvas>
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-5xl mx-auto text-center">
-                    <div class="flex flex-wrap gap-3 justify-center mb-10">
-                        <span class="trust-badge">Strategic Tech Partner</span>
-                        <span class="trust-badge">GCC & MENA</span>
-                        <span class="trust-badge">Workflow Architects</span>
+<div class="mob-menu" id="mobMenu">
+    <a href="#services" onclick="closeMob()">Services</a>
+    <a href="#process"  onclick="closeMob()">Process</a>
+    <a href="#clients"  onclick="closeMob()">Clients</a>
+    <a href="#results"  onclick="closeMob()">Results</a>
+    <a href="#faq"      onclick="closeMob()">FAQ</a>
+    <a href="tel:+971556474674">+971 55 647 4674</a>
+    <a href="#contact" class="btn btn-black" onclick="closeMob()">Free Gap Analysis</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <!-- Left -->
+            <div>
+                <div class="hero-badge">
+                    <span class="cert-dot"></span>
+                    Certified Solutions Partner · Dubai, UAE
+                </div>
+                <h1>Run your whole<br>business on <em>one&nbsp;system.</em></h1>
+                <p class="hero-sub">We replace the spreadsheets and disconnected apps quietly draining your margins with one ERP that automates the busywork and pays for itself.</p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-black btn-lg">Book your gap analysis →</a>
+                    <a href="tel:+971556474674" class="btn btn-outline btn-lg">+971 55 647 4674</a>
+                </div>
+                <div class="hero-pills">
+                    <div class="pill">
+                        <!-- Check circle icon -->
+                        <svg class="pill-mark" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.25" stroke="#0F0F0F" stroke-width="1.5"/>
+                            <path d="M5.5 9.25L7.75 11.5L12.5 6.5" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Fixed price, zero surprises
                     </div>
-                    <h1 class="text-6xl md:text-8xl font-black leading-[1.0] mb-8 text-slate-900 animate-on-scroll">
-                        Workflow Architecture <br><span class="gradient-text serif italic">Before Technology.</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-slate-500 mb-12 max-w-3xl mx-auto leading-relaxed animate-on-scroll" style="transition-delay: 100ms">
-                        Strategic ERP consulting. We replace operational chaos with automated business intelligence that scales with your growth.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="transition-delay: 200ms">
-                        <button onclick="scrollToAudit()" class="btn-primary text-white px-10 py-5 rounded-2xl font-bold text-lg">Book ERP Readiness Audit</button>
-                        <a href="#calculator" class="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-50 transition">Analyze My Chaos </a>
+                    <div class="pill">
+                        <svg class="pill-mark" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.25" stroke="#0F0F0F" stroke-width="1.5"/>
+                            <path d="M5.5 9.25L7.75 11.5L12.5 6.5" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Live in weeks, not years
+                    </div>
+                    <div class="pill">
+                        <svg class="pill-mark" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.25" stroke="#0F0F0F" stroke-width="1.5"/>
+                            <path d="M5.5 9.25L7.75 11.5L12.5 6.5" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        100% project success rate
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Dynamic Logo Marquee (Authoritative Social Proof) -->
-        <section class="py-12 bg-white border-y border-slate-100 overflow-hidden marquee-container">
-            <div class="marquee">
-                <div class="flex gap-28 items-center px-12">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/ariston.png" alt="Ariston Gulf" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/woodstar.jpg" alt="Wood Star Trading" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/marc%20ellis.png" alt="Marc Ellis" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/core%20health.png" alt="Core Health Medical" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/EDEN-LOGO-white2.webp" alt="Eden Asset Management" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/homeseek.png" alt="HomeSeek Real Estate" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/skypro_main-logo.png" alt="Sky Pro" class="client-logo">
+            <!-- Right: Dashboard -->
+            <div class="hero-visual-wrap">
+                <div class="hero-cert">
+                    <span class="cert-num">50+</span>
+                    Projects<br>Delivered
                 </div>
-                <div class="flex gap-28 items-center px-12">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/ariston.png" alt="Ariston Gulf" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/woodstar.jpg" alt="Wood Star Trading" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/marc%20ellis.png" alt="Marc Ellis" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/core%20health.png" alt="Core Health Medical" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/EDEN-LOGO-white2.webp" alt="Eden Asset Management" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/homeseek.png" alt="HomeSeek Real Estate" class="client-logo">
-                    <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/skypro_main-logo.png" alt="Sky Pro" class="client-logo">
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Chaos vs Clarity Table -->
-        <section class="py-24 bg-white border-b border-slate-50">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">The Cost of <span class="gradient-text">Fragmented</span> Operations</h2>
-                    <p class="text-lg text-slate-500">Most companies are operating at 60% efficiency because their departments do not talk to each other.</p>
-                </div>
-                <div class="max-w-5xl mx-auto overflow-hidden rounded-3xl border border-slate-100 shadow-xl">
-                    <table class="w-full text-left">
-                        <thead>
-                            <tr class="bg-slate-900 text-white">
-                                <th class="p-6 md:p-8 text-lg font-bold">Operational Area</th>
-                                <th class="p-6 md:p-8 text-lg font-bold">The Chaos (Current)</th>
-                                <th class="p-6 md:p-8 text-lg font-bold text-blue-400">The Clarity (Kaido)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm md:text-base">
-                            <tr>
-                                <td class="p-6 md:p-8 font-bold border-b border-slate-50">Data Accuracy</td>
-                                <td class="p-6 md:p-8 chaos-cell border-b border-slate-50">Manual Excel reconciliations with 15% error rate.</td>
-                                <td class="p-6 md:p-8 clarity-cell border-b border-slate-50 font-bold text-slate-900">Single source of truth. Real-time accuracy.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-6 md:p-8 font-bold border-b border-slate-50">Retail & Channels</td>
-                                <td class="p-6 md:p-8 chaos-cell border-b border-slate-50">Overselling stock due to lag in marketplace syncing.</td>
-                                <td class="p-6 md:p-8 clarity-cell border-b border-slate-50 font-bold text-slate-900">Unified multi-channel stock & POS integration.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-6 md:p-8 font-bold border-b border-slate-50">Financial Visibility</td>
-                                <td class="p-6 md:p-8 chaos-cell border-b border-slate-50">Monthly P&L takes 10 days to compile manually.</td>
-                                <td class="p-6 md:p-8 clarity-cell border-b border-slate-50 font-bold text-slate-900">Instant financial dashboards. Live P&L.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-6 md:p-8 font-bold">Operational Flow</td>
-                                <td class="p-6 md:p-8 chaos-cell">Chasing signatures over WhatsApp and Email.</td>
-                                <td class="p-6 md:p-8 clarity-cell font-bold text-slate-900">Mobile app workflows. 1-tap automated approvals.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Proprietary Method -->
-        <section id="method" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <span class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600 mb-4 block">Our Signature Framework</span>
-                    <h2 class="text-4xl md:text-5xl font-black text-slate-900">The Kaido <span class="gradient-text serif italic">Blueprint Architecture</span></h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="glass-card p-10 bg-white">
-                        <div class="text-5xl font-black text-slate-100 mb-6">01</div>
-                        <h4 class="text-xl font-bold mb-4">Discovery Audit</h4>
-                        <p class="text-sm text-slate-400">We perform a deep scan of your existing department workflows and data silos.</p>
+                <div class="dash-frame">
+                    <div class="dash-bar">
+                        <div class="win-dot win-red"></div>
+                        <div class="win-dot win-yel"></div>
+                        <div class="win-dot win-grn"></div>
+                        <span class="dash-bar-title">ERP Dashboard · Live</span>
                     </div>
-                    <div class="glass-card p-10 bg-white">
-                        <div class="text-5xl font-black text-slate-100 mb-6">02</div>
-                        <h4 class="text-xl font-bold mb-4">Architecture</h4>
-                        <p class="text-sm text-slate-400">Platform agnostic advice. We design the ERP framework that fits your growth plan.</p>
-                    </div>
-                    <div class="glass-card p-10 bg-white">
-                        <div class="text-5xl font-black text-slate-100 mb-6">03</div>
-                        <h4 class="text-xl font-bold mb-4">Deployment</h4>
-                        <p class="text-sm text-slate-400">Agile implementation with rigorous UAT to ensure zero business interruption.</p>
-                    </div>
-                    <div class="glass-card p-10 bg-white">
-                        <div class="text-5xl font-black text-slate-100 mb-6">04</div>
-                        <h4 class="text-xl font-bold mb-4">Enablement</h4>
-                        <p class="text-sm text-slate-400">We do not just go live. We train your team and provide support.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ROI Calculator -->
-        <section id="calculator" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-4">Calculate Your <span class="gradient-text serif italic">Chaos Tax</span></h2>
-                    <p class="text-slate-500 max-w-2xl mx-auto">Discover the actual capital loss caused by manual inefficiencies and fragmented data siloed across your organization.</p>
-                </div>
-                <div id="calculator-card" class="max-w-5xl mx-auto glass-card p-10 md:p-14 bg-white shadow-2xl relative overflow-hidden">
-                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
-                        <div class="lg:col-span-3 space-y-12">
-                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Staff on Manual Tasks</label>
-                                <input type="range" id="employee-range" min="10" max="300" value="50">
-                                <div class="flex justify-between mt-4"><span class="text-4xl font-black text-slate-900" id="employee-val">50</span><span class="text-sm font-bold text-slate-400 uppercase">Team Size</span></div>
+                    <div class="dash-body">
+                        <div class="dash-kpis">
+                            <div class="kpi">
+                                <div class="kpi-lbl">Revenue</div>
+                                <div class="kpi-val">AED 2.4M</div>
+                                <div class="kpi-delta">↑ 18%</div>
                             </div>
-                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Manual Hours / Week / Staff</label>
-                                <input type="range" id="hours-range" min="1" max="40" value="15">
-                                <div class="flex justify-between mt-4"><span class="text-4xl font-black text-slate-900" id="hours-val">15</span><span class="text-sm font-bold text-slate-400 uppercase">Waste Hours</span></div>
+                            <div class="kpi">
+                                <div class="kpi-lbl">Orders</div>
+                                <div class="kpi-val">1,284</div>
+                                <div class="kpi-delta">↑ 12%</div>
                             </div>
-                            <div><label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Avg. Salary (AED/Mo)</label>
-                                <input type="range" id="salary-range" min="5000" max="50000" value="12000" step="1000">
-                                <div class="flex justify-between mt-4"><span class="text-4xl font-black text-slate-900" id="salary-val">12,000</span><span class="text-sm font-bold text-slate-400 uppercase">AED</span></div>
+                            <div class="kpi">
+                                <div class="kpi-lbl">Efficiency</div>
+                                <div class="kpi-val">94%</div>
+                                <div class="kpi-delta">↑ from 61%</div>
                             </div>
                         </div>
-                        <div class="lg:col-span-2 relative bg-slate-900 text-white rounded-[2rem] p-6 md:p-10 flex flex-col justify-center min-h-[420px]">
-                            <div class="text-center blur-result">
-                                <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-4">Monthly Capital Leak</h3>
-                                <div class="text-4xl md:text-5xl font-black gradient-text mb-6" id="leak-total">AED 168,750</div>
-                                <p class="text-xs text-slate-400 leading-relaxed italic">Equivalent to losing 12 full-time staff monthly.</p>
-                                <button onclick="scrollToAudit()" class="w-full btn-primary text-white py-4 rounded-xl font-bold mt-8">Recover This Revenue</button>
-                            </div>
-
-                            <div class="calc-overlay absolute inset-0 rounded-[2rem] p-6 md:p-8 flex flex-col justify-center items-center text-center z-10">
-                                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-blue-500/40">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                                </div>
-                                <h4 class="text-lg font-bold mb-3 text-white">Unlock Your Bespoke <br>Efficiency Report</h4>
-                                <p class="text-[11px] text-slate-400 mb-6">Enter details to reveal the result and get the breakdown via email.</p>
-                                <form onsubmit="unlockCalculator(event)" class="w-full space-y-2.5">
-                                    <input type="text" name="name" required placeholder="Full Name" class="w-full bg-slate-800 border-none rounded-xl px-4 py-3 text-xs outline-none focus:ring-1 focus:ring-blue-500 text-white">
-                                    <input type="text" name="company" required placeholder="Company Name" class="w-full bg-slate-800 border-none rounded-xl px-4 py-3 text-xs outline-none focus:ring-1 focus:ring-blue-500 text-white">
-                                    <input type="email" id="calc-email" required placeholder="Work Email" class="w-full bg-slate-800 border-none rounded-xl px-4 py-3 text-xs outline-none focus:ring-1 focus:ring-blue-500 text-white">
-                                    <input type="tel" name="phone" required placeholder="Phone Number" class="w-full bg-slate-800 border-none rounded-xl px-4 py-3 text-xs outline-none focus:ring-1 focus:ring-blue-500 text-white">
-                                    <button type="submit" class="w-full bg-blue-600 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition mt-2">Reveal Result</button>
-                                </form>
-                            </div>
+                        <div class="dash-chart">
+                            <div class="dbar" style="height:38%"></div>
+                            <div class="dbar" style="height:52%"></div>
+                            <div class="dbar" style="height:44%"></div>
+                            <div class="dbar" style="height:67%"></div>
+                            <div class="dbar" style="height:58%"></div>
+                            <div class="dbar hi" style="height:84%"></div>
+                            <div class="dbar hi" style="height:96%"></div>
+                        </div>
+                        <div class="dash-tags">
+                            <span class="dtag on">Sales</span>
+                            <span class="dtag on">Finance</span>
+                            <span class="dtag on">Inventory</span>
+                            <span class="dtag">HR</span>
+                            <span class="dtag on">CRM</span>
+                            <span class="dtag">Payroll</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Vertical Solutions Focus -->
-        <section id="solutions" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div class="max-w-2xl">
-                        <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">Specialized <span class="gradient-text">Vertical</span> Engineering.</h2>
-                        <p class="text-lg text-slate-500 mt-4 leading-relaxed">Different business models have unique complexities. We have built industry-specific architectures to solve them.</p>
+                <div class="notif">
+                    <div class="notif-ico">
+                        <!-- Check SVG instead of emoji -->
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M3.5 9.5L7 13L14.5 5.5" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass-card p-10 bg-white">
-                        <h4 class="text-xl font-bold mb-6">Trading & Distribution</h4>
-                        <ul class="space-y-4 text-sm text-slate-600 mb-8">
-                            <li class="flex items-start gap-3"><span>✓</span><span>Landed Cost tracking for complex import logistics.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>Multi-warehouse automated replenishment.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>Real-time supply chain dashboarding.</span></li>
-                        </ul>
-                        <p class="text-[10px] uppercase font-black tracking-widest text-blue-600 mb-2">Featured Success</p>
-                        <p class="text-sm font-bold text-slate-900">Ariston Gulf Water Heating</p>
-                    </div>
-                    <div class="glass-card p-10 bg-white">
-                        <h4 class="text-xl font-bold mb-6">Retail & E-commerce</h4>
-                        <ul class="space-y-4 text-sm text-slate-600 mb-8">
-                            <li class="flex items-start gap-3"><span>✓</span><span>Unified real-time inventory sync.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>Omnichannel POS systems with unified CRM.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>Automated returns and warehouse fulfillment flows.</span></li>
-                        </ul>
-                        <p class="text-[10px] uppercase font-black tracking-widest text-blue-600 mb-2">Featured Success</p>
-                        <p class="text-sm font-bold text-slate-900">Wood Star Trading</p>
-                    </div>
-                    <div class="glass-card p-10 bg-white">
-                        <h4 class="text-xl font-bold mb-6">Professional Services</h4>
-                        <ul class="space-y-4 text-sm text-slate-600 mb-8">
-                            <li class="flex items-start gap-3"><span>✓</span><span>Recruitment & Training database unified.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>Automated subscription and billing cycles.</span></li>
-                            <li class="flex items-start gap-3"><span>✓</span><span>High-volume transactional government data.</span></li>
-                        </ul>
-                        <p class="text-[10px] uppercase font-black tracking-widest text-blue-600 mb-2">Featured Success</p>
-                        <p class="text-sm font-bold text-slate-900">Marc Ellis Consulting</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Authority Evidence -->
-        <section id="authority" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900">Success Architecture for <span class="gradient-text serif italic">Business Leaders</span></h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/ariston.png" alt="Ariston Gulf Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Ariston Gulf</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Consolidated complex water heating supply chains and energy solutions into a single, unified ERP framework.</p>
-                    </article>
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/skypro_main-logo.png" alt="Sky Pro Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Sky Pro Services</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Processing high-volume transactional data for Government services with zero discrepancy through strategic automation.</p>
-                    </article>
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/woodstar.jpg" alt="Wood Star Trading Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Wood Star Trading</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Automating global supply chain and regional inventory cycles for general trading dominance across GCC markets.</p>
-                    </article>
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/marc%20ellis.png" alt="Marc Ellis Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Marc Ellis Consulting</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Unified international recruitment and training operations into a high-visibility, automated data ecosystem.</p>
-                    </article>
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/al%20tariq.jpeg" alt="Al Tariq Contracting Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Al Tariq Contracting</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Precision job costing and resource management for complex civil engineering and MEP projects.</p>
-                    </article>
-                    <article class="p-8 border border-slate-100 rounded-[2rem] bg-slate-50 hover:bg-white hover:border-blue-200 transition group">
-                        <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/logos/EDEN-LOGO-white2.webp" alt="Eden Asset Management Case Study" class="h-6 mb-6 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition">
-                        <h4 class="text-xl font-bold mb-3 text-slate-900">Eden Asset Management</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Strategic technology roadmap for asset management, providing critical financial visibility for scaling.</p>
-                    </article>
-                </div>
-
-                <div class="text-center border-t border-slate-50 pt-12">
-                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-widest">Expert Partners to <strong>Various Clients</strong> <strong>Across GCC & MENA</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ: Objection Handling -->
-        <section class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-slate-900">Strategic <span class="gradient-text">Consultancy</span> FAQ</h2>
-                    <p class="text-slate-500 mt-4">We address the specific fears that keep leadership awake before an ERP transition.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="faq-item p-6 glass-card bg-white cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold">How long does a typical architecture and implementation take?</h4>
-                            <span class="faq-icon text-2xl font-light text-slate-400">+</span>
-                        </div>
-                        <div class="faq-answer mt-4 text-sm text-slate-500">
-                            Our "Go-Live" cycles for core functionality range from 8 to 14 weeks. We prioritize "High-ROI modules" first so you see value within month 3, rather than waiting a year.
-                        </div>
-                    </div>
-                    <div class="faq-item p-6 glass-card bg-white cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold">What ERP platforms do you recommend?</h4>
-                            <span class="faq-icon text-2xl font-light text-slate-400">+</span>
-                        </div>
-                        <div class="faq-answer mt-4 text-sm text-slate-500">
-                            We are platform-agnostic architects. While we specialize in high-growth frameworks (like Odoo Enterprise), our primary recommendation depends on your vertical's specific reporting requirements and user scale.
-                        </div>
-                    </div>
-                    <div class="faq-item p-6 glass-card bg-white cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold">Can you integrate with specific retail channels?</h4>
-                            <span class="faq-icon text-2xl font-light text-slate-400">+</span>
-                        </div>
-                        <div class="faq-answer mt-4 text-sm text-slate-500">
-                            Yes. We build custom bridges for different channels, ensuring your inventory is synced across every warehouse and digital storefront in real-time.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Audit Form -->
-        <section id="audit" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
                     <div>
-                        <h2 class="text-5xl font-black mb-8 leading-tight">Start With a Free <br><span class="gradient-text serif italic" style="background: linear-gradient(90deg, #60A5FA, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Readiness Audit</span></h2>
-                        <p class="text-xl text-slate-400 mb-10 leading-relaxed">We will diagnose your workflow gaps and create a custom ERP roadmap. No fluff. Pure strategy.</p>
-                        <div class="flex gap-12">
-                            <div><p class="text-3xl font-black text-white">500+</p><p class="text-[10px] uppercase font-bold text-slate-500 mt-1">Users Enabled</p></div>
-                            <div><p class="text-3xl font-black text-white">100%</p><p class="text-[10px] uppercase font-bold text-slate-500 mt-1">GCC Based</p></div>
+                        <div class="notif-t">P&amp;L Report Ready</div>
+                        <div class="notif-s">Live · Auto-updated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── CLIENTS (auto-scrolling marquee, always coloured) ── -->
+<div class="clients-section" id="clients">
+    <div class="container">
+        <span class="eyebrow">Trusted across industries · GCC &amp; MENA</span>
+    </div>
+
+    <!-- Row 1 – scrolls left -->
+    <div class="marquee-row">
+        <div class="marquee-outer">
+            <div class="marquee-track">
+                <img src="Eden Asset Management Logo.webp"     alt="Eden Asset Management">
+                <img src="Ariston Logo.png"                    alt="Ariston Group">
+                <img src="Amarox Pharma Logo.jpeg"             alt="Amarox Pharma">
+                <img src="Linkviva Logo.png"                   alt="Linkviva Events">
+                <img src="Core Health Logo.jpeg"               alt="Core Health Medical">
+                <img src="Sima Pharmacy Logo.png"              alt="SIMA Pharma">
+                <img src="Palaces Jewellery Logo.jpeg"         alt="Palaces Jewellery">
+                <img src="Nivra Kitchens Logo.png"             alt="NIVRA Kitchens">
+                <img src="Marc Ellis Logo.jpeg"                alt="Marc Ellis">
+                <img src="Astera Real Estate Logo.jpeg"        alt="Astera Real Estate">
+                <img src="Averra Global Logo.jpg"              alt="Averra Global">
+                <img src="Simba Group Logo.png"                alt="SIMBA Group">
+                <!-- Duplicate for seamless loop -->
+                <img src="Eden Asset Management Logo.webp"     alt="Eden Asset Management">
+                <img src="Ariston Logo.png"                    alt="Ariston Group">
+                <img src="Amarox Pharma Logo.jpeg"             alt="Amarox Pharma">
+                <img src="Linkviva Logo.png"                   alt="Linkviva Events">
+                <img src="Core Health Logo.jpeg"               alt="Core Health Medical">
+                <img src="Sima Pharmacy Logo.png"              alt="SIMA Pharma">
+                <img src="Palaces Jewellery Logo.jpeg"         alt="Palaces Jewellery">
+                <img src="Nivra Kitchens Logo.png"             alt="NIVRA Kitchens">
+                <img src="Marc Ellis Logo.jpeg"                alt="Marc Ellis">
+                <img src="Astera Real Estate Logo.jpeg"        alt="Astera Real Estate">
+                <img src="Averra Global Logo.jpg"              alt="Averra Global">
+                <img src="Simba Group Logo.png"                alt="SIMBA Group">
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2 – scrolls right (reverse) -->
+    <div class="marquee-row">
+        <div class="marquee-outer">
+            <div class="marquee-track reverse">
+                <img src="Al Tariq Contracting ATCC Logo.jpeg" alt="Al Tariq Contracting">
+                <img src="Silver Horse Contracting Logo.jpeg"  alt="Silver Horse">
+                <img src="Al Darwish Trading Logo.jpeg"        alt="Al Darwish Trading">
+                <img src="Wood Star Trading Logo.jpg"          alt="Wood Star Trading">
+                <img src="Al Eatemad Logo.png"                 alt="Al Eatemad">
+                <img src="Al Taresh Logo.png"                  alt="Al Taresh Group">
+                <img src="Talent Mayor Marketing Logo.jpeg"    alt="NAYOR Marketing">
+                <img src="Napoli Kitchens logo.jpeg"           alt="Napoli Kitchens">
+                <img src="Dubai Police Logo.png"               alt="Dubai Police">
+                <img src="falla logo.jpg"                      alt="Falla">
+                <img src="Paymob Logo.png"                     alt="Paymob">
+                <img src="Alaan Logo.svg"                      alt="Alaan">
+                <!-- Duplicate -->
+                <img src="Al Tariq Contracting ATCC Logo.jpeg" alt="Al Tariq Contracting">
+                <img src="Silver Horse Contracting Logo.jpeg"  alt="Silver Horse">
+                <img src="Al Darwish Trading Logo.jpeg"        alt="Al Darwish Trading">
+                <img src="Wood Star Trading Logo.jpg"          alt="Wood Star Trading">
+                <img src="Al Eatemad Logo.png"                 alt="Al Eatemad">
+                <img src="Al Taresh Logo.png"                  alt="Al Taresh Group">
+                <img src="Talent Mayor Marketing Logo.jpeg"    alt="NAYOR Marketing">
+                <img src="Napoli Kitchens logo.jpeg"           alt="Napoli Kitchens">
+                <img src="Dubai Police Logo.png"               alt="Dubai Police">
+                <img src="falla logo.jpg"                      alt="Falla">
+                <img src="Paymob Logo.png"                     alt="Paymob">
+                <img src="Alaan Logo.svg"                      alt="Alaan">
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- ── PROBLEM ── -->
+<section id="problems">
+    <div class="container">
+        <div class="reveal" style="margin-bottom:48px;">
+            <span class="eyebrow">The cost of fragmented operations</span>
+            <h2 style="max-width:560px;">Most businesses run at 60% efficiency. Here's why.</h2>
+        </div>
+        <div class="problem-grid">
+            <div class="p-card reveal d1">
+                <!-- Financial / chart icon -->
+                <svg class="p-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="24" width="6" height="12" rx="1.5" fill="#0F0F0F"/>
+                    <rect x="14" y="16" width="6" height="20" rx="1.5" fill="#0F0F0F"/>
+                    <rect x="24" y="20" width="6" height="16" rx="1.5" fill="#0F0F0F"/>
+                    <rect x="34" y="8" width="6" height="28" rx="1.5" fill="#E8500A"/>
+                    <path d="M5 22L15 13L25 17L37 6" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="37" cy="6" r="2.5" fill="#E8500A"/>
+                </svg>
+                <h3>Financial Blindness</h3>
+                <p>Your monthly P&amp;L takes 10 days to compile manually. Leadership makes decisions on last month's data while competitors move in real time.</p>
+                <div class="p-result"><span class="p-arrow">→</span> Instant live P&amp;L dashboards</div>
+            </div>
+            <div class="p-card reveal d2">
+                <!-- Inventory / warehouse icon -->
+                <svg class="p-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L20 6L36 16V34H4V16Z" stroke="#0F0F0F" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M13 34V24H27V34" stroke="#0F0F0F" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M13 24H27" stroke="#0F0F0F" stroke-width="2"/>
+                    <circle cx="32" cy="12" r="6" fill="#fff" stroke="#E8500A" stroke-width="2"/>
+                    <path d="M32 9.5V12.5" stroke="#E8500A" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="32" cy="14.5" r="1" fill="#E8500A"/>
+                </svg>
+                <h3>Inventory Chaos</h3>
+                <p>Overselling stock because your warehouse and marketplace don't sync. Excess holding costs bleeding margin across every location.</p>
+                <div class="p-result"><span class="p-arrow">→</span> Real-time unified inventory</div>
+            </div>
+            <div class="p-card reveal d3">
+                <!-- Workflow / nodes icon -->
+                <svg class="p-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="20" r="5" stroke="#0F0F0F" stroke-width="2"/>
+                    <circle cx="32" cy="8"  r="5" stroke="#0F0F0F" stroke-width="2"/>
+                    <circle cx="32" cy="32" r="5" stroke="#0F0F0F" stroke-width="2" fill="#E8500A" stroke-dasharray="3 2"/>
+                    <path d="M13 20H20L27 11" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 20L27 29" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Operational Drag</h3>
+                <p>Chasing approvals over WhatsApp. Manual Excel reconciliations with 15% error rates. Hours spent on work a system should do in seconds.</p>
+                <div class="p-result"><span class="p-arrow">→</span> 1-tap automated approvals</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── SERVICES ── -->
+<section class="services-section" id="services">
+    <div class="container">
+        <div class="reveal" style="margin-bottom:48px;">
+            <span class="eyebrow">What we do</span>
+            <h2 style="max-width:580px;">Everything you need: unified, built, connected, and supported.</h2>
+        </div>
+        <div class="svc-grid">
+
+            <div class="svc-card reveal d1">
+                <!-- ERP: modular grid -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3"  width="15" height="15" rx="3" stroke="#0F0F0F" stroke-width="2"/>
+                    <rect x="22" y="3"  width="15" height="15" rx="3" stroke="#0F0F0F" stroke-width="2"/>
+                    <rect x="3" y="22" width="15" height="15" rx="3" stroke="#0F0F0F" stroke-width="2"/>
+                    <rect x="22" y="22" width="15" height="15" rx="3" stroke="#E8500A" stroke-width="2"/>
+                    <path d="M18 10.5H22M10.5 18V22M29.5 18V22M18 29.5H22" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="svc-num">01</span>
+                <h3>ERP Implementation</h3>
+                <p>Odoo, Microsoft Dynamics, Oracle, SAP, or fully custom: implemented and configured to how your business actually runs, not a generic out-of-the-box setup.</p>
+            </div>
+
+            <div class="svc-card reveal d2">
+                <!-- Integrations: two interlocking circles -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="15" cy="20" r="11" stroke="#0F0F0F" stroke-width="2"/>
+                    <circle cx="25" cy="20" r="11" stroke="#0F0F0F" stroke-width="2"/>
+                    <path d="M20 13C22 15.5 22 24.5 20 27" stroke="#E8500A" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="svc-num">02</span>
+                <h3>Custom Modules &amp; Integrations</h3>
+                <p>Connect your existing systems. Automate workflows unique to your business. We build the bridges so data flows without manual intervention.</p>
+            </div>
+
+            <div class="svc-card reveal d3">
+                <!-- Data migration: cylinder + arrow -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="12" cy="10" rx="8" ry="4" stroke="#0F0F0F" stroke-width="2"/>
+                    <path d="M4 10V26C4 28.2 7.58 30 12 30C14.3 30 16.4 29.5 18 28.7" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M20 10V26" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+                    <ellipse cx="30" cy="26" rx="8" ry="4" stroke="#E8500A" stroke-width="2"/>
+                    <path d="M22 26V30C22 32.2 25.58 34 30 34S38 32.2 38 30V26" stroke="#E8500A" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M23 18L27 22L23 26" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="svc-num">03</span>
+                <h3>Data Migration &amp; Analysis</h3>
+                <p>Clean, validated migration from spreadsheets or legacy systems. Historical data preserved, structured, and turned into decisions, not just stored.</p>
+            </div>
+
+            <div class="svc-card reveal d1">
+                <!-- Training: graduation path -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L38 15L20 24L2 15L20 6Z" stroke="#0F0F0F" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M10 20V30C10 30 14 34 20 34C26 34 30 30 30 30V20" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M38 15V22" stroke="#E8500A" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="38" cy="24" r="2" fill="#E8500A"/>
+                </svg>
+                <span class="svc-num">04</span>
+                <h3>Training &amp; Adoption</h3>
+                <p>Your team trained until the system actually sticks. We focus on adoption, not just deployment. A system no one uses is money wasted.</p>
+            </div>
+
+            <div class="svc-card reveal d2">
+                <!-- Maintenance: wrench in shield -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 3L36 9V20C36 28.8 28.8 35.4 20 37C11.2 35.4 4 28.8 4 20V9L20 3Z" stroke="#0F0F0F" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M15 21C15 23.76 17.24 26 20 26C22.76 26 25 23.76 25 21C25 19.5 24.28 18.18 23.18 17.3L25.5 15L24 14L21.7 16.3C21.16 16.11 20.59 16 20 16C17.24 16 15 18.24 15 21Z" stroke="#E8500A" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M16.5 15.5L14 13" stroke="#0F0F0F" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <span class="svc-num">05</span>
+                <h3>Annual Maintenance (AMC)</h3>
+                <p>Priority support with guaranteed response times after go-live. One number to call. Full accountability for your system long after the project ends.</p>
+            </div>
+
+            <div class="svc-card reveal d3">
+                <!-- Optimisation: dial/compass -->
+                <svg class="svc-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="16" stroke="#0F0F0F" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="3" fill="#0F0F0F"/>
+                    <!-- Compass needle -->
+                    <path d="M20 20L27 10" stroke="#E8500A" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M20 20L13 30" stroke="#0F0F0F" stroke-width="2.5" stroke-linecap="round" stroke-opacity=".35"/>
+                    <!-- Tick marks -->
+                    <path d="M20 6V9M20 31V34M6 20H9M31 20H34" stroke="#0F0F0F" stroke-width="2" stroke-linecap="round" stroke-opacity=".3"/>
+                </svg>
+                <span class="svc-num">06</span>
+                <h3>Consulting &amp; Optimisation</h3>
+                <p>Process review and advisory to get more out of your system over time. Your business evolves and your ERP should evolve with it.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── PROCESS ── -->
+<section id="process">
+    <div class="container">
+        <div class="reveal" style="text-align:center; max-width:540px; margin:0 auto;">
+            <span class="eyebrow">How it works</span>
+            <h2>A predictable path to go live.</h2>
+            <p style="font-size:16px;color:var(--gray-600);margin-top:14px;line-height:1.7;">No surprises, no chaos. Every engagement runs on the same clear, milestone-based path.</p>
+        </div>
+        <div class="process-steps">
+            <div class="ps reveal d1">
+                <div class="ps-num">01</div>
+                <h3>Discovery &amp; Blueprint</h3>
+                <p>Fixed scope and price agreed upfront. We audit your workflows and design the ideal ERP architecture.</p>
+            </div>
+            <div class="ps reveal d2">
+                <div class="ps-num">02</div>
+                <h3>System Build</h3>
+                <p>Configured to your actual workflow, not a generic template. Custom modules where needed.</p>
+            </div>
+            <div class="ps reveal d3">
+                <div class="ps-num">03</div>
+                <h3>Migrate &amp; Test</h3>
+                <p>Clean data migration, rigorous UAT. Zero business interruption. You validate before anything goes live.</p>
+            </div>
+            <div class="ps reveal d4">
+                <div class="ps-num">04</div>
+                <h3>Train &amp; Go Live</h3>
+                <p>Your team trained until it sticks. We stay on through go-live and beyond.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+    <div class="container">
+        <div class="stats-inner">
+            <div class="stat reveal">
+                <div class="stat-n"><span class="counter" data-target="50">0</span><span class="stat-suf">+</span></div>
+                <div class="stat-lbl">Projects Delivered</div>
+            </div>
+            <div class="stat reveal d2">
+                <div class="stat-n"><span class="counter" data-target="10">0</span><span class="stat-suf">+</span></div>
+                <div class="stat-lbl">Years Expertise</div>
+            </div>
+            <div class="stat reveal d3">
+                <div class="stat-n"><span class="counter" data-target="100">0</span><span class="stat-suf">%</span></div>
+                <div class="stat-lbl">Project Success Rate</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── RESULTS ── -->
+<section id="results">
+    <div class="container">
+        <div class="reveal" style="margin-bottom:8px;">
+            <span class="eyebrow">Client results</span>
+            <h2>Proven outcomes for growing companies.</h2>
+        </div>
+        <div class="results-grid">
+            <div class="r-card reveal d1">
+                <span class="r-ind">Construction &amp; Machinery</span>
+                <h3>AAA Machinery &amp; Equipment</h3>
+                <p>Managing a heavy-duty fleet across multiple sites demanded flawless logistics and maintenance tracking, previously done manually through spreadsheets.</p>
+                <div class="r-box">
+                    <div class="r-box-lbl">Result</div>
+                    <div class="r-box-val">↓ 40% unplanned downtime · 100% maintenance scheduling automated</div>
+                </div>
+            </div>
+            <div class="r-card reveal d2">
+                <span class="r-ind">Retail &amp; Food</span>
+                <h3>Al Eatemad Butchery</h3>
+                <p>Multiple branches with inventory tracked manually across locations. Stock gaps and order delays were a daily operational issue.</p>
+                <div class="r-box">
+                    <div class="r-box-lbl">Result</div>
+                    <div class="r-box-val">Unified stock across all branches · Order processing time cut by 60%</div>
+                </div>
+            </div>
+            <div class="r-card reveal d3">
+                <span class="r-ind">Distribution &amp; Pharma</span>
+                <h3>Amarox Pharmacy</h3>
+                <p>Finance and inventory running on separate systems. Month-end close consumed the team for a full week every single month.</p>
+                <div class="r-box">
+                    <div class="r-box-lbl">Result</div>
+                    <div class="r-box-val">Month-end close: 7 days → 1 day · Full finance &amp; inventory visibility from day one</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="t-inner reveal">
+            <div class="t-mark">"</div>
+            <p class="t-text">Kaido delivered exactly what they promised, on schedule. The operational visibility we have now is game changing.</p>
+            <div class="t-author">Operations Director · AAA Machinery &amp; Equipment</div>
+        </div>
+    </div>
+</section>
+
+<!-- ── LEAD CAPTURE ── -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="cta-l reveal">
+                <span class="eyebrow">Free Gap Analysis · No Commitment</span>
+                <h2>See exactly where you're losing time and money.</h2>
+                <p>Our consultants audit your current workflows and show you precisely how a unified ERP closes your operational gaps. Clear, actionable insights, yours to keep whether you proceed or not.</p>
+                <div class="or-divider">or talk to us directly</div>
+                <div class="call-box">
+                    <h3>Prefer to call first?</h3>
+                    <p>Speak directly with an ERP consultant. No sales scripts, just honest answers.</p>
+                    <a href="tel:+971556474674" class="btn btn-white" style="width:100%;justify-content:center;">+971 55 647 4674</a>
+                    <div class="call-lines">
+                        <div class="call-line">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 4L7 8L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <a href="mailto:khalid@kaidolab.com">khalid@kaidolab.com</a>
+                        </div>
+                        <div class="call-line">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 5.5C4.5 5.5 5 7 7 7C9 7 9.5 5.5 9.5 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M5 9H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                            <a href="https://linkedin.com/company/kaidolab" target="_blank">linkedin.com/company/kaidolab</a>
+                        </div>
+                        <div class="call-line">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.24 1 2 3.24 2 6C2 9.3 7 13 7 13C7 13 12 9.3 12 6C12 3.24 9.76 1 7 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7" cy="6" r="2" stroke="currentColor" stroke-width="1.3"/></svg>
+                            Dubai Digital Park, Silicon Oasis, UAE
                         </div>
                     </div>
-                    <div class="glass-card bg-white text-slate-900 p-10 md:p-12 shadow-2xl">
-                        <form id="audit-form" class="space-y-4" onsubmit="submitForm(event)">
-                            <input type="text" name="name" required placeholder="Full Name*" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-blue-500/20">
-                            <input type="text" name="company" required placeholder="Company Name*" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-blue-500/20">
-                            <input type="email" name="email" required placeholder="Work Email*" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-blue-500/20">
-                            <input type="tel" name="phone" required placeholder="Phone Number*" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-blue-500/20">
-                            <button type="submit" class="w-full btn-primary text-white py-5 rounded-xl font-bold text-lg mt-4 uppercase tracking-widest text-sm">Confirm My Session</button>
+                </div>
+            </div>
+
+            <div class="reveal d2">
+                <div class="lead-form">
+                    <div id="formBody">
+                        <div class="form-hed">Book Your Free Gap Analysis</div>
+                        <div class="form-sub">We'll respond within 24 hours. No commitment required.</div>
+                        <!--
+                            CONNECT: Replace the simulated submit below with your real endpoint.
+                            Option A — Formspree.io (free): fetch('https://formspree.io/f/YOUR_ID', ...)
+                            Option B — Any webhook, Zapier, or backend API
+                        -->
+                        <form id="kaidoForm" novalidate>
+                            <div class="fg-row">
+                                <div class="fg"><label>Full Name *</label><input type="text" name="name" placeholder="Ahmed Al Rashidi" required></div>
+                                <div class="fg"><label>Company *</label><input type="text" name="company" placeholder="Your Company LLC" required></div>
+                            </div>
+                            <div class="fg-row">
+                                <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="ahmed@company.com" required></div>
+                                <div class="fg"><label>WhatsApp / Phone *</label><input type="tel" name="phone" placeholder="+971 XX XXX XXXX" required></div>
+                            </div>
+                            <div class="fg">
+                                <label>Primary Challenge</label>
+                                <select name="challenge">
+                                    <option value="">Select an area...</option>
+                                    <option>Inventory &amp; Supply Chain</option>
+                                    <option>Financial Reporting &amp; Visibility</option>
+                                    <option>Workflow Automation &amp; Operations</option>
+                                    <option>System Integration &amp; Data Silos</option>
+                                    <option>ERP Selection &amp; Strategy</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="form-submit" id="submitBtn">Get My Free Gap Analysis →</button>
+                            <p class="form-note">Confidential &nbsp;·&nbsp; 100% Free &nbsp;·&nbsp; No Commitment</p>
                         </form>
                     </div>
+                    <div class="form-success" id="formSuccess">
+                        <div style="width:52px;height:52px;background:#DCFCE7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7.5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>We'll be in touch within 24 hours.</h3>
+                        <p>In the meantime, feel free to call us directly at <a href="tel:+971556474674" style="color:var(--black);font-weight:700;">+971 55 647 4674</a>.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+</section>
 
-    <!-- Sticky Lead CTA -->
-    <div class="sticky-cta px-6 py-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="font-bold text-slate-900">Stop wasting revenue on operational chaos.</p>
-            <div class="flex items-center gap-6">
-                <a href="tel:+971556474674" class="text-sm font-black text-slate-500">+971 55 647 4674</a>
-                <button onclick="scrollToAudit()" class="btn-primary text-white px-8 py-3 rounded-xl font-bold text-sm">Book Free Audit</button>
+<hr class="divider">
+
+<!-- ── FAQ ── -->
+<section id="faq">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow">Common questions</span>
+            <h2 style="max-width:520px;">ERP is a high-stakes decision. Here's what leaders ask us first.</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="faq(this)">How long does a typical ERP implementation take? <span class="faq-ico">+</span></button>
+                <div class="faq-a">Our go-live cycles for core functionality range from 8 to 14 weeks. We prioritise high-ROI modules first so you see real operational wins within the first 90 days — not after a year-long rollout.</div>
+            </div>
+            <div class="faq-item reveal d1">
+                <button class="faq-q" onclick="faq(this)">What ERP platforms do you implement? <span class="faq-ico">+</span></button>
+                <div class="faq-a">We are platform-agnostic architects. We implement Odoo Enterprise, Microsoft Dynamics, Oracle, SAP, and fully custom systems. Our recommendation always depends on your vertical's specific reporting requirements and user scale — we'll never push a platform for vendor commission reasons.</div>
+            </div>
+            <div class="faq-item reveal d2">
+                <button class="faq-q" onclick="faq(this)">How is Kaido's pricing structured? <span class="faq-ico">+</span></button>
+                <div class="faq-a">Fixed-price, fixed-scope engagements. You receive a clear blueprint and cost milestones agreed upfront before any work begins. No scope creep surprises, no hourly billing ambiguity.</div>
+            </div>
+            <div class="faq-item reveal d3">
+                <button class="faq-q" onclick="faq(this)">We've tried and failed an ERP before. Can you help? <span class="faq-ico">+</span></button>
+                <div class="faq-a">This is actually where we do some of our best work. We begin with a thorough audit of what went wrong and why — whether it was poor change management, wrong platform selection, or bad configuration. We design a clear remediation plan before a single line of code is written.</div>
+            </div>
+            <div class="faq-item reveal d4">
+                <button class="faq-q" onclick="faq(this)">Do you provide support after go-live? <span class="faq-ico">+</span></button>
+                <div class="faq-a">Yes. Our Annual Maintenance Contract (AMC) provides priority support with guaranteed response times. One number to call. We also offer ongoing Consulting &amp; Optimisation to ensure your ERP evolves as your business grows.</div>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Enhanced Exit Popup -->
-    <div class="exit-popup" id="exit-popup">
-        <div class="exit-popup-content text-center">
-            <!-- Close Button -->
-            <button aria-label="Close" onclick="closeExitPopup()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            
-            <!-- Icon/Badge -->
-            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm border border-blue-100">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            
-            <h3 class="text-3xl font-black mb-4 text-slate-900 leading-tight">Wait! Download Your <br><span class="gradient-text serif italic">ERP Selection Guide</span></h3>
-            <p class="text-slate-500 mb-8 px-4 text-sm leading-relaxed">Avoid the 5 most common mistakes CEOs make when selecting and implementation an ERP. A high-stakes checklist for leadership.</p>
-            
-            <form onsubmit="submitExitForm(event)" class="space-y-4 max-w-sm mx-auto">
-                <input type="email" name="exit_email" required placeholder="Enter Your Work Email" class="w-full bg-slate-50 rounded-2xl px-6 py-4 border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900 placeholder:text-slate-400">
-                <button type="submit" class="w-full btn-primary text-white py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:scale-[1.02] transition-transform">Get My Free Checklist</button>
-                <p class="text-[10px] text-slate-400 mt-4 uppercase font-bold tracking-widest">Confidential • 100% Free</p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="py-20 border-t border-slate-100 bg-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
             <div>
-                <img src="https://raw.githubusercontent.com/khalidhermod/kaidolab/refs/heads/main/kaidologomainwebp.webp" alt="Kaido ERP Strategy" class="h-8 opacity-40 mb-6">
-                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest italic">Strategic Workflow Architects</p>
-                <p class="text-xs text-slate-300 mt-2">Dubai Digital Park, Silicon Oasis, UAE</p>
-            </div>
-            <div class="flex flex-col md:items-end gap-4 text-center md:text-right">
-                <a href="mailto:khalid@kaidolab.com" class="text-lg font-bold text-slate-800 hover:text-blue-600 transition">khalid@kaidolab.com</a>
-                <div class="flex gap-8 items-center justify-center md:justify-end">
-                    <a href="https://www.linkedin.com/company/kaidolab/" target="_blank" class="text-slate-400 hover:text-blue-600" aria-label="Kaido LinkedIn">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <div class="f-logo"><img src="kaido-logo.png" alt="Kaido"></div>
+                <p class="f-desc">Strategic ERP consultants for GCC &amp; MENA businesses. One accountable partner from first blueprint to long-term support.</p>
+                <div class="f-socials">
+                    <a href="https://linkedin.com/company/kaidolab" target="_blank" class="f-soc">in</a>
+                    <a href="mailto:khalid@kaidolab.com" class="f-soc">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M1 4.5L7 8L13 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
                     </a>
-                    <span class="text-slate-800 font-black">+971 55 647 4674</span>
+                    <a href="tel:+971556474674" class="f-soc">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2.5C2 2.5 2 5.5 5 8.5C8 11.5 11 11.5 11 11.5L12 9L9.5 7.5L8.5 8.5C8.5 8.5 6.5 7.5 5.5 6.5C4.5 5.5 4 4.5 4 4.5L5 3.5L3.5 1L2 2.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                    </a>
                 </div>
             </div>
+            <div class="f-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">ERP Implementation</a></li>
+                    <li><a href="#services">Custom Modules</a></li>
+                    <li><a href="#services">Data Migration</a></li>
+                    <li><a href="#services">Training &amp; Adoption</a></li>
+                    <li><a href="#services">Annual Maintenance</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Industries</h4>
+                <ul>
+                    <li><a href="#">Trading &amp; Distribution</a></li>
+                    <li><a href="#">Retail &amp; E-commerce</a></li>
+                    <li><a href="#">Real Estate</a></li>
+                    <li><a href="#">Construction &amp; MEP</a></li>
+                    <li><a href="#">Professional Services</a></li>
+                    <li><a href="#">Distribution &amp; Pharma</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+971556474674">+971 55 647 4674</a></li>
+                    <li><a href="mailto:khalid@kaidolab.com">khalid@kaidolab.com</a></li>
+                    <li><a href="#">Dubai Digital Park</a></li>
+                    <li><a href="#">Silicon Oasis, UAE</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="mt-16 pt-8 text-center text-[10px] text-slate-300 uppercase font-black tracking-widest">© 2026 Kaido IT Solutions. All Rights Reserved.</div>
-    </footer>
+        <div class="footer-bottom">
+            <span>© 2026 Kaido IT Solutions. All Rights Reserved.</span>
+            <span>Dubai, UAE · GCC &amp; MENA</span>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('is-visible'));
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+<script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
 
-            // Calculator
-            const empR = document.getElementById('employee-range'), hrsR = document.getElementById('hours-range'), salR = document.getElementById('salary-range');
-            const empV = document.getElementById('employee-val'), hrsV = document.getElementById('hours-val'), salV = document.getElementById('salary-val'), lT = document.getElementById('leak-total');
-            function calc() {
-                const e = parseInt(empR.value), h = parseInt(hrsR.value), s = parseInt(salR.value);
-                empV.innerText = e; hrsV.innerText = h; salV.innerText = s.toLocaleString();
-                const leak = Math.round((h/40) * s * e * 1.5);
-                lT.innerText = `AED ${leak.toLocaleString()}`;
-            }
-            [empR, hrsR, salR].forEach(r => r.addEventListener('input', calc));
-            calc();
+    // Mobile menu
+    document.getElementById('hamburger').addEventListener('click', () =>
+        document.getElementById('mobMenu').classList.toggle('open'));
+    function closeMob() { document.getElementById('mobMenu').classList.remove('open'); }
 
-            window.unlockCalculator = function(e) {
-                e.preventDefault();
-                const data = new FormData(e.target);
-                document.getElementById('calculator-card').classList.add('unlocked');
-                trackLeadEvent('calculator_unlock', data.get('company'));
+    // Scroll reveal
+    const ro = new IntersectionObserver(entries =>
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
+        { threshold: .1, rootMargin: '0px 0px -28px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    // Counter
+    const co = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting || e.target.dataset.done) return;
+            e.target.dataset.done = 1;
+            const target = +e.target.dataset.target;
+            let cur = 0;
+            const tick = () => {
+                cur = Math.min(cur + target / 80, target);
+                e.target.textContent = Math.floor(cur);
+                if (cur < target) requestAnimationFrame(tick);
             };
-
-            const canvas = document.getElementById('hero-canvas');
-            if(canvas) {
-                const ctx = canvas.getContext('2d'); let p = [];
-                const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-                window.addEventListener('resize', resize); resize();
-                for(let i=0; i<100; i++) p.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3, size: Math.random()*2 });
-                function anim() { ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "#0066FF"; p.forEach(pt => { pt.x += pt.vx; pt.y += pt.vy; if(pt.x<0 || pt.x>canvas.width) pt.vx *= -1; if(pt.y<0 || pt.y>canvas.height) pt.vy *= -1; ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.size, 0, Math.PI*2); ctx.fill(); }); requestAnimationFrame(anim); }
-                anim();
-            }
-
-            const sticky = document.querySelector('.sticky-cta');
-            window.addEventListener('scroll', () => { window.pageYOffset > 1000 ? sticky.classList.add('visible') : sticky.classList.remove('visible'); });
-
-            let exit = false;
-            document.addEventListener('mouseleave', (e) => { if (e.clientY <= 0 && !exit) { document.getElementById('exit-popup').classList.add('show'); exit = true; } });
+            requestAnimationFrame(tick);
         });
+    }, { threshold: .6 });
+    document.querySelectorAll('.counter').forEach(el => co.observe(el));
 
-        function scrollToAudit() { document.getElementById('audit').scrollIntoView({ behavior: 'smooth' }); }
-        function closeExitPopup() { document.getElementById('exit-popup').classList.remove('show'); }
-        function submitForm(e) { 
-            e.preventDefault(); 
-            const data = new FormData(e.target);
-            trackLeadEvent('main_audit_form', data.get('company'));
-            alert('Request sent. Khalid will contact you shortly.'); 
-            e.target.reset(); 
+    // FAQ
+    function faq(btn) {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (!t) return;
+            e.preventDefault();
+            closeMob();
+            window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 76, behavior: 'smooth' });
+        });
+    });
+
+    // Form
+    document.getElementById('kaidoForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        let ok = true;
+        this.querySelectorAll('[required]').forEach(f => {
+            f.style.borderColor = '';
+            if (!f.value.trim()) { f.style.borderColor = '#EF4444'; ok = false; }
+        });
+        if (!ok) return;
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+            // ── REPLACE WITH REAL ENDPOINT ──
+            // await fetch('https://formspree.io/f/YOUR_ID', {
+            //   method:'POST', headers:{'Accept':'application/json'}, body:new FormData(this)
+            // });
+            await new Promise(r => setTimeout(r, 1000));
+            document.getElementById('formBody').style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+        } catch {
+            btn.textContent = 'Get My Free Gap Analysis →';
+            btn.disabled = false;
+            alert('Something went wrong. Please call +971 55 647 4674');
         }
-        function submitExitForm(e) { e.preventDefault(); trackLeadEvent('exit_checklist_download'); alert('Check your inbox!'); closeExitPopup(); }
-    </script>
+    });
+</script>
 </body>
 </html>
